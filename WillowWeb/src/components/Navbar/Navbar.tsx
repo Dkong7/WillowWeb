@@ -2,40 +2,42 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./Navbar.css";
 
-export default function Navbar() {
+// Definir los tipos de las props para TypeScript
+interface NavbarProps {
+  currentTheme: 'dark' | 'light';
+  toggleTheme: () => void;
+}
+
+export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
   const { i18n, t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 900);
 
-  // Detectar tamaño de pantalla para alternar logo
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 900);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Cambiar idioma entre inglés y español
   const toggleLanguage = (): void => {
     const newLang = i18n.language === "es" ? "en" : "es";
     i18n.changeLanguage(newLang);
   };
 
-  // Cerrar menú cuando se hace clic en un enlace
   const handleLinkClick = (): void => setMenuOpen(false);
 
-  // ✅ Ruta correcta de los logos según base pública de Vite
   const basePath = import.meta.env.BASE_URL;
   const logoSrc = isMobile ? `${basePath}logo-icon.svg` : `${basePath}logo-full.svg`;
 
   return (
     <nav className={`navbar ${menuOpen ? "open" : ""}`}>
       <div className="nav-container">
-        {/* Logo: cambia según viewport */}
+        {/* Logo */}
         <a href="#hero" className="logo" onClick={handleLinkClick}>
           <img
             src={logoSrc}
             alt="Willow Tree Logo"
-            className="logo-img"
+            className="logo-img logo-text-part"
           />
         </a>
 
@@ -52,18 +54,52 @@ export default function Navbar() {
 
         {/* Menú */}
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+          
           <li><a href="#hero" onClick={handleLinkClick}>{t("home")}</a></li>
           <li><a href="#about" onClick={handleLinkClick}>{t("about")}</a></li>
-          <li><a href="#services" onClick={handleLinkClick}>{t("services")}</a></li>
+          
+          {/* 🚀 SUBMENÚ: Servicios */}
+          <li className="has-submenu">
+            <a onClick={handleLinkClick}>{t("services_title")}</a> 
+            <ul className="submenu">
+              {/* Audio */}
+              <li className="submenu-item">
+                <a className="submenu-audio">{t("audio")}</a>
+                <ul className="sub-submenus">
+                  <li><a href="#audio-prod" onClick={handleLinkClick}>{t("audio_prod")}</a></li>
+                  <li><a href="#audio-mix" onClick={handleLinkClick}>{t("audio_mix")}</a></li>
+                </ul>
+              </li>
+              {/* Video */}
+              <li className="submenu-item">
+                <a className="submenu-video">{t("video")}</a>
+                <ul className="sub-submenus">
+                  <li><a href="#video-post" onClick={handleLinkClick}>{t("video_post")}</a></li>
+                  <li><a href="#video-motion" onClick={handleLinkClick}>{t("video_motion")}</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
           <li><a href="#portfolio" onClick={handleLinkClick}>{t("portfolio")}</a></li>
           <li><a href="#clients" onClick={handleLinkClick}>{t("clients")}</a></li>
           <li><a href="#team" onClick={handleLinkClick}>{t("team")}</a></li>
           <li><a href="#contact" onClick={handleLinkClick}>{t("contact")}</a></li>
 
-          {/* Botón de idioma */}
-          <li>
+          {/* CONTROLES A LA DERECHA */}
+          <li className="controls-group">
             <button className="lang-switch" onClick={toggleLanguage}>
               {i18n.language === "es" ? "EN" : "ES"}
+            </button>
+            <button 
+              className="theme-switch" 
+              onClick={toggleTheme}
+              aria-label={`Switch to ${currentTheme === 'dark' ? 'light' : 'dark'} theme`}
+              title={currentTheme === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
+            >
+              <span className="theme-icon">
+                {currentTheme === 'dark' ? '☀️' : '🌙'}
+              </span>
             </button>
           </li>
         </ul>

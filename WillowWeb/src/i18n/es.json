@@ -1,7 +1,17 @@
 {
   "home": "Inicio",
-  "about": "Acerca de",
+  "about": "Quienes somos?",
   "contact": "Contacto",
+  "services_title": "Servicios",
+  "portfolio": "Portafolio",
+  "clients": "Clientes",
+  "team": "Equipo",
+  "audio": "Audio",
+  "audio_prod": "Producción Musical",
+  "audio_mix": "Mezcla & Master",
+  "video": "Video",
+  "video_post": "Postproducción",
+  "video_motion": "Motion Graphics",
   "title": "Willow Tree",
   "subtitle": "Música · Diseño · Experiencias Interactivas"
 }

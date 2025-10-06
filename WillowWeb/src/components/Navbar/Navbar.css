@@ -1,24 +1,17 @@
-:root {
-  --bg-dark: rgba(10, 10, 10, 0.92);
-  --text-light: #f5f5f5;
-  --accent: #9be8c7;
-  --transition: 0.3s ease;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (Usa variables de index.css) ===== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  background: var(--bg-dark);
+  background: var(--color-bg-navbar);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-border-navbar);
   transition: background var(--transition), box-shadow var(--transition);
 }
 
@@ -39,10 +32,11 @@ html {
 }
 
 .logo-img {
-  height: 44px;
+  /* Tamaño final aumentado a 48px */
+  height: 48px; 
   width: auto;
   display: block;
-  filter: brightness(0) invert(1); /* 🔹 Fuerza el logo a blanco si era oscuro */
+  filter: var(--color-logo-filter); 
   transition: filter var(--transition), transform var(--transition);
 }
 
@@ -50,7 +44,7 @@ html {
   transform: scale(1.03);
 }
 
-/* ===== LINKS ===== */
+/* ===== MAIN LINKS CONTAINER (UL) ===== */
 .nav-links {
   list-style: none;
   display: flex;
@@ -58,37 +52,133 @@ html {
   gap: 2rem;
 }
 
-.nav-links a {
+/* ===== MAIN LINKS (LI/A) ===== */
+.nav-links li > a {
   text-decoration: none;
-  color: var(--text-light);
-  font-size: 1rem;
+  font-family: 'Espiritu Regular', sans-serif; 
+  color: var(--color-text); 
+  /* Tamaño final reducido a 0.9rem */
+  font-size: 0.9rem; 
   letter-spacing: 0.3px;
   transition: color var(--transition);
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--color-accent); 
 }
 
-/* ===== BOTÓN IDIOMA ===== */
-.lang-switch {
+/* ===== SUBMENU STYLES (Desktop) ===== */
+.nav-links li.has-submenu {
+    position: relative;
+    padding: 0; 
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    min-width: 240px;
+    padding: 0.5rem 0;
+    background: var(--color-bg-navbar); 
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-navbar);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    font-family: 'Espiritu Regular', sans-serif; 
+}
+
+.nav-links li.has-submenu:hover > .submenu {
+    display: flex; 
+}
+
+/* Títulos de Submenú (Audio/Video) */
+.submenu-item > a {
+    display: block;
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.sub-submenus {
+    list-style: none;
+    padding: 0.2rem 0 0.5rem 0; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+/* Aplicación de colores tenues a sub-sub-links */
+.submenu-item:first-child .sub-submenus a {
+    color: var(--color-audio-sub-tenue) !important; 
+    font-size: 0.95rem;
+    padding: 0.2rem 1rem;
+}
+
+.submenu-item:last-child .sub-submenus a {
+    color: var(--color-video-sub-tenue) !important;
+    font-size: 0.95rem;
+    padding: 0.2rem 1rem;
+}
+
+/* Colores de Marca Base */
+.submenu-audio { color: var(--color-audio-base) !important; }
+.submenu-video { color: var(--color-video-base) !important; }
+
+
+/* ===== CONTROLS GROUP (Desktop Alignment) ===== */
+.controls-group {
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
+
+/* FIX ESTILO BOTONES: Sutil y Elegante (sin borde en desktop) */
+.lang-switch, .theme-switch {
   background: transparent;
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  padding: 6px 14px;
-  color: var(--accent);
   cursor: pointer;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: all var(--transition);
+  transition: all 0.25s ease-out; 
+  font-weight: 400; 
+  border: none; 
+}
+
+/* ===== BOTÓN IDIOMA: Sutil y Elegante ===== */
+.lang-switch {
+  border-radius: 8px; 
+  padding: 6px 12px;
+  color: var(--color-accent); 
+  letter-spacing: 0.2px;
+  font-size: 0.9rem;
 }
 
 .lang-switch:hover {
-  background: var(--accent);
-  color: #000;
+  background: var(--color-accent);
+  color: var(--color-bg); 
 }
 
-/* ===== HAMBURGUESA ===== */
+/* ===== BOTÓN DE TEMA: Enfocado en el icono ===== */
+.theme-switch {
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-accent);
+    font-size: 1.1rem; 
+    padding: 0;
+}
+
+.theme-switch:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
+
+/* ===== HAMBURGER MENU (sin cambios) ===== */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -98,37 +188,28 @@ html {
   gap: 6px;
   background: none;
   border: none;
-  padding: 0.4rem;        /* 🔹 Hace clic más cómodo */
-  margin-left: 1.5rem;    /* 🔹 Espacio entre el logo y el icono */
+  padding: 0.4rem;
+  margin-left: 1.5rem;
 }
 
 .menu-toggle span {
   width: 28px;
   height: 2px;
-  background: var(--text-light);
+  background: var(--color-text); 
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+/* ... (Animations remain) ... */
 
-/* Animación del ícono hamburguesa */
-.menu-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
-}
-.menu-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -6px);
-}
 
-/* ===== MOBILE ===== */
+/* ===== MOBILE STYLES (@media max-width: 900px) ===== */
 @media (max-width: 900px) {
   .menu-toggle {
     display: flex;
   }
 
   .nav-container {
-    padding: 0.9rem 1.4rem; /* 🔹 Ajusta balance visual en móviles */
+    padding: 0.9rem 1.4rem;
   }
 
   .nav-links {
@@ -137,9 +218,9 @@ html {
     right: 0;
     flex-direction: column;
     align-items: center;
-    background: rgba(0, 0, 0, 0.96);
+    background: var(--color-bg-mobile-menu); 
+    gap: 1rem; 
     width: 100%;
-    gap: 1.6rem;
     max-height: 0;
     overflow: hidden;
     padding: 0;
@@ -147,8 +228,8 @@ html {
   }
 
   .nav-links.active {
-    max-height: 450px;
-    padding: 1.8rem 0;
+    max-height: 700px; 
+    padding: 1.5rem 0; 
   }
 
   .nav-links li {
@@ -157,11 +238,38 @@ html {
   }
 
   .nav-links a {
+    color: var(--color-text);
     display: block;
-    padding: 0.6rem 0;
+    padding: 0.6rem 0; 
+  }
+  
+  .submenu {
+      position: static; 
+      width: 100%;
+      padding: 0;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      margin: 0.5rem 0;
+      display: flex; 
+  }
+  
+  /* FIX VISIBILIDAD DE BOTONES DE CONTROL EN MOBILE */
+  .controls-group {
+      order: -1; 
+      margin-left: 0; 
+      padding: 0.5rem 0; 
+  }
+  
+  .controls-group .lang-switch,
+  .controls-group .theme-switch {
+    /* Re-introduce el borde para alto contraste en mobile */
+    border: 1px solid var(--color-text) !important;
+    color: var(--color-text) !important;
   }
 
-  .logo-img {
-    height: 38px;
+  .controls-group .theme-switch:hover {
+    background: var(--color-text) !important;
+    color: var(--color-bg) !important;
   }
 }

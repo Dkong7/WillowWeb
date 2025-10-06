@@ -1,114 +1,99 @@
 /* 🎨 Estilos globales base para WillowWeb */
 
-:root {
-  --color-bg-dark: #121212;
-  --color-bg-light: #ffffff;
-  --color-text-dark: #f4f4f4;
-  --color-text-light: #222222;
-  --color-accent: #6a5acd;
-  --color-accent-hover: #7d6df2;
-  --transition: all 0.3s ease;
+/* --- 🌐 FUENTE ESPIRITU (Archivos en /public/fonts/) --- */
 
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+/* Fuente Regular */
+@font-face {
+  font-family: 'Espiritu Regular';
+  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-.otf') format('opentype'); 
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* 🌗 Modo oscuro/claro */
+/* Fuente Condensed */
+@font-face {
+  font-family: 'Espiritu Condensed';
+  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-Condensed.otf') format('opentype'); 
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------- */
+
+/* 🌗 Theme Variables (Fallbacks on :root) */
+:root {
+  --transition: 0.3s ease;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  
+  /* 🚨 FIX EXTENSIÓN: Corregido de .webp a .wbm */
+  --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm"); 
+  --bg-url-dark: url("/WillowWeb/navbar-hero-dark.wbm");
+  --texture-blend-mode: overlay; /* Modo de Fusión */
+  --texture-url: none; 
+}
+
+/* Tema Oscuro (Defecto) */
+[data-theme="dark"] {
+  --color-bg: #0a0a0a; 
+  --color-text: #f5f5f5; 
+  --color-accent: #56B9FF; 
+  --color-bg-navbar: rgba(10, 10, 10, 0.92);
+  --color-border-navbar: rgba(255, 255, 255, 0.05);
+  --color-logo-filter: brightness(0) invert(1); 
+  --color-bg-mobile-menu: rgba(0, 0, 0, 0.96); 
+  
+  --color-audio-base: #e86c10;
+  --color-video-base: #7a4ed4;
+  --color-audio-sub-tenue: #f0a068; 
+  --color-video-sub-tenue: #b5a4ee; 
+  
+  /* 🚨 FIX: Set the current background image URL */
+  --current-bg-image: var(--bg-url-dark);
+}
+
+/* Tema Claro */
+[data-theme="light"] { 
+  --color-bg: #f4f4f4;
+  --color-text: #121212;
+  --color-accent: #0056b3; 
+  --color-bg-navbar: rgba(255, 255, 255, 0.92);
+  --color-border-navbar: rgba(0, 0, 0, 0.05);
+  --color-logo-filter: none; 
+  --color-bg-mobile-menu: rgba(255, 255, 255, 0.96); 
+  
+  --color-audio-base: #e86c10;
+  --color-video-base: #7a4ed4;
+  --color-audio-sub-tenue: #d4630e; 
+  --color-video-sub-tenue: #6d45c5; 
+
+  /* 🚨 FIX: Set the current background image URL */
+  --current-bg-image: var(--bg-url-light);
+}
+
+/* ------------------------------------------- */
+
 body {
   margin: 0;
   padding: 0;
-  color: var(--color-text-dark);
-  background-color: var(--color-bg-dark);
+  color: var(--color-text);
   transition: var(--transition);
+  min-height: 200vh;
+  
+  /* IMPLEMENTACIÓN DEL FONDO DE PANTALLA COMPLETA con BEND MODE */
+  background-image: var(--current-bg-image); 
+  background-color: var(--color-bg);       
+  background-blend-mode: var(--texture-blend-mode);
+  background-size: cover;                   
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* Navbar limpio y centrado */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: var(--color-text-dark);
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-.nav-links a:hover {
-  color: var(--color-accent-hover);
-}
-
-/* 🌐 Botón de idioma */
-.lang-switch {
-  background: none;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 0.9rem;
-}
-
-.lang-switch:hover {
-  background-color: var(--color-accent);
-  color: #fff;
-}
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  .nav-links a {
-    padding: 0.5rem 0;
-    width: 100%;
-  }
-}
-
-/* 🌞 Modo claro */
-@media (prefers-color-scheme: light) {
-  body {
-    color: var(--color-text-light);
-    background-color: var(--color-bg-light);
-  }
-  .nav-links a {
-    color: var(--color-text-light);
-  }
-  .lang-switch {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
+/* Aplicar la nueva fuente a los títulos */
+h1, h2, h3, h4, h5, h6, .logo-text-part {
+  font-family: 'Espiritu Regular', sans-serif;
 }
