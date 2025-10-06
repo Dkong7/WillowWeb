@@ -13,5 +13,50 @@
   "video_post": "Postproducción",
   "video_motion": "Motion Graphics",
   "title": "Willow Tree",
-  "subtitle": "Música · Diseño · Experiencias Interactivas"
+  "subtitle": "Música · Diseño · Experiencias Interactivas",
+  
+  "hero_welcome_title": "Bienvenidos",
+  "hero_welcome_copy": "audio, video y experiencias transmedia",
+  "explore": "Explora Willow Tree",
+  "next": "Siguiente",
+  "prev": "Anterior",
+
+  "hero_slides": [
+    {
+      "id": 1,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=x007n2bxCeI&playsinline=1",
+      "title": "Willow Tree",
+      "subtitle": "Audio, Video y Transmedia",
+      "button_text": "Continuar",
+      "link": "#about"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/veQAn_VYnvc?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=veQAn_VYnvc&playsinline=1",
+      "title": "Producción Musical",
+      "subtitle": "Producción musical original para artistas y marcas.",
+      "button_text": "Ver proyectos",
+      "link": "#audio-prod"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=JJtyZ3a8Lz8&playsinline=1",
+      "title": "Producción Audiovisual",
+      "subtitle": "Integramos música, imagen y narrativa para cada proyecto.",
+      "button_text": "Ver portafolio",
+      "link": "#video-post"
+    },
+    {
+      "id": 4,
+      "type": "info",
+      "image_url": "/WillowWeb/borrar.png",
+      "title": "Innovación & Nuevos Medios",
+      "subtitle": "Exploramos nuevas formas de crear con tecnología y arte.",
+      "button_text": "Ver colaboraciones",
+      "link": "#collaborations"
+    }
+  ]
 }

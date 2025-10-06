@@ -13,5 +13,50 @@
   "video_post": "Post-Production",
   "video_motion": "Motion Graphics",
   "title": "Willow Tree",
-  "subtitle": "Music · Design · Interactive Experiences"
+  "subtitle": "Music · Design · Interactive Experiences",
+  
+  "hero_welcome_title": "Welcome",
+  "hero_welcome_copy": "audio, video and transmedia experiences",
+  "explore": "Explore Willow Tree",
+  "next": "Next",
+  "prev": "Previous",
+
+  "hero_slides": [
+    {
+      "id": 1,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/Db1P2ZMiVEs?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=Db1P2ZMiVEs&playsinline=1",
+      "title": "Willow Tree",
+      "subtitle": "Audio, Video and Transmedia",
+      "button_text": "Continue",
+      "link": "#about"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/veQAn_VYnvc?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=veQAn_VYnvc&playsinline=1",
+      "title": "Music Production",
+      "subtitle": "Original music production for artists and brands.",
+      "button_text": "See projects",
+      "link": "#audio-prod"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=JJtyZ3a8Lz8&playsinline=1",
+      "title": "Audiovisual Production",
+      "subtitle": "We integrate music, image and storytelling for every project.",
+      "button_text": "View portfolio",
+      "link": "#video-post"
+    },
+    {
+      "id": 4,
+      "type": "info",
+      "image_url": "/WillowWeb/borrar.png",
+      "title": "Innovation & New Media",
+      "subtitle": "We explore new ways of creating with technology and art.",
+      "button_text": "See collaborations",
+      "link": "#collaborations"
+    }
+  ]
 }

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import "./index.css";
 import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero"; // Importa el nuevo componente Hero
 
 function App() {
+  // 🚨 RESTORE: Lógica de tema y estado
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   // Función para cambiar el tema
@@ -20,17 +22,16 @@ function App() {
       {/* Pasamos el estado y la función de toggle al Navbar */}
       <Navbar currentTheme={theme} toggleTheme={toggleTheme} />
       
-      {/* Contenido de prueba (puedes reemplazarlo con tu layout real) */}
-      <section id="hero" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h1>Willow Tree - Landing Page</h1>
+      {/* 🚀 COMPONENTE HERO */}
+      <Hero /> 
+      
+      {/* Secciones de Anclaje */}
+      <section id="about" style={{ minHeight: '100vh', padding: '5rem 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <h2>Acerca de Nosotros (Contenido aquí)</h2>
       </section>
-      <section id="about" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h2>Acerca de Nosotros</h2>
+      <section id="services" style={{ minHeight: '100vh', padding: '5rem 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <h2>Nuestros Servicios (Contenido aquí)</h2>
       </section>
-      <section id="services" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h2>Nuestros Servicios</h2>
-      </section>
-      {/* Asegúrate de agregar las secciones completas que definiste antes (#portfolio, #clients, #team, #contact) */}
     </div>
   );
 }
