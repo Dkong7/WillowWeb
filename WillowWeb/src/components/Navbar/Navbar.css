@@ -1,0 +1,167 @@
+:root {
+  --bg-dark: rgba(10, 10, 10, 0.92);
+  --text-light: #f5f5f5;
+  --accent: #9be8c7;
+  --transition: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--bg-dark);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1); /* 🔹 Fuerza el logo a blanco si era oscuro */
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.logo-img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== LINKS ===== */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ===== BOTÓN IDIOMA ===== */
+.lang-switch {
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 6px 14px;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+}
+
+.lang-switch:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ===== HAMBURGUESA ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0.4rem;        /* 🔹 Hace clic más cómodo */
+  margin-left: 1.5rem;    /* 🔹 Espacio entre el logo y el icono */
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 2px;
+  background: var(--text-light);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación del ícono hamburguesa */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    padding: 0.9rem 1.4rem; /* 🔹 Ajusta balance visual en móviles */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.96);
+    width: 100%;
+    gap: 1.6rem;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav-links.active {
+    max-height: 450px;
+    padding: 1.8rem 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.6rem 0;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+}
