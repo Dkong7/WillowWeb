@@ -1,0 +1,168 @@
+/* src/components/About/About.css */
+
+/* ================== ANIMACIÓN ================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Aplicar animación base a todos los elementos */
+.about-title,
+.about-subtitle,
+.about-body,
+.about-background-image,
+.about-main-image {
+  opacity: 0;
+  transform: translate3d(0, 50px, 0);
+  animation-name: fadeInUp;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* ===== Delays ===== */
+.anim-delay-1 {
+  animation-delay: 0.3s;
+}
+.anim-delay-2 {
+  animation-delay: 0.6s;
+}
+.anim-delay-3 {
+  animation-delay: 0.9s;
+}
+.anim-delay-4 {
+  animation-delay: 1.2s;
+}
+
+/* ================== LAYOUT ================== */
+.about-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  background-color: var(--color-bg);
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* ================== IMÁGENES ================== */
+.about-visuals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  min-height: 400px;
+}
+
+.about-background-image {
+  width: 90%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.about-main-image {
+  position: absolute;
+  width: 82%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  top: 4%;
+  left: 3%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: all 0.5s ease;
+  animation-name: fadeInUp;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* ================== TEXTO ================== */
+.about-content-card {
+  color: var(--color-text);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.about-title {
+  font-family: 'Espiritu Regular', sans-serif;
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.about-subtitle,
+.about-body {
+  font-family: 'Advent Pro', sans-serif;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.about-body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .about-content-card {
+    padding: 0;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .about-visuals {
+    order: -1;
+    min-height: 300px;
+  }
+
+  .about-main-image {
+    width: 84%;
+    top: 5%;
+    left: 6%;
+  }
+
+  .about-background-image {
+    width: 95%;
+  }
+}

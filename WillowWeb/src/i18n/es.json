@@ -58,5 +58,10 @@
       "button_text": "Ver colaboraciones",
       "link": "#collaborations"
     }
-  ]
+  ],
+  
+  "about_title": "¿QUIÉNES SOMOS?",
+  "about_subtitle": "Laboratorio creativo de sonido e imagen",
+  "about_body": "Fundada en 2009 en Bogotá por Diego Díaz y Leonard Jaramillo, Willow Tree nació como un laboratorio creativo donde el sonido y la imagen se convierten en lenguajes para emocionar y trascender. Más que un estudio, somos un espacio donde la pasión artística y la precisión técnica florecen juntas, dando vida a experiencias únicas que combinan música, audiovisual y narrativa con un sello propio. En cada proyecto cultivamos la creatividad como si fuera un árbol: desde la semilla de una idea hasta un universo completo, fieles a nuestro lema “Ideas que se convierten en mundos”.",
+  "about_cta": "Ver Manifiesto" 
 }

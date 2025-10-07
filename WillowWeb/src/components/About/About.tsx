@@ -9,29 +9,34 @@ export default function About() {
         <section id="about" className="about-section">
             <div className="about-container">
                 
-                {/* Lado Izquierdo: Imagen Destacada (basado en el diseño) */}
+                {/* Lado Izquierdo: IMÁGENES DOBLES (Visuals - Stage 3) */}
                 <div className="about-visuals">
                     <div className="about-image-placeholder">
-                        {/* RUTA: La imagen principal de la sección About */}
+                        {/* 1. Imagen de Fondo (Stage 3a) */}
                         <img 
-                            src={basePath + "about-image.webp"} 
-                            alt={t('about_title')} 
-                            className="about-main-image"
+                            src={basePath + "backQuienesSomos.png"} 
+                            alt={t('about_title') + " background"} 
+                            className="about-background-image anim-delay-3"
+                        />
+                        {/* 2. Imagen Frontal (Stage 3b) */}
+                        <img 
+                            src={basePath + "quienesSomos.png"} 
+                            alt={t('about_title') + " main"} 
+                            className="about-main-image anim-delay-4"
                         />
                     </div>
                 </div>
 
-                {/* Lado Derecho: Contenido de Texto */}
+                {/* Lado Derecho: Contenido de Texto (Stage 1 & 2) */}
                 <div className="about-content-card">
-                    {/* Título: Usa la fuente Espíritu */}
-                    <h1 className="about-title">{t('about_title')}</h1> 
-                    {/* Subtítulo: Usa la fuente Advent Pro */}
-                    <h2 className="about-subtitle">{t('about_subtitle')}</h2>
-                    {/* Cuerpo: Usa la fuente Advent Pro */}
-                    <p className="about-body">{t('about_body')}</p>
-                    <a href="#team" className="about-cta-button">
-                        {t('about_cta')}
-                    </a>
+                    {/* 🚨 Stage 1: Título */}
+                    <h1 className="about-title anim-delay-1">{t('about_title')}</h1> 
+                    
+                    {/* 🚨 Stage 2: Subtítulo y Cuerpo de Texto */}
+                    <h2 className="about-subtitle anim-delay-2">{t('about_subtitle')}</h2>
+                    <p className="about-body anim-delay-2">{t('about_body')}</p>
+                    
+                    {/* 🚨 REMOVIDO: El botón de CTA ha sido removido */}
                 </div>
             </div>
         </section>

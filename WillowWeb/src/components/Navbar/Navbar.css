@@ -232,9 +232,12 @@ html {
     padding: 1.5rem 0; 
   }
 
+  /* 🚨 FIX: Aseguramos que el LI contenedor sea centrado */
   .nav-links li {
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .nav-links a {
@@ -254,16 +257,19 @@ html {
       display: flex; 
   }
   
-  /* FIX VISIBILIDAD DE BOTONES DE CONTROL EN MOBILE */
+  /* 🚨 FIX CENTRADO DE BOTONES EN MOBILE */
   .controls-group {
-      order: -1; 
-      margin-left: 0; 
-      padding: 0.5rem 0; 
+    order: -1; 
+    margin-left: 0; 
+    padding: 0.5rem 0; 
+    /* CRÍTICO: Sobreescribe cualquier alineación para centrar los botones */
+    justify-content: center; 
+    width: 100%;
+    gap: 1.5rem;
   }
   
   .controls-group .lang-switch,
   .controls-group .theme-switch {
-    /* Re-introduce el borde para alto contraste en mobile */
     border: 1px solid var(--color-text) !important;
     color: var(--color-text) !important;
   }

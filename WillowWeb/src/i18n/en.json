@@ -58,5 +58,10 @@
       "button_text": "See collaborations",
       "link": "#collaborations"
     }
-  ]
+  ],
+  
+  "about_title": "WHO WE ARE?",
+  "about_subtitle": "Creative Laboratory for Sound and Image",
+  "about_body": "Founded in 2009 in Bogotá by Diego Díaz and Leonard Jaramillo, Willow Tree was born as a creative laboratory where sound and image become languages to move, inspire, and transcend. More than a studio, we are a space where artistic passion and technical precision grow together, giving life to unique experiences that blend music, audiovisual production, and storytelling with our distinctive signature. In every project, we cultivate creativity like a tree: from the seed of an idea to a complete universe, true to our motto “Ideas that become worlds.”",
+  "about_cta": "View Manifesto"
 }
