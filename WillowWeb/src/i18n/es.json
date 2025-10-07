@@ -51,8 +51,8 @@
     },
     {
       "id": 4,
-      "type": "info",
-      "image_url": "/WillowWeb/borrar.png",
+      "type": "video",
+      "url": "https://www.youtube.com/embed/4QrU03qKYRA?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=4QrU03qKYRA&playsinline=1",
       "title": "Innovación & Nuevos Medios",
       "subtitle": "Exploramos nuevas formas de crear con tecnología y arte.",
       "button_text": "Ver colaboraciones",

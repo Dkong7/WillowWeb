@@ -20,12 +20,23 @@
   font-display: swap;
 }
 
+/* 🚨 FIX FUENTE: Advent Pro */
+@font-face {
+  font-family: 'Advent Pro';
+  /* Asumo que el nombre del archivo TTF coincide con el nombre de la familia Pro */
+  src: url('/WillowWeb/fonts/Advent-Pro-Regular.ttf') format('truetype'); 
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ------------------------------------------- */
 
 /* 🌗 Theme Variables (Fallbacks on :root) */
 :root {
   --transition: 0.3s ease;
-  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* 🚨 FIX FONT: Usando Advent Pro para texto secundario */
+  font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
   font-size: 16px;
   line-height: 1.5;
   
@@ -40,7 +51,7 @@
   --color-bg: #0a0a0a; 
   --color-text: #f5f5f5; 
   --color-accent: #cdda3e; 
-  /* 🚨 FIX TRANSPARENCIA: Opacidad reducida a 0.75 */
+  /* 🚨 FIX TRANSPARENCIA: Opacidad final a 0.75 */
   --color-bg-navbar: rgba(10, 10, 10, 0.75); 
   --color-border-navbar: rgba(255, 255, 255, 0.05);
   --color-logo-filter: brightness(0) invert(1); 
@@ -58,7 +69,7 @@
   --color-bg: #f4f4f4;
   --color-text: #121212;
   --color-accent: #99b335; 
-  /* 🚨 FIX TRANSPARENCIA: Opacidad reducida a 0.75 */
+  /* 🚨 FIX TRANSPARENCIA: Opacidad final a 0.75 */
   --color-bg-navbar: rgba(255, 255, 255, 0.75); 
   --color-border-navbar: rgba(0, 0, 0, 0.05);
   --color-logo-filter: none; 
@@ -91,6 +102,6 @@ body {
 }
 
 /* Aplicar la nueva fuente a los títulos */
-h1, h2, h3, h4, h5, h6, .logo-text-part {
+h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
   font-family: 'Espiritu Regular', sans-serif;
 }

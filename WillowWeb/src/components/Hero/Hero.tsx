@@ -36,11 +36,13 @@ export default function Hero() {
 
   // Componente para el card de bienvenida (solo aparece en Slide 0)
   const renderWelcomeCard = () => {
-    // La card solo se renderiza si estamos en el slide 0 y el usuario no la ha cerrado
     if (currentSlide !== 0 || !showWelcomeCard) return null;
 
     const lang = i18n.language === 'es' ? 'es' : 'en';
     const logoSrc = `${basePath}logo-hero-${lang}.svg`;
+
+    const welcomeCopy = t('hero_welcome_copy');
+    const capitalizedCopy = welcomeCopy.charAt(0).toUpperCase() + welcomeCopy.slice(1);
 
     return (
       <div className="welcome-card">
@@ -54,7 +56,7 @@ export default function Hero() {
         </button>
         <h1 className="welcome-title-text">{t('hero_welcome_title')}</h1>
         <img src={logoSrc} alt="Willow Tree Logo Hero" className="welcome-logo" />
-        <p className="welcome-subtitle-copy">{t('hero_welcome_copy')}</p>
+        <p className="welcome-subtitle-copy">{capitalizedCopy}</p> 
         <a 
           href="#about" 
           className="hero-button" 
@@ -69,14 +71,20 @@ export default function Hero() {
   // Componente condicional para la diapositiva (Video o Info)
   const renderSlide = (slide: Slide, index: number) => {
       const slideTypeClass = slide.type === 'video' ? 'video-slide' : 'info-slide';
+      
+      const videoSrc = slide.url; // 🚨 FIX AUTOPLAY: Carga la URL directamente
+
+      const audioIconSrc = `${basePath}icono-audio.svg`;
+      const videoIconSrc = `${basePath}icono-video.svg`;
+      const mediaIconSrc = `${basePath}icono-media.svg`;
+
 
       return (
         <div className={`hero-slide-content ${slideTypeClass}`}>
           {slide.type === 'video' && (
             <div className="video-container">
               <iframe
-                src={slide.url}
-                /* Permisos necesarios para autoplay y mute */
+                src={videoSrc} 
                 allow="autoplay; muted; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 frameBorder="0"
@@ -92,10 +100,22 @@ export default function Hero() {
             </div>
           )}
           
-          {/* 🚨 FIX: RENDERIZAR hero-overlay-text solo si NO es el Slide 1 (index 0) */}
+          {/* RENDERIZAR hero-overlay-text solo si NO es el Slide 1 (index 0) */}
           {index !== 0 && (
             <div className="hero-overlay-text">
-              <h1 className="hero-title">{slide.title}</h1>
+              
+              <div className="hero-title-group">
+                
+                {/* Iconos: Renderiza el ícono si es Slide 2, 3 o 4 */}
+                {index === 1 && <img src={audioIconSrc} alt="Audio Icon" className="hero-title-icon" />}
+                {index === 2 && <img src={videoIconSrc} alt="Video Icon" className="hero-title-icon" />}
+                {index === 3 && <img src={mediaIconSrc} alt="Media Icon" className="hero-title-icon" />}
+                
+                {/* 🚨 FIX DUPLICACIÓN: El Título se renderiza UNA SOLA VEZ, al final del grupo. */}
+                <h1 className="hero-title">{slide.title}</h1>
+
+              </div>
+              
               <h2 className="hero-subtitle">{slide.subtitle}</h2>
               <a href={slide.link} className="hero-button">{slide.button_text}</a>
             </div>
@@ -107,37 +127,39 @@ export default function Hero() {
   return (
     <section id="hero" className="hero-slider-section">
       
-      {/* RENDERIZADO DE LA CARD: Asegura que se superponga al slide 1 */}
+      {/* 🚨 Welcome Card: Se superpone al Slide 1 si está visible */}
       {renderWelcomeCard()}
 
-      <div className="slider-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-        {slides.map((slide, index) => ( 
-          <div key={slide.id} className="slide-item">
-            {renderSlide(slide, index)}
+      <div className="slider-main-container">
+          <div className="slider-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+            {slides.map((slide, index) => ( 
+              <div key={slide.id} className="slide-item">
+                {renderSlide(slide, index)}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Botones de Navegación Elegantes */}
-      <div className="slider-navigation">
-        <button onClick={prevSlide} className="nav-button prev-button" aria-label={t('prev')}>
-          &lt;
-        </button>
-        <button onClick={nextSlide} className="nav-button next-button" aria-label={t('next')}>
-          &gt;
-        </button>
-      </div>
+          {/* Botones de Navegación Elegantes */}
+          <div className="slider-navigation">
+            <button onClick={prevSlide} className="nav-button prev-button" aria-label={t('prev')}>
+              &lt;
+            </button>
+            <button onClick={nextSlide} className="nav-button next-button" aria-label={t('next')}>
+              &gt;
+            </button>
+          </div>
 
-      {/* Indicadores de Slide */}
-      <div className="slider-indicators">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentSlide(i)}
-            className={`indicator ${i === currentSlide ? 'active' : ''}`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
+          {/* Indicadores de Slide */}
+          <div className="slider-indicators">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`indicator ${i === currentSlide ? 'active' : ''}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
       </div>
     </section>
   );
