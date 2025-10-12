@@ -1,11 +1,11 @@
 /* src/pages/ContactPage/ContactPage.css */
 
 .contact-page-container {
-    /* 🚨 CORRECCIÓN CLAVE: Agregamos margin-top para limpiar la Navbar fija */
+    /* FIX: Margen para limpiar la Navbar fija */
     margin-top: 6rem;
     min-height: 85vh;
     display: flex;
-    /* Alineamos al inicio para que el contenido fluya correctamente desde arriba */
+    /* Alineamos al inicio para que el contenido fluya */
     align-items: flex-start; 
     justify-content: center;
     padding: 2rem 1rem; 

@@ -5,33 +5,27 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 
 import Hero from "./components/Hero/Hero"; 
-// ❌ ELIMINADO: About ya no se renderiza en el Home. Se moverá a su propio archivo/ruta.
-// import About from "./components/About/About"; 
+// 🚨 CORRECCIÓN CLAVE: Importamos las páginas finales desde src/pages/
+import AboutPage from "./pages/AboutPage/AboutPage"; 
+import ContactPage from "./pages/ContactPage/ContactPage"; 
+
 import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices"; 
 
-// 🆕 COMPONENTE PLACEHOLDER: Home Page
+// 🆕 COMPONENTE: Home Page (Contiene todo el contenido del index, excepto las secciones movidas)
 const HomePage = () => (
     <>
         <Hero /> 
-        {/* ❌ ELIMINADO: About ya no se renderiza aquí */}
-        {/* <About /> */}
         <AudioBanner />
         <AudioServices />
         
         {/* Secciones de Anclaje restantes (solo quedan las que no se movieron) */}
         <section id="clients" style={{ minHeight: '10vh' }}></section>
         <section id="team" style={{ minHeight: '10vh' }}></section>
-        {/* ❌ ELIMINADO: Se remueven las anclas de Portfolio y Contacto. */}
-        {/* <section id="portfolio" style={{ minHeight: '10vh' }}></section> */}
-        {/* <section id="contact" style={{ minHeight: '10vh' }}></section> */}
     </>
 );
 
-// 🆕 COMPONENTE PLACEHOLDER: About Page (para rutas)
-const AboutPage = () => <h1>Quienes Somos (Página Dedicada)</h1>;
-// 🆕 COMPONENTE PLACEHOLDER: Contact Page (para rutas)
-const ContactPage = () => <h1>Contacto y Dossier (Página Dedicada)</h1>;
+// ❌ ELIMINADAS: Se eliminan las constantes placeholder AboutPage y ContactPage de aquí
 
 
 function App() {
@@ -52,7 +46,7 @@ function App() {
       {/* Pasamos el estado y la función de toggle al Navbar (Visible en todas las rutas) */}
       <Navbar currentTheme={theme} toggleTheme={toggleTheme} />
       
-      {/* 🚀 RUTAS: Definimos las rutas de la aplicación */}
+      {/* 🚀 RUTAS: Ahora usan los componentes de página importados */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

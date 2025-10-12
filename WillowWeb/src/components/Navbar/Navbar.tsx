@@ -30,21 +30,26 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
 
   const closeMenu = (): void => setMenuOpen(false);
 
-  // Función para manejar la navegación mixta (ruta + ancla)
-  const handleLinkClick = (hash: string): void => {
-    closeMenu();
-    if (location.pathname !== '/') {
-        // Si no estamos en el home, navega al home primero
-        navigate(`/${hash}`); // Redirige al home y usa el hash para scroll
-    } else {
-        // Si estamos en el home, solo hace scroll al ancla
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-  };
-  
+  // Función para manejar la navegación mixta (ruta + ancla)
+  const handleLinkClick = (hash: string): void => {
+    closeMenu();
+    
+    // Comprobación mejorada para enlaces de ancla
+    if (hash.startsWith('#')) {
+        if (location.pathname !== '/') {
+            // Si NO estamos en el Home, navegamos al Home primero con el hash
+            navigate(`/${hash}`); 
+        } else {
+            // Si estamos en el Home, forzamos el scroll
+            const element = document.getElementById(hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    } 
+    // Si no es un hash, no hacemos nada (NavLink lo maneja).
+  };
+  
   const basePath = import.meta.env.BASE_URL;
   const logoSrc = isMobile ? `${basePath}logo-icon.svg` : `${basePath}logo-full.svg`;
 
@@ -74,9 +79,10 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
         {/* Menú */}
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           
+          {/* HOME: Usa NavLink para ruteo */}
           <li><NavLink to="/" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("home")}</NavLink></li>
           
-          {/* 🚀 SUBMENÚ: Servicios - Se usa handleLinkClick para scroll en el Home */}
+          {/* 🚀 SUBMENÚ: Servicios - Usa handleLinkClick con el hash */}
           <li className="has-submenu">
             <a onClick={() => handleLinkClick('#services')} role="button">{t("services_title")}</a> 
             <ul className="submenu">
@@ -99,16 +105,13 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
             </ul>
           </li>
           
-          {/* ❌ ELIMINADO: Se quita Portafolio. */}
-          {/* <li><a href="#portfolio" onClick={handleLinkClick}>{t("portfolio")}</a></li> */}
-
           <li><a onClick={() => handleLinkClick('#clients')} role="button">{t("clients")}</a></li>
           <li><a onClick={() => handleLinkClick('#team')} role="button">{t("team")}</a></li>
 
-          {/* ✅ MOVIMIENTO: "Quienes Somos" va al final. Usa NavLink para ruteo. */}
+          {/* QUIENES SOMOS: Usa NavLink para ruteo puro */}
           <li><NavLink to="/about" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("about")}</NavLink></li>
 
-          {/* ✅ MOVIMIENTO: "Contacto" va al final. Usa NavLink para ruteo. */}
+          {/* CONTACTO: Usa NavLink para ruteo puro */}
           <li><NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("contact")}</NavLink></li>
 
           {/* CONTROLES A LA DERECHA */}
