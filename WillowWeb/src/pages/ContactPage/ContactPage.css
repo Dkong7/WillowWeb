@@ -1,0 +1,90 @@
+/* src/pages/ContactPage/ContactPage.css */
+
+.contact-page-container {
+    /* 🚨 CORRECCIÓN CLAVE: Agregamos margin-top para limpiar la Navbar fija */
+    margin-top: 6rem;
+    min-height: 85vh;
+    display: flex;
+    /* Alineamos al inicio para que el contenido fluya correctamente desde arriba */
+    align-items: flex-start; 
+    justify-content: center;
+    padding: 2rem 1rem; 
+    background-color: var(--color-bg);
+}
+
+.contact-content-wrapper {
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 12px;
+    background-color: var(--color-card-bg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: var(--color-text);
+}
+
+.contact-title {
+    font-family: 'Albertus Medium', sans-serif;
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.contact-body {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.dossier-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    text-transform: uppercase;
+}
+
+.dossier-button:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-navbar);
+}
+
+.info-item {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.info-item a {
+    color: var(--color-audio-base);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.info-item a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  /* Ajuste responsive del margen superior para móvil */
+  .contact-page-container {
+    margin-top: 5rem;
+  }
+    .contact-content-wrapper {
+        padding: 2rem 1rem;
+    }
+    .contact-title {
+        font-size: 2rem;
+    }
+}

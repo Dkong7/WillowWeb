@@ -5,23 +5,27 @@
     width: 90%;
     max-width: 1200px;
     margin: 0 auto 5rem auto; /* Centrar y añadir margen inferior */
-    display: flex;
-    flex-direction: column;
+    /* 🚀 PUNTO 4: Implementa GRID 4 COLUMNAS */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
     gap: 2rem;
 }
 
-/* --- Estilo de la Tarjeta de Servicio (Card Horizontal, Elegante) --- */
+/* --- Estilo de la Tarjeta de Servicio (Card Vertical para 4 columnas) --- */
 .service-card-container {
-    /* Nueva estructura: 3 columnas (Icono, Contenido de Texto, Botón) */
+    /* 🚀 PUNTO 4: Cambia a layout de columna para apilar el contenido */
     display: flex;
-    align-items: center;
-    padding: 2.5rem;
+    flex-direction: column; /* Apila Icono, Contenido y Botón */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto */
+    padding: 2.5rem 1.5rem; /* Ajuste para el nuevo formato vertical */
     border-radius: 12px;
     /* 🚨 FONDO DINÁMICO: Usa el nuevo CSS Variable para el fondo por tema */
     background-color: var(--color-card-bg); 
     border: 1px solid var(--color-border-navbar); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition), box-shadow var(--transition);
+    min-height: 350px; /* Asegura una altura mínima para la cuadrícula */
 }
 
 .service-card-container:hover {
@@ -31,7 +35,8 @@
 
 .card-icon-column {
     flex-shrink: 0;
-    margin-right: 2.5rem; /* Ajuste para dar más espacio */
+    margin-right: 0; /* Remueve margen derecho anterior */
+    margin-bottom: 1.5rem; /* Añade margen inferior para separar del texto */
 }
 
 .service-icon {
@@ -50,14 +55,15 @@
     flex-grow: 1; /* Permite que tome la mayor parte del espacio */
     display: flex;
     flex-direction: column;
-    margin-right: 2rem; /* Espacio antes del botón */
+    margin-right: 0; /* Remueve margen derecho anterior */
+    margin-bottom: 1.5rem; /* Espacio antes del botón */
     /* Usa el color de texto para la card por tema */
     color: var(--color-text-card); 
 }
 
 .card-title {
     font-family: 'Espiritu Condensed', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reducido para encajar en 4 columnas */
     margin-top: 0;
     margin-bottom: 0.5rem;
     color: var(--color-audio-base); 
@@ -68,10 +74,11 @@
     line-height: 1.6;
 }
 
-/* NUEVO: Columna dedicada para el botón, empujado a la derecha */
+/* NUEVO: Columna dedicada para el botón, empujado al fondo */
 .card-button-column {
     flex-shrink: 0; 
-    margin-left: auto; /* Empuja el botón a la derecha */
+    margin-top: auto; /* Empuja el botón hacia el fondo de la tarjeta */
+    margin-left: 0; /* Remueve margen automático horizontal anterior */
     display: flex;
     align-items: center;
 }
@@ -97,7 +104,7 @@
 }
 
 
-/* --- Modal Flotante (ajuste de contenido para listas) --- */
+/* --- Modal Flotante (ajuste de contenido para listas y nuevo botón) --- */
 
 .modal-backdrop {
     position: fixed;
@@ -192,6 +199,30 @@
     padding-bottom: 0.5rem;
 }
 
+/* 🚀 PUNTO 5: Estilo para el botón de CTA en el Modal */
+.modal-cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    margin-top: 2rem; 
+    border: 2px solid var(--color-audio-base); 
+    background-color: transparent;
+    color: var(--color-audio-base);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.modal-cta-button:hover {
+    background-color: var(--color-audio-base);
+    color: var(--color-bg);
+    box-shadow: 0 0 15px rgba(var(--color-audio-base-rgb), 0.5);
+}
+
+
 /* 1. ESTILOS PARA LA NUEVA SECCIÓN DE EQUIPAMIENTO (3 COLUMNAS) */
 .modal-equipment-section {
     margin-top: 3rem; 
@@ -264,8 +295,23 @@
 
 /* --- Media Queries (Responsive) --- */
 
+@media (max-width: 1200px) {
+    /* 🚀 Ajuste de Grid: 2 columnas en tablets */
+    .audio-services-list {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
 @media (max-width: 900px) {
     /* ... (Estilos de cards y modal-two-columns se mantienen) ... */
+
+    .modal-two-columns {
+        flex-direction: column;
+    }
+    
+    .modal-video-container {
+        min-width: 100%;
+    }
 
     .modal-equipment-grid {
         grid-template-columns: 1fr; /* Una columna en móvil */
@@ -274,5 +320,9 @@
     
     .equipment-column {
         padding: 1rem;
+    }
+    /* 🚀 Ajuste de Grid: 1 columna en móvil */
+    .audio-services-list {
+        grid-template-columns: 1fr; 
     }
 }

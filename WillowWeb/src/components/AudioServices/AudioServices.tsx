@@ -98,6 +98,11 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ isOpen, onClose, descTi
             <h3 className="modal-desc-title">{descTitle}</h3>
             {/* Renderiza solo la descripción principal (o el cuerpo completo si no es la tarjeta de grabación) */}
             <FormattedBody content={mainDescriptionContent} />
+
+            {/* 🚀 PUNTO 5: Botón de Call to Action para preguntar por precios */}
+            <button className="modal-cta-button" onClick={() => window.open('/contact', '_self')}>
+                {t("modal_pricing_cta")}
+            </button>
           </div>
         </div>
         

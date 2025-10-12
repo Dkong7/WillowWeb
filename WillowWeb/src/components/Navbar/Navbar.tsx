@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./Navbar.css";
+// 🚀 NUEVA IMPORTACIÓN: Componentes de React Router
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 // Definir los tipos de las props para TypeScript
 interface NavbarProps {
@@ -10,6 +12,8 @@ interface NavbarProps {
 
 export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
   const { i18n, t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 900);
 
@@ -24,22 +28,37 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
     i18n.changeLanguage(newLang);
   };
 
-  const handleLinkClick = (): void => setMenuOpen(false);
+  const closeMenu = (): void => setMenuOpen(false);
 
+  // Función para manejar la navegación mixta (ruta + ancla)
+  const handleLinkClick = (hash: string): void => {
+    closeMenu();
+    if (location.pathname !== '/') {
+        // Si no estamos en el home, navega al home primero
+        navigate(`/${hash}`); // Redirige al home y usa el hash para scroll
+    } else {
+        // Si estamos en el home, solo hace scroll al ancla
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+  };
+  
   const basePath = import.meta.env.BASE_URL;
   const logoSrc = isMobile ? `${basePath}logo-icon.svg` : `${basePath}logo-full.svg`;
 
   return (
     <nav className={`navbar ${menuOpen ? "open" : ""}`}>
       <div className="nav-container">
-        {/* Logo */}
-        <a href="#hero" className="logo" onClick={handleLinkClick}>
+        {/* Logo utiliza NavLink para ir a la ruta raíz */}
+        <NavLink to="/" className="logo" onClick={closeMenu}>
           <img
             src={logoSrc}
             alt="Willow Tree Logo"
             className="logo-img logo-text-part"
           />
-        </a>
+        </NavLink>
 
         {/* Botón hamburguesa */}
         <button
@@ -55,36 +74,42 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
         {/* Menú */}
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           
-          <li><a href="#hero" onClick={handleLinkClick}>{t("home")}</a></li>
-          <li><a href="#about" onClick={handleLinkClick}>{t("about")}</a></li>
+          <li><NavLink to="/" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("home")}</NavLink></li>
           
-          {/* 🚀 SUBMENÚ: Servicios - Se mantiene href="#services" para el scroll */}
+          {/* 🚀 SUBMENÚ: Servicios - Se usa handleLinkClick para scroll en el Home */}
           <li className="has-submenu">
-            <a href="#services" onClick={handleLinkClick}>{t("services_title")}</a> 
+            <a onClick={() => handleLinkClick('#services')} role="button">{t("services_title")}</a> 
             <ul className="submenu">
               {/* Audio */}
               <li className="submenu-item">
-                <a className="submenu-audio">{t("audio")}</a>
+                <a role="button" className="submenu-audio">{t("audio")}</a>
                 <ul className="sub-submenus">
-                  <li><a href="#audio-prod" onClick={handleLinkClick}>{t("audio_prod")}</a></li>
-                  <li><a href="#audio-mix" onClick={handleLinkClick}>{t("audio_mix")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-prod')} role="button">{t("audio_prod")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-mix')} role="button">{t("audio_mix")}</a></li>
                 </ul>
               </li>
               {/* Video */}
               <li className="submenu-item">
-                <a className="submenu-video">{t("video")}</a>
+                <a role="button" className="submenu-video">{t("video")}</a>
                 <ul className="sub-submenus">
-                  <li><a href="#video-post" onClick={handleLinkClick}>{t("video_post")}</a></li>
-                  <li><a href="#video-motion" onClick={handleLinkClick}>{t("video_motion")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-post')} role="button">{t("video_post")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-motion')} role="button">{t("video_motion")}</a></li>
                 </ul>
               </li>
             </ul>
           </li>
           
-          <li><a href="#portfolio" onClick={handleLinkClick}>{t("portfolio")}</a></li>
-          <li><a href="#clients" onClick={handleLinkClick}>{t("clients")}</a></li>
-          <li><a href="#team" onClick={handleLinkClick}>{t("team")}</a></li>
-          <li><a href="#contact" onClick={handleLinkClick}>{t("contact")}</a></li>
+          {/* ❌ ELIMINADO: Se quita Portafolio. */}
+          {/* <li><a href="#portfolio" onClick={handleLinkClick}>{t("portfolio")}</a></li> */}
+
+          <li><a onClick={() => handleLinkClick('#clients')} role="button">{t("clients")}</a></li>
+          <li><a onClick={() => handleLinkClick('#team')} role="button">{t("team")}</a></li>
+
+          {/* ✅ MOVIMIENTO: "Quienes Somos" va al final. Usa NavLink para ruteo. */}
+          <li><NavLink to="/about" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("about")}</NavLink></li>
+
+          {/* ✅ MOVIMIENTO: "Contacto" va al final. Usa NavLink para ruteo. */}
+          <li><NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => isActive ? "active-link" : ""}>{t("contact")}</NavLink></li>
 
           {/* CONTROLES A LA DERECHA */}
           <li className="controls-group">
