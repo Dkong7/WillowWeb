@@ -30,6 +30,16 @@
   font-display: swap;
 }
 
+/* 🚀 NUEVA FUENTE PARA EL BANNER */
+@font-face {
+  font-family: 'Albertus Medium';
+  /* Asumo que existe un archivo Albertus-Medium.otf. Si no, debe ser definido por el usuario. */
+  src: url('/WillowWeb/fonts/Albertus-Medium.otf') format('opentype'); 
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ------------------------------------------- */
 
 /* 🌗 Theme Variables (Fallbacks on :root) */
@@ -44,6 +54,11 @@
   --bg-url-dark: url("/WillowWeb/navbar-hero-dark.wbm");
   --texture-blend-mode: overlay; 
   --texture-url: none; 
+  
+  /* NUEVA VARIABLE: Color base para el banner de audio */
+  --color-audio-orange: #e86c10; 
+  /* NUEVA VARIABLE: Color base para el icono del banner (se define en dark/light) */
+  --filter-icon-audio-banner: none; 
 }
 
 /* Tema Oscuro (Defecto) */
@@ -62,6 +77,15 @@
   --color-audio-sub-tenue: #f0a068; 
   --color-video-sub-tenue: #b5a4ee; 
   --current-bg-image: var(--bg-url-dark);
+
+  /* 🚀 NUEVAS VARIABLES PARA AUDIO BANNER Y CARD */
+  --color-card-bg: #d6d0be; /* Fondo Card: Dark mode (#d6d0be) */
+  --color-text-card: #121212; /* Texto Card: Negro */
+  --filter-texture-audio-banner: invert(1); /* Invertir textura en Dark mode */
+  --color-text-audio-banner: #fff; /* Texto del Banner: Blanco */
+  --filter-icon-audio-banner: brightness(0) invert(1); /* Icono del banner blanco */
+  --icon-drop-shadow: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  --text-shadow-strong: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Tema Claro */
@@ -80,6 +104,15 @@
   --color-audio-sub-tenue: #d4630e; 
   --color-video-sub-tenue: #6d45c5; 
   --current-bg-image: var(--bg-url-light);
+
+  /* 🚀 NUEVAS VARIABLES PARA AUDIO BANNER Y CARD */
+  --color-card-bg: #180420; /* Fondo Card: Light mode (#180420) */
+  --color-text-card: #f5f5f5; /* Texto Card: Blanco */
+  --filter-texture-audio-banner: none; /* No invertir textura en Light mode */
+  --color-text-audio-banner: #121212; /* Texto del Banner: Negro */
+  --filter-icon-audio-banner: none; /* Icono del banner negro */
+  --icon-drop-shadow: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  --text-shadow-strong: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* ------------------------------------------- */
@@ -103,5 +136,6 @@ body {
 
 /* Aplicar la nueva fuente a los títulos */
 h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
-  font-family: 'Espiritu Regular', sans-serif;
+  /* Se mantiene Espiritu Regular, Albertus Medium solo para el Banner Title */
+  font-family: 'Espiritu Regular', sans-serif; 
 }

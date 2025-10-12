@@ -1,0 +1,278 @@
+/* src/components/AudioServices/AudioServices.css */
+
+/* El contenedor principal se ajusta */
+.audio-services-list {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 5rem auto; /* Centrar y añadir margen inferior */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- Estilo de la Tarjeta de Servicio (Card Horizontal, Elegante) --- */
+.service-card-container {
+    /* Nueva estructura: 3 columnas (Icono, Contenido de Texto, Botón) */
+    display: flex;
+    align-items: center;
+    padding: 2.5rem;
+    border-radius: 12px;
+    /* 🚨 FONDO DINÁMICO: Usa el nuevo CSS Variable para el fondo por tema */
+    background-color: var(--color-card-bg); 
+    border: 1px solid var(--color-border-navbar); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.service-card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon-column {
+    flex-shrink: 0;
+    margin-right: 2.5rem; /* Ajuste para dar más espacio */
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    /* Usar el color base del audio para un toque elegante */
+    filter: drop-shadow(0 0 5px var(--color-audio-base)); 
+    transition: filter var(--transition);
+}
+
+.service-card-container:hover .service-icon {
+    filter: drop-shadow(0 0 10px var(--color-audio-base));
+}
+
+.card-content-column {
+    flex-grow: 1; /* Permite que tome la mayor parte del espacio */
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem; /* Espacio antes del botón */
+    /* Usa el color de texto para la card por tema */
+    color: var(--color-text-card); 
+}
+
+.card-title {
+    font-family: 'Espiritu Condensed', sans-serif;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--color-audio-base); 
+}
+
+.card-copy {
+    margin-bottom: 0; 
+    line-height: 1.6;
+}
+
+/* NUEVO: Columna dedicada para el botón, empujado a la derecha */
+.card-button-column {
+    flex-shrink: 0; 
+    margin-left: auto; /* Empuja el botón a la derecha */
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para el único botón */
+.portfolio-button {
+    padding: 1rem 2rem; /* Botón más grande y prominente */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color var(--transition), color var(--transition);
+    
+    /* Estilo Primario */
+    background-color: var(--color-audio-base);
+    color: var(--color-bg); /* Usar el color de fondo general como color de texto en el botón */
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+.portfolio-button:hover {
+    background-color: var(--color-audio-sub-tenue);
+}
+
+
+/* --- Modal Flotante (ajuste de contenido para listas) --- */
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-accent);
+    border-radius: 15px;
+    padding: 3rem; 
+    width: 90%;
+    max-width: 1200px;
+    max-height: 95vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    color: var(--color-accent);
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.modal-close-button:hover {
+    color: var(--color-audio-base);
+    transform: rotate(90deg);
+}
+
+.modal-two-columns {
+    display: flex;
+    gap: 3rem; 
+    align-items: flex-start;
+}
+
+.modal-video-container {
+    flex: 2;
+    aspect-ratio: 16 / 9; 
+    min-width: 60%;
+}
+
+.modal-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-description-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    color: var(--color-text);
+    background-color: transparent; 
+}
+
+.modal-icon {
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(0 0 5px var(--color-audio-base));
+    margin-bottom: 1.5rem;
+}
+
+.modal-desc-title {
+    font-family: 'Espiritu Regular', sans-serif;
+    font-size: 1.8rem;
+    color: var(--color-audio-base);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border-navbar);
+    padding-bottom: 0.5rem;
+}
+
+/* 1. ESTILOS PARA LA NUEVA SECCIÓN DE EQUIPAMIENTO (3 COLUMNAS) */
+.modal-equipment-section {
+    margin-top: 3rem; 
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border-navbar);
+}
+
+.equipment-header {
+    font-family: 'Espiritu Regular', sans-serif;
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.modal-equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.equipment-column {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--color-bg-navbar); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. ESTILOS PARA EL CONTENIDO DE FORMATTED BODY DENTRO DEL MODAL */
+
+.formatted-description {
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Ajustes para el texto de la lista de equipamiento */
+.equipment-column .formatted-description {
+    font-size: 0.95rem;
+}
+
+/* Título de sección (Microfonería, Instrumentos) */
+.formatted-description .section-title-body {
+    margin: 1.5rem 0 0.5rem 0; /* Espacio entre secciones */
+    font-weight: 600; 
+    color: var(--color-audio-base);
+    line-height: 1.3;
+}
+
+/* Estilo para las listas detalladas (*) */
+.formatted-description ul.detail-list {
+    list-style-type: none; 
+    padding-left: 0;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.formatted-description ul.detail-list li {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.formatted-description ul.detail-list li::before {
+    content: "—"; 
+    position: absolute;
+    left: 0;
+    color: var(--color-audio-base);
+    font-weight: bold;
+}
+
+
+/* --- Media Queries (Responsive) --- */
+
+@media (max-width: 900px) {
+    /* ... (Estilos de cards y modal-two-columns se mantienen) ... */
+
+    .modal-equipment-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 20px;
+    }
+    
+    .equipment-column {
+        padding: 1rem;
+    }
+}

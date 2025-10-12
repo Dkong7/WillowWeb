@@ -1,11 +1,15 @@
 /* 🚨 NOTA: Las variables de color se toman de src/index.css */
 
+
 .hero-slider-section {
   position: relative;
   width: 100%;
   height: 100vh; 
   overflow: hidden;
+  /* FIX: Empuja el Hero hacia abajo (5rem para despejar el Navbar) */
+  padding-top: 5rem;
 }
+
 
 /* 🚨 NEW: Container para aislar la navegación (Fix) */
 .slider-main-container {
@@ -14,11 +18,13 @@
     height: 100%;
 }
 
+
 .slider-wrapper {
   display: flex;
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 
 .slide-item {
   min-width: 100%;
@@ -28,7 +34,9 @@
   background-color: var(--color-bg); 
 }
 
+
 /* ================== SLIDE DE VIDEO & INFO ================== */
+
 
 .hero-slide-content {
   width: 100%;
@@ -40,6 +48,7 @@
   position: relative;
 }
 
+
 /* Video Background */
 .video-container {
   position: absolute;
@@ -49,6 +58,7 @@
   height: 100%;
   z-index: 1;
 }
+
 
 .responsive-iframe {
   position: absolute;
@@ -61,6 +71,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
+
 
 /* Texto de overlay (usado para Video Slides 2, 3, 4) */
 .hero-overlay-text {
@@ -75,24 +86,27 @@
   transition: all 0.3s ease;
 }
 
+
 /* 🚨 FIX ICONOS: Estilos para agrupar título e ícono (STACKING) */
 .hero-title-group {
     display: flex;
-    flex-direction: column; /* 🚨 FIX: Apila el icono encima del título */
+    flex-direction: column; /* Apila el icono encima del título */
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem; 
 }
 
+
 /* 🚨 FIX ICONOS: Estilos para el ícono (200px) */
 .hero-title-icon {
-    height: 200px; /* 🚨 FIX TAMAÑO FINAL: 200px */
+    height: 200px; /* TAMAÑO FINAL: 200px */
     width: auto;
     margin-bottom: 10px; /* Espacio entre icono y título */
     filter: var(--color-logo-filter);
     transition: filter 0.3s;
     flex-shrink: 0;
 }
+
 
 /* Anula los márgenes de lado a lado que ya no son necesarios */
 .icon-audio-left, .icon-video-right {
@@ -104,19 +118,23 @@
 .hero-title {
   font-size: 3.5rem;
   margin-bottom: 0; 
-  font-family: 'Espiritu Regular', sans-serif;
+  /* 🚨 CAMBIO DE FUENTE: Títulos usan Albertus Medium */
+  font-family: 'Albertus Medium', sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 
 .hero-subtitle {
   font-size: 1.4rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
-  /* 🚨 FIX FONT: Usa la fuente Advent Pro */
-  font-family: 'Advent Pro', sans-serif;
+  /* 🚨 CAMBIO DE FUENTE: Subtítulos usan Albertus Medium */
+  font-family: 'Albertus Medium', sans-serif; 
 }
 
+
 /* ================== WELCOME CARD (Slide 1 Overlay) ================== */
+
 
 .welcome-card {
     /* FIX POSICIONAMIENTO: Centrado flotante */
@@ -149,19 +167,23 @@
     pointer-events: auto;
 }
 
+
 .welcome-title-text {
   font-size: 4rem; 
-  font-family: 'Espiritu Regular', sans-serif;
+  /* 🚨 CAMBIO DE FUENTE: Albertus Medium */
+  font-family: 'Albertus Medium', sans-serif;
   margin-bottom: 0.5rem;
 }
+
 
 .welcome-subtitle-copy {
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 2rem;
-  /* 🚨 FIX FONT: Usa la fuente Advent Pro */
+  /* 🚨 CAMBIO DE FUENTE: Advent Pro */
   font-family: 'Advent Pro', sans-serif;
 }
+
 
 .welcome-logo {
     max-width: 350px; 
@@ -169,6 +191,7 @@
     margin: 1.5rem 0;
     filter: var(--color-logo-filter);
 }
+
 
 .close-button {
     position: absolute;
@@ -185,12 +208,14 @@
     z-index: 1; 
 }
 
+
 .close-button:hover {
     opacity: 1;
 }
 
 
 /* ================== NAVEGACIÓN ELEGANTES (CORRECCIÓN) ================== */
+
 
 .hero-button {
   display: inline-block;
@@ -203,9 +228,11 @@
   transition: background-color 0.3s;
 }
 
+
 .hero-button:hover {
   filter: brightness(1.2);
 }
+
 
 /* FIX NAVEGATION: Los botones se posicionan respecto al nuevo container */
 .slider-navigation {
@@ -218,6 +245,7 @@
   padding: 0 2%; 
   z-index: 100; 
 }
+
 
 .nav-button {
   background: rgba(0, 0, 0, 0.8); 
@@ -234,10 +262,12 @@
   margin: 0;
 }
 
+
 .nav-button:hover {
   background: var(--color-accent);
   color: var(--color-bg);
 }
+
 
 /* Indicadores */
 .slider-indicators {
@@ -250,6 +280,7 @@
   z-index: 100;
 }
 
+
 .indicator {
   width: 10px;
   height: 10px;
@@ -260,12 +291,15 @@
   transition: background 0.3s;
 }
 
+
 .indicator.active {
   background: var(--color-accent);
   border-color: var(--color-accent);
 }
 
+
 /* ================== RESPONSIVE ================== */
+
 
 @media (max-width: 768px) {
   .hero-title {
@@ -292,6 +326,21 @@
     max-height: unset;
     padding: 3rem 1.5rem; 
     border-radius: 10px;
+  }
+
+  /* 🚨 FIX MOBILE WELCOME CARD: Ajustar tamaño de título y margen */
+  .welcome-title-text {
+    font-size: 2.5rem; 
+    margin-bottom: 0; 
+  }
+  
+  .welcome-logo {
+    max-width: 200px;
+    margin: 0.5rem 0; /* Margen reducido para acercar los elementos */
+  }
+
+  .welcome-subtitle-copy {
+      font-size: 1.2rem; 
   }
 
   .close-button {

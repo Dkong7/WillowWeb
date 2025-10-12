@@ -32,8 +32,8 @@ html {
 }
 
 .logo-img {
-  /* Tamaño final aumentado a 48px */
-  height: 48px; 
+  /* 🚨 CAMBIO: Tamaño aumentado a 60px */
+  height: 60px; 
   width: auto;
   display: block;
   filter: var(--color-logo-filter); 
@@ -55,10 +55,11 @@ html {
 /* ===== MAIN LINKS (LI/A) ===== */
 .nav-links li > a {
   text-decoration: none;
-  font-family: 'Espiritu Regular', sans-serif; 
+  /* CAMBIO DE FUENTE: Usa Albertus Medium para enlaces principales */
+  font-family: 'Albertus Medium', sans-serif; 
   color: var(--color-text); 
-  /* Tamaño final reducido a 0.9rem */
-  font-size: 0.9rem; 
+  /* TAMAÑO AUMENTADO */
+  font-size: 1.1rem; 
   letter-spacing: 0.3px;
   transition: color var(--transition);
 }
@@ -86,7 +87,8 @@ html {
     border: 1px solid var(--color-border-navbar);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     flex-direction: column;
-    font-family: 'Espiritu Regular', sans-serif; 
+    /* CAMBIO DE FUENTE: Albertus Medium para Submenús principales */
+    font-family: 'Albertus Medium', sans-serif; 
 }
 
 .nav-links li.has-submenu:hover > .submenu {
@@ -113,14 +115,18 @@ html {
 /* Aplicación de colores tenues a sub-sub-links */
 .submenu-item:first-child .sub-submenus a {
     color: var(--color-audio-sub-tenue) !important; 
-    font-size: 0.95rem;
+    /* TAMAÑO AUMENTADO */
+    font-size: 1.05rem;
     padding: 0.2rem 1rem;
+    font-family: 'Advent Pro', sans-serif;
 }
 
 .submenu-item:last-child .sub-submenus a {
     color: var(--color-video-sub-tenue) !important;
-    font-size: 0.95rem;
+    /* TAMAÑO AUMENTADO */
+    font-size: 1.05rem;
     padding: 0.2rem 1rem;
+    font-family: 'Advent Pro', sans-serif;
 }
 
 /* Colores de Marca Base */
@@ -211,6 +217,11 @@ html {
   .nav-container {
     padding: 0.9rem 1.4rem;
   }
+  
+  /* 🚨 AJUSTE RESPONSIVE: Reducir el logo en móvil para que quepa bien */
+  .logo-img {
+    height: 40px; 
+  }
 
   .nav-links {
     position: absolute;
@@ -244,6 +255,8 @@ html {
     color: var(--color-text);
     display: block;
     padding: 0.6rem 0; 
+    /* TAMAÑO AUMENTADO en móvil */
+    font-size: 1.1rem; 
   }
   
   .submenu {

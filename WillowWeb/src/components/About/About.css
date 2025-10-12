@@ -26,7 +26,7 @@
   animation-fill-mode: forwards;
 }
 
-/* ===== Delays ===== */
+/* ===== Delays (Se mantiene) ===== */
 .anim-delay-1 {
   animation-delay: 0.3s;
 }
@@ -40,13 +40,14 @@
   animation-delay: 1.2s;
 }
 
-/* ================== LAYOUT ================== */
+/* ================== LAYOUT (Se mantiene) ================== */
 .about-section {
   min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 0;
+  /* FIX: Reducir padding inferior de 60px a 30px (reducción 2x) */
+  padding: 60px 0 30px 0;
   background-color: var(--color-bg);
 }
 
@@ -70,13 +71,19 @@
   min-height: 400px;
 }
 
+/* Optimización: Transiciones fluidas para todos los efectos */
+.about-background-image,
+.about-main-image {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  will-change: transform, box-shadow; 
+}
+
 .about-background-image {
   width: 90%;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   opacity: 0.8;
-  transition: all 0.5s ease;
   z-index: 1;
 }
 
@@ -88,16 +95,34 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   top: 4%;
   left: 3%;
-  transform: translate(-50%, -50%);
+  /* Transform base: Centrado */
+  transform: translate(-50%, -50%); 
   z-index: 2;
-  transition: all 0.5s ease;
-  animation-name: fadeInUp;
-  animation-duration: 0.8s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
 }
 
-/* ================== TEXTO ================== */
+
+/* 1. EFECTO PARALLAX (Al hacer hover sobre el contenedor) */
+.about-visuals:hover .about-background-image {
+  /* Fondo: Se aleja/hunde */
+  transform: translate3d(-30px, -30px, 0) scale(0.95);
+  filter: brightness(0.9);
+}
+
+.about-visuals:hover .about-main-image {
+  /* Frente: Movimiento de parallax ligero */
+  transform: translate(-50%, -50%) translate3d(10px, 10px, 0) scale(1.05); 
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. SOLUCIÓN Y ZOOM EXTREMO (Al hacer hover directamente sobre la imagen quienesSomos.png) */
+img.about-main-image:hover {
+  /* Aplicamos un zoom muy agresivo (2.0x) */
+  transform: translate(-50%, -50%) scale(2.0);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9); 
+  cursor: zoom-in;
+}
+
+/* ================== TEXTO (APLICACIÓN DE NUEVAS FUENTES) ================== */
 .about-content-card {
   color: var(--color-text);
   padding: 20px 0;
@@ -105,7 +130,7 @@
 }
 
 .about-title {
-  font-family: 'Espiritu Regular', sans-serif;
+  font-family: 'Albertus Medium', sans-serif;
   font-size: 3rem;
   color: var(--color-accent);
   margin-bottom: 0.5rem;
@@ -113,24 +138,23 @@
   font-weight: 600;
 }
 
-.about-subtitle,
-.about-body {
-  font-family: 'Advent Pro', sans-serif;
-}
-
 .about-subtitle {
+  font-family: 'Albertus Medium', sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
 }
 
 .about-body {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  /* 🚨 CAMBIO: Aumento del tamaño de la fuente y de la altura de línea */
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 1.4rem; 
+  line-height: 1.8; 
   margin-bottom: 2.5rem;
 }
 
-/* ================== RESPONSIVE ================== */
+
+/* ================== RESPONSIVE (Se mantiene) ================== */
 @media (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;

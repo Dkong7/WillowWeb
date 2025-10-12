@@ -38,8 +38,10 @@ export default function Hero() {
   const renderWelcomeCard = () => {
     if (currentSlide !== 0 || !showWelcomeCard) return null;
 
-    const lang = i18n.language === 'es' ? 'es' : 'en';
-    const logoSrc = `${basePath}logo-hero-${lang}.svg`;
+    // 🚨 FIX LOGO LANGUAGE: Usa 'es' si el idioma empieza con 'es', si no 'en'.
+    // Esto asegura que si el sistema está en español, use el logo en español.
+    const logoLang = i18n.language.startsWith('es') ? 'es' : 'en';
+    const logoSrc = `${basePath}logo-hero-${logoLang}.svg`;
 
     const welcomeCopy = t('hero_welcome_copy');
     const capitalizedCopy = welcomeCopy.charAt(0).toUpperCase() + welcomeCopy.slice(1);

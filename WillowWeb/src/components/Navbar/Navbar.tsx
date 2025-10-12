@@ -58,9 +58,9 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
           <li><a href="#hero" onClick={handleLinkClick}>{t("home")}</a></li>
           <li><a href="#about" onClick={handleLinkClick}>{t("about")}</a></li>
           
-          {/* 🚀 SUBMENÚ: Servicios */}
+          {/* 🚀 SUBMENÚ: Servicios - Se mantiene href="#services" para el scroll */}
           <li className="has-submenu">
-            <a onClick={handleLinkClick}>{t("services_title")}</a> 
+            <a href="#services" onClick={handleLinkClick}>{t("services_title")}</a> 
             <ul className="submenu">
               {/* Audio */}
               <li className="submenu-item">

@@ -63,5 +63,36 @@
   "about_title": "¿QUIÉNES SOMOS?",
   "about_subtitle": "Laboratorio creativo de sonido e imagen",
   "about_body": "Fundada en 2009 en Bogotá por Diego Díaz y Leonard Jaramillo, Willow Tree nació como un laboratorio creativo donde el sonido y la imagen se convierten en lenguajes para emocionar y trascender. Más que un estudio, somos un espacio donde la pasión artística y la precisión técnica florecen juntas, dando vida a experiencias únicas que combinan música, audiovisual y narrativa con un sello propio. En cada proyecto cultivamos la creatividad como si fuera un árbol: desde la semilla de una idea hasta un universo completo, fieles a nuestro lema “Ideas que se convierten en mundos”.",
-  "about_cta": "Ver Manifiesto" 
+  "about_cta": "Ver Manifiesto",
+  
+  
+  "section_services_title": "NUESTROS SERVICIOS",
+  "audio_service_banner_title": "SERVICIOS DE AUDIO",
+  "portfolio_button": "Ver Portafolio",
+  "contact_button": "Contáctanos",
+  "portfolio_equipment_header": "EQUIPAMIENTO DETALLADO",
+
+  "service_audio_prod_title": "🎼 PRODUCCIÓN MUSICAL",
+  "service_audio_prod_copy": "Desarrollo integral de proyectos musicales, desde la composición y los arreglos hasta la entrega final, cuidando la identidad sonora de cada artista o marca.",
+  "portfolio_audio_prod_desc_title": "Música Original para Artistas y Marcas",
+  "portfolio_audio_prod_desc_body": "En Willow Tree, concebimos la música como el corazón de cada proyecto. Nuestro portafolio en Producción Musical abarca desde la creación de bandas sonoras originales, jingles publicitarios y 'sonic branding', hasta la producción completa de álbumes para artistas. Integramos nuestra pasión por el sonido con la precisión técnica para asegurar que cada nota resuene con la identidad y el mensaje de su proyecto. Exploramos géneros y estilos, siempre buscando la máxima calidad artística y sonora.",
+  "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/4m1i0XMXAOc?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_rec_title": "🎤 GRABACIÓN PROFESIONAL",
+  "service_audio_rec_copy": "Estudios equipados con tecnología de punta para capturar voces, instrumentos y ambientes con la mayor fidelidad y carácter.",
+  "portfolio_audio_rec_desc_title": "Estudios de Grabación: Willow Tree x Basswalk",
+  "portfolio_audio_rec_desc_body": "La alianza entre Willow Tree y Basswalk Studios crea un espacio ideal para la producción musical y audiovisual, combinando excelencia técnica y confort. Artistas y creadores pueden grabar con tecnología avanzada e instrumentos variados en un entorno que inspira libertad y potencia la creatividad.\n\n**Microfonería**\n* AKG C414 XLII – condensador multipatrón de referencia.\n* Shure SM57 – estándar para instrumentos y cajas.\n* Shure SM58 Wireless – sistema inalámbrico vocal profesional.\n* Electro-Voice RE20 – micrófono dinámico de estudio clásico.\n* Kit de micrófonos para batería – Sennheiser e600 Drum Pack (e602-II, e604, e614).\n* Y una amplia colección adicional de micrófonos de condensador, cinta y dinámicos.\n\n**Instrumentos**\n* Batería electrónica Alesis Strike Pro SE.\n* Batería acústica Pearl Masters Maple Complete.\n* Percusiones: congas LP Galaxy Giovanni, bongós Meinl, marimbas, liras, cuencos tibetanos y accesorios étnicos variados.\n* Guitarras: Fender Stratocaster American Professional, Gibson Les Paul Standard 60s, PRS Custom 24, Ibanez RG Prestige.\n* Bajos: Fender Jazz Bass American Ultra, Music Man StingRay Special.\n\n**Equipos de Audio**\n* Pro Tools HD como sistema principal de grabación y mezcla.\n* Masterización analógica con: Manley Massive Passive EQ, Shadow Hills Mastering Compressor, Empirical Labs Distressor EL8X.\n* Avalon VT-737sp Channel Strip.\n* Universal Audio Apollo x8p como interfaz y conversión.\n* Suites de instrumentos virtuales: Native Instruments Komplete 14, Spectrasonics Omnisphere, Arturia V Collection, U-He Diva y más.",
+  "portfolio_audio_rec_video_url": "https://www.youtube.com/embed/0Zkshujq4eo?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_mix_title_card": "🎧 MEZCLA",
+  "service_audio_mix_copy": "Equilibrio sonoro, espacialidad y tratamiento creativo para llevar las grabaciones a su máximo potencial estético.",
+  "portfolio_audio_mix_desc_title": "Servicios de Mezcla",
+  "portfolio_audio_mix_desc_body": "Proceso que da vida a tu música, transformando pistas individuales en una experiencia sonora unificada. Trabajamos el panorama estéreo, la dinámica y el uso creativo de efectos.",
+  "portfolio_audio_mix_video_url": "https://www.youtube.com/embed/0Zkshujq4eo?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_master_title_card": "🎚️ MASTERING",
+  "service_audio_master_copy": "El último paso: optimización del sonido para distribución en plataformas digitales, CD y vinilo, asegurando consistencia y sonoridad global.",
+  "portfolio_audio_master_desc_title": "Servicios de Mastering",
+  "portfolio_audio_master_desc_body": "El toque final que prepara tu música para el mundo. Aseguramos que la música suene óptimamente en cualquier sistema de reproducción, cumpliendo con los estándares de volumen y calidad de las plataformas modernas.",
+  "portfolio_audio_master_video_url": "https://www.youtube.com/embed/PLACEHOLDER_MASTER_ES?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
 }
