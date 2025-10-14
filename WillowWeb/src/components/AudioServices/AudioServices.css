@@ -70,6 +70,8 @@
 }
 
 .card-copy {
+    /* 🚀 FIX: Aplicamos Advent Pro a la descripción de la Card */
+    font-family: 'Advent Pro', sans-serif; 
     margin-bottom: 0; 
     line-height: 1.6;
 }
@@ -255,6 +257,8 @@
 /* 2. ESTILOS PARA EL CONTENIDO DE FORMATTED BODY DENTRO DEL MODAL */
 
 .formatted-description {
+    /* 🚀 FIX: Aplicamos Advent Pro al cuerpo de texto de los Modals */
+    font-family: 'Advent Pro', sans-serif; 
     line-height: 1.6;
     font-size: 1rem;
 }

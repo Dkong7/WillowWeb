@@ -5,27 +5,25 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 
 import Hero from "./components/Hero/Hero"; 
-// 🚨 CORRECCIÓN CLAVE: Importamos las páginas finales desde src/pages/
+// 🚨 FIX: Importamos las páginas finales (asumiendo que las creaste en src/pages/)
 import AboutPage from "./pages/AboutPage/AboutPage"; 
 import ContactPage from "./pages/ContactPage/ContactPage"; 
 
 import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices"; 
 
-// 🆕 COMPONENTE: Home Page (Contiene todo el contenido del index, excepto las secciones movidas)
+// 🆕 COMPONENTE: Home Page (Se remueve la sección de #team)
 const HomePage = () => (
     <>
         <Hero /> 
         <AudioBanner />
         <AudioServices />
         
-        {/* Secciones de Anclaje restantes (solo quedan las que no se movieron) */}
+        {/* Secciones de Anclaje restantes (solo queda #clients) */}
         <section id="clients" style={{ minHeight: '10vh' }}></section>
-        <section id="team" style={{ minHeight: '10vh' }}></section>
+        {/* ❌ ELIMINADO: Se quita la ancla de #team */}
     </>
 );
-
-// ❌ ELIMINADAS: Se eliminan las constantes placeholder AboutPage y ContactPage de aquí
 
 
 function App() {

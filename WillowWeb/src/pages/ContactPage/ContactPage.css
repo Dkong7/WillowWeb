@@ -31,6 +31,8 @@
 }
 
 .contact-body {
+    /* 🚀 FIX: Aplicamos Advent Pro al cuerpo de Contacto */
+    font-family: 'Advent Pro', sans-serif; 
     font-size: 1.15rem;
     line-height: 1.6;
     margin-bottom: 2.5rem;
@@ -64,6 +66,8 @@
 .info-item {
     font-size: 1rem;
     margin: 0.5rem 0;
+    /* 🚀 FIX: Aplicamos Advent Pro a la info de Contacto */
+    font-family: 'Advent Pro', sans-serif;
 }
 
 .info-item a {

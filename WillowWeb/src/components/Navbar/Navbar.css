@@ -2,12 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (Usa variables de index.css) ===== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  /* 🚀 FIX CLAVE: Subido a 1000 para evitar superposición de contenido */
   z-index: 1000;
   background: var(--color-bg-navbar);
   backdrop-filter: blur(10px);
@@ -32,10 +33,11 @@ html {
 }
 
 .logo-img {
-  height: 60px;
+  /* 🚨 CAMBIO: Tamaño aumentado a 60px */
+  height: 60px; 
   width: auto;
   display: block;
-  filter: var(--color-logo-filter);
+  filter: var(--color-logo-filter); 
   transition: filter var(--transition), transform var(--transition);
 }
 
@@ -43,7 +45,7 @@ html {
   transform: scale(1.03);
 }
 
-/* ===== LINKS ===== */
+/* ===== MAIN LINKS CONTAINER (UL) ===== */
 .nav-links {
   list-style: none;
   display: flex;
@@ -51,128 +53,139 @@ html {
   gap: 2rem;
 }
 
+/* ===== MAIN LINKS (LI/A) ===== */
 .nav-links li > a {
   text-decoration: none;
-  font-family: 'Albertus Medium', sans-serif;
-  color: var(--color-text);
-  font-size: 1.1rem;
+  /* CAMBIO DE FUENTE: Usa Albertus Medium para enlaces principales */
+  font-family: 'Albertus Medium', sans-serif; 
+  color: var(--color-text); 
+  /* TAMAÑO AUMENTADO */
+  font-size: 1.1rem; 
   letter-spacing: 0.3px;
   transition: color var(--transition);
 }
 
 .nav-links a:hover {
-  color: var(--color-accent);
+  color: var(--color-accent); 
 }
 
-/* ===== SUBMENÚ ===== */
+/* ===== SUBMENU STYLES (Desktop) ===== */
 .nav-links li.has-submenu {
-  position: relative;
-  padding: 0;
+    position: relative;
+    padding: 0; 
 }
 
 .submenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  min-width: 240px;
-  padding: 0.5rem 0;
-  background: var(--color-bg-navbar);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--color-border-navbar);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  flex-direction: column;
-  font-family: 'Albertus Medium', sans-serif;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000; /* Aseguramos que el submenu esté por encima */
+    min-width: 240px;
+    padding: 0.5rem 0;
+    background: var(--color-bg-navbar); 
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-navbar);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    /* CAMBIO DE FUENTE: Albertus Medium para Submenús principales */
+    font-family: 'Albertus Medium', sans-serif; 
 }
 
 .nav-links li.has-submenu:hover > .submenu {
-  display: flex;
+    display: flex; 
 }
 
+/* Títulos de Submenú (Audio/Video) */
 .submenu-item > a {
-  display: block;
-  padding: 0.4rem 1rem;
-  white-space: nowrap;
-  font-weight: 500;
+    display: block;
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
+    font-weight: 500;
 }
 
 .sub-submenus {
-  list-style: none;
-  padding: 0.2rem 0 0.5rem 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+    list-style: none;
+    padding: 0.2rem 0 0.5rem 0; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
+/* Aplicación de colores tenues a sub-sub-links */
 .submenu-item:first-child .sub-submenus a {
-  color: var(--color-audio-sub-tenue) !important;
-  font-size: 1.05rem;
-  padding: 0.2rem 1rem;
-  font-family: 'Advent Pro', sans-serif;
+    color: var(--color-audio-sub-tenue) !important; 
+    /* TAMAÑO AUMENTADO */
+    font-size: 1.05rem;
+    padding: 0.2rem 1rem;
+    font-family: 'Advent Pro', sans-serif;
 }
 
 .submenu-item:last-child .sub-submenus a {
-  color: var(--color-video-sub-tenue) !important;
-  font-size: 1.05rem;
-  padding: 0.2rem 1rem;
-  font-family: 'Advent Pro', sans-serif;
+    color: var(--color-video-sub-tenue) !important;
+    /* TAMAÑO AUMENTADO */
+    font-size: 1.05rem;
+    padding: 0.2rem 1rem;
+    font-family: 'Advent Pro', sans-serif;
 }
 
+/* Colores de Marca Base */
 .submenu-audio { color: var(--color-audio-base) !important; }
 .submenu-video { color: var(--color-video-base) !important; }
 
-/* ===== CONTROLES ===== */
+
+/* ===== CONTROLS GROUP (Desktop Alignment) ===== */
 .controls-group {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
 }
 
-.lang-switch,
-.theme-switch {
+/* FIX ESTILO BOTONES: Sutil y Elegante (sin borde en desktop) */
+.lang-switch, .theme-switch {
   background: transparent;
   cursor: pointer;
-  transition: all 0.25s ease-out;
-  font-weight: 400;
-  border: none;
+  transition: all 0.25s ease-out; 
+  font-weight: 400; 
+  border: none; 
 }
 
-/* Idioma */
+/* ===== BOTÓN IDIOMA: Sutil y Elegante ===== */
 .lang-switch {
-  border-radius: 8px;
+  border-radius: 8px; 
   padding: 6px 12px;
-  color: var(--color-accent);
+  color: var(--color-accent); 
   letter-spacing: 0.2px;
   font-size: 0.9rem;
 }
 
 .lang-switch:hover {
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: var(--color-bg); 
 }
 
-/* Tema */
+/* ===== BOTÓN DE TEMA: Enfocado en el icono ===== */
 .theme-switch {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-accent);
-  font-size: 1.1rem;
-  padding: 0;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-accent);
+    font-size: 1.1rem; 
+    padding: 0;
 }
 
 .theme-switch:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
+    background: var(--color-accent);
+    color: var(--color-bg);
 }
 
-/* ===== MENÚ HAMBURGUESA ===== */
+
+/* ===== HAMBURGER MENU (sin cambios) ===== */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -189,12 +202,14 @@ html {
 .menu-toggle span {
   width: 28px;
   height: 2px;
-  background: var(--color-text);
+  background: var(--color-text); 
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+/* ... (Animations remain) ... */
 
-/* ===== RESPONSIVE ===== */
+
+/* ===== MOBILE STYLES (@media max-width: 900px) ===== */
 @media (max-width: 900px) {
   .menu-toggle {
     display: flex;
@@ -203,9 +218,10 @@ html {
   .nav-container {
     padding: 0.9rem 1.4rem;
   }
-
+  
+  /* 🚨 AJUSTE RESPONSIVE: Reducir el logo en móvil para que quepa bien */
   .logo-img {
-    height: 40px;
+    height: 40px; 
   }
 
   .nav-links {
@@ -214,8 +230,8 @@ html {
     right: 0;
     flex-direction: column;
     align-items: center;
-    background: var(--color-bg-mobile-menu);
-    gap: 1rem;
+    background: var(--color-bg-mobile-menu); 
+    gap: 1rem; 
     width: 100%;
     max-height: 0;
     overflow: hidden;
@@ -224,10 +240,11 @@ html {
   }
 
   .nav-links.active {
-    max-height: 700px;
-    padding: 1.5rem 0;
+    max-height: 700px; 
+    padding: 1.5rem 0; 
   }
 
+  /* 🚨 FIX: Aseguramos que el LI contenedor sea centrado */
   .nav-links li {
     width: 100%;
     text-align: center;
@@ -238,30 +255,33 @@ html {
   .nav-links a {
     color: var(--color-text);
     display: block;
-    padding: 0.6rem 0;
-    font-size: 1.1rem;
+    padding: 0.6rem 0; 
+    /* TAMAÑO AUMENTADO en móvil */
+    font-size: 1.1rem; 
   }
-
+  
   .submenu {
-    position: static;
-    width: 100%;
-    padding: 0;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    margin: 0.5rem 0;
-    display: flex;
+      position: static; 
+      width: 100%;
+      padding: 0;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      margin: 0.5rem 0;
+      display: flex; 
   }
-
+  
+  /* 🚨 FIX CENTRADO DE BOTONES EN MOBILE */
   .controls-group {
-    order: -1;
-    margin-left: 0;
-    padding: 0.5rem 0;
-    justify-content: center;
+    order: -1; 
+    margin-left: 0; 
+    padding: 0.5rem 0; 
+    /* CRÍTICO: Sobreescribe cualquier alineación para centrar los botones */
+    justify-content: center; 
     width: 100%;
     gap: 1.5rem;
   }
-
+  
   .controls-group .lang-switch,
   .controls-group .theme-switch {
     border: 1px solid var(--color-text) !important;

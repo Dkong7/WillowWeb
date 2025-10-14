@@ -27,29 +27,20 @@
 }
 
 /* ===== Delays (Se mantiene) ===== */
-.anim-delay-1 {
-  animation-delay: 0.3s;
-}
-.anim-delay-2 {
-  animation-delay: 0.6s;
-}
-.anim-delay-3 {
-  animation-delay: 0.9s;
-}
-.anim-delay-4 {
-  animation-delay: 1.2s;
-}
+.anim-delay-1 { animation-delay: 0.3s; }
+.anim-delay-2 { animation-delay: 0.6s; }
+.anim-delay-3 { animation-delay: 0.9s; }
+.anim-delay-4 { animation-delay: 1.2s; }
 
-/* ================== LAYOUT (CORREGIDO) ================== */
+/* ================== LAYOUT ================== */
 .about-section {
   /* FIX: Margen para despejar la Navbar fija */
-  margin-top: 6rem; 
+  margin-top: 6rem;
   min-height: 85vh;
   display: flex;
-  /* Alineamos al inicio para que el contenido empiece en top */
   align-items: flex-start;
   justify-content: center;
-  padding: 2rem 0 30px 0; 
+  padding: 2rem 0 30px 0;
   background-color: var(--color-bg);
 }
 
@@ -63,7 +54,7 @@
   align-items: flex-start;
 }
 
-/* ================== IMÁGENES (ESTÁTICAS) ================== */
+/* ================== IMÁGENES ================== */
 .about-visuals {
   display: flex;
   justify-content: center;
@@ -75,8 +66,11 @@
 
 .about-background-image,
 .about-main-image {
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
-  will-change: transform, box-shadow; 
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s ease,
+              box-shadow 0.5s ease,
+              filter 0.5s ease;
+  will-change: transform, box-shadow;
 }
 
 .about-background-image {
@@ -94,32 +88,31 @@
   height: auto;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  top: 4%; 
+  top: 4%;
   left: 3%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
-
-/* 1. EFECTO HOVER (AHORA SÓLO EN CSS) */
+/* 1. Efecto Parallax */
 .about-visuals:hover .about-background-image {
   transform: translate3d(-30px, -30px, 0) scale(0.95);
   filter: brightness(0.9);
 }
 
 .about-visuals:hover .about-main-image {
-  transform: translate(-50%, -50%) translate3d(10px, 10px, 0) scale(1.05); 
+  transform: translate(-50%, -50%) translate3d(10px, 10px, 0) scale(1.05);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
-/* 2. SOLUCIÓN Y ZOOM EXTREMO (Al hacer hover directamente sobre la imagen quienesSomos.png) */
+/* 2. Zoom extremo */
 img.about-main-image:hover {
   transform: translate(-50%, -50%) scale(2.0);
-  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9); 
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9);
   cursor: zoom-in;
 }
 
-/* ================== TEXTO ================== */
+/* ================== TEXTO (APLICACIÓN DE FUENTE ADVENT PRO) ================== */
 .about-content-card {
   color: var(--color-text);
   padding: 20px 0;
@@ -143,20 +136,19 @@ img.about-main-image:hover {
 }
 
 .about-body {
-  font-family: 'Advent Pro', sans-serif;
-  font-size: 1.4rem; 
-  line-height: 1.8; 
+  /* 🚀 FIX: Aseguramos la aplicación de Advent Pro */
+  font-family: 'Advent Pro', sans-serif; 
+  font-size: 1.4rem;
+  line-height: 1.8;
   margin-bottom: 2.5rem;
 }
 
-
 /* ================== RESPONSIVE ================== */
 @media (max-width: 900px) {
-  /* Ajuste responsive del margen superior para móvil */
   .about-section {
-    margin-top: 5rem; 
+    margin-top: 5rem;
   }
-  
+
   .about-container {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -168,13 +160,8 @@ img.about-main-image:hover {
     text-align: center;
   }
 
-  .about-title {
-    font-size: 2.5rem;
-  }
-
-  .about-subtitle {
-    font-size: 1.3rem;
-  }
+  .about-title { font-size: 2.5rem; }
+  .about-subtitle { font-size: 1.3rem; }
 
   .about-visuals {
     order: -1;
