@@ -12,15 +12,29 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices"; 
 
-// 🆕 COMPONENTE: Home Page (Se remueve la sección de #team)
+// 🚀 NUEVAS IMPORTACIONES
+import VideoBanner from "./components/VideoBanner/VideoBanner"; // Nuevo (Casing correcto)
+import VideoServices from "./components/VideoServices/VideoServices"; // Nuevo
+import Clients from "./components/Clients/Clients"; // Nuevo
+import Footer from "./components/Footer/Footer"; // Nuevo
+
+// 🆕 COMPONENTE: Home Page (Se añade VideoBanner, VideoServices, y Clients)
 const HomePage = () => (
     <>
         <Hero /> 
+        {/* Sección Audio */}
         <AudioBanner />
         <AudioServices />
         
-        {/* Secciones de Anclaje restantes (solo queda #clients) */}
-        <section id="clients" style={{ minHeight: '10vh' }}></section>
+        {/* Sección Video (Punto 4 y 5) */}
+        <VideoBanner />
+        <VideoServices />
+        
+        {/* Sección Clientes (Punto 6) */}
+        <Clients />
+        
+        {/* Secciones de Anclaje restantes (se mantiene solo para compatibilidad, Clients ya tiene el id) */}
+        {/* <section id="clients" style={{ minHeight: '10vh' }}></section> */} 
         {/* ❌ ELIMINADO: Se quita la ancla de #team */}
     </>
 );
@@ -52,6 +66,9 @@ function App() {
         {/* Opcional: Ruta 404 */}
         <Route path="*" element={<h1>404: No Encontrado</h1>} />
       </Routes>
+      
+      {/* 🚀 FOOTER (Punto 7) - Visible en todas las rutas */}
+      <Footer /> 
 
     </div>
   );

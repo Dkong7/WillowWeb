@@ -20,21 +20,21 @@
   font-display: swap;
 }
 
-/* 🚨 FIX FUENTE: Advent Pro */
+/* 🚨 FIX FUENTE: Advent Pro (Corregido el nombre del archivo) */
 @font-face {
   font-family: 'Advent Pro';
-  /* Asumo que el nombre del archivo TTF coincide con el nombre de la familia Pro */
-  src: url('/WillowWeb/fonts/Advent-Pro-Regular.ttf') format('truetype'); 
+  /* Nombre del archivo ajustado a 'AdventPro-Regular.ttf' */
+  src: url('/WillowWeb/fonts/AdventPro-Regular.ttf') format('truetype'); 
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* 🚀 NUEVA FUENTE PARA EL BANNER */
+/* 🚀 FIX FUENTE TÍTULOS (FIX 4): Albertus Medium (ajustada a .ttf) */
 @font-face {
   font-family: 'Albertus Medium';
-  /* Asumo que existe un archivo Albertus-Medium.otf. Si no, debe ser definido por el usuario. */
-  src: url('/WillowWeb/fonts/Albertus-Medium.otf') format('opentype'); 
+  /* Ruta ajustada a la proporcionada por el usuario (.ttf) */
+  src: url('/WillowWeb/fonts/albertusmedium_regular.ttf') format('truetype'); 
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -47,7 +47,8 @@
   --transition: 0.3s ease;
   /* 🚨 FIX FONT: Usando Advent Pro para texto secundario */
   font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-  font-size: 16px;
+  /* 🚨 FIX 3: Aumentar el tamaño base de la fuente */
+  font-size: 17px; 
   line-height: 1.5;
   
   --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm"); 
@@ -59,6 +60,9 @@
   --color-audio-orange: #e86c10; 
   /* NUEVA VARIABLE: Color base para el icono del banner (se define en dark/light) */
   --filter-icon-audio-banner: none; 
+  
+  /* 🚀 NUEVA VARIABLE: Color base para el banner de video (Morado del navbar #7a4ed4) */
+  --color-video-purple: #7a4ed4; 
 }
 
 /* Tema Oscuro (Defecto) */
@@ -86,6 +90,14 @@
   --filter-icon-audio-banner: brightness(0) invert(1); /* Icono del banner blanco */
   --icon-drop-shadow: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   --text-shadow-strong: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+  /* 🚀 NUEVAS VARIABLES PARA VIDEO BANNER */
+  --filter-texture-video-banner: invert(1);
+  --color-text-video-banner: #fff;
+  --filter-icon-video-banner: brightness(0) invert(1); 
+
+  /* 🚨 FIX 2: Remover filtro forzado en iconos de Card (se usará 'none' para respetar colores originales) */
+  --filter-icon-card: none; 
 }
 
 /* Tema Claro */
@@ -113,6 +125,14 @@
   --filter-icon-audio-banner: none; /* Icono del banner negro */
   --icon-drop-shadow: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
   --text-shadow-strong: 0 0 10px rgba(255, 255, 255, 0.5);
+
+  /* 🚀 NUEVAS VARIABLES PARA VIDEO BANNER */
+  --filter-texture-video-banner: none;
+  --color-text-video-banner: #121212;
+  --filter-icon-video-banner: none; 
+
+  /* 🚨 FIX 2: Remover filtro forzado en iconos de Card (se usará 'none' para respetar colores originales) */
+  --filter-icon-card: none;
 }
 
 /* ------------------------------------------- */
@@ -136,6 +156,6 @@ body {
 
 /* Aplicar la nueva fuente a los títulos */
 h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
-  /* Se mantiene Espiritu Regular, Albertus Medium solo para el Banner Title */
-  font-family: 'Espiritu Regular', sans-serif; 
+  /* 🚀 FIX 4: Se usa Albertus Medium como fuente principal para títulos */
+  font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif; 
 }

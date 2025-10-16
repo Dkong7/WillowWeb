@@ -37,6 +37,7 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
     if (hash.startsWith('#')) {
         if (location.pathname !== '/') {
             // Si NO estamos en el Home, navegamos al Home primero con el hash
+            // Se usa window.location.hash = hash para forzar el scroll después de la navegación
             navigate(`/${hash}`); 
         } else {
             // Si estamos en el Home, forzamos el scroll
@@ -86,18 +87,29 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
             <ul className="submenu">
               {/* Audio */}
               <li className="submenu-item">
-                <a role="button" className="submenu-audio">{t("audio")}</a>
+                <a onClick={() => handleLinkClick('#services')} role="button" className="submenu-audio">{t("audio")}</a>
                 <ul className="sub-submenus">
-                  <li><a onClick={() => handleLinkClick('#audio-prod')} role="button">{t("audio_prod")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-prod')} role="button">{t("service_audio_prod_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-jingles')} role="button">{t("service_audio_jingles_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-cinetv')} role="button">{t("service_audio_cinetv_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-games')} role="button">{t("service_audio_games_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-rec')} role="button">{t("service_audio_rec_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#audio-voice')} role="button">{t("service_audio_voice_title")}</a></li>
                   <li><a onClick={() => handleLinkClick('#audio-mix')} role="button">{t("audio_mix")}</a></li>
                 </ul>
               </li>
-              {/* Video */}
+              {/* Video (Punto 4) */}
               <li className="submenu-item">
-                <a role="button" className="submenu-video">{t("video")}</a>
+                {/* Enlace que lleva al banner de video services */}
+                <a onClick={() => handleLinkClick('#video-services')} role="button" className="submenu-video">{t("video")}</a>
                 <ul className="sub-submenus">
-                  <li><a onClick={() => handleLinkClick('#video-post')} role="button">{t("video_post")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-motion')} role="button">{t("video_motion")}</a></li>
+                  {/* 🚨 FIX 5: Nuevos enlaces de Video */}
+                  <li><a onClick={() => handleLinkClick('#video-prod')} role="button">{t("service_video_prod_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-post-prod')} role="button">{t("service_video_post_prod_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-anim')} role="button">{t("service_video_anim_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-3d')} role="button">{t("service_video_3d_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-product')} role="button">{t("service_video_product_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-social')} role="button">{t("service_video_social_title")}</a></li>
                 </ul>
               </li>
             </ul>

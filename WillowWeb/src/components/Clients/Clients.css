@@ -1,0 +1,109 @@
+/* src/components/Clients/Clients.css */
+
+.clients-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Importante para que la animación no cause scroll horizontal */
+}
+
+.clients-title {
+    font-family: 'Albertus Medium', sans-serif; /* Usando la fuente de títulos actualizada */
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.clients-subtitle {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: var(--color-accent);
+}
+
+.clients-body {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* Estilos para la tira de logos con loop infinito */
+.clients-logo-strip-container {
+    overflow: hidden; 
+    white-space: nowrap;
+    /* Reducir padding vertical para hacer la sección más compacta */
+    padding: 10px 0; 
+    border-top: 1px solid var(--color-border-navbar);
+    border-bottom: 1px solid var(--color-border-navbar);
+    /* Fondo del carrusel: Usa el color de fondo del tema */
+    background-color: var(--color-bg); 
+}
+
+.clients-logo-strip {
+    display: inline-block;
+    width: 200%; /* El doble de ancho para la repetición */
+    animation: scroll-strip 30s linear infinite; 
+}
+
+.clients-logo-strip:hover {
+    animation-play-state: paused;
+}
+
+/* Keyframes para el movimiento de derecha a izquierda */
+@keyframes scroll-strip {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
+}
+
+
+/* 🚀 AJUSTE FINAL: Tamaño, espaciado y filtro para los logos */
+.logo-container {
+    display: inline-block;
+    vertical-align: middle;
+    /* Ancho ajustado para logos más cercanos y grandes */
+    width: 10vw; 
+    min-width: 120px; 
+    height: 140px; /* Contenedor más alto */
+    padding: 0; /* Espacio reducido a cero */
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-logo-img {
+    max-width: 95%; /* Icono más grande */
+    max-height: 95%; 
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    
+    /* 🚨 REVERTIDO: Se elimina el filtro para mantener los colores originales */
+    filter: none;
+}
+
+.client-logo-img:hover {
+    opacity: 1;
+}
+
+/* Ajuste responsive */
+@media (max-width: 1200px) {
+    .logo-container {
+        width: calc(100vw / 6); /* Mostrar 6 logos a la vez */
+        min-width: 100px;
+    }
+}
+@media (max-width: 768px) {
+    .logo-container {
+        width: calc(100vw / 4); /* Mostrar 4 logos a la vez */
+        min-width: 80px;
+        height: 80px;
+    }
+}

@@ -1,0 +1,124 @@
+/* src/components/Footer/Footer.css */
+
+.main-footer {
+    background-color: var(--color-bg-navbar); /* Reutilizar el color de navbar (transparente) */
+    backdrop-filter: blur(5px);
+    border-top: 1px solid var(--color-border-navbar);
+    padding: 40px 20px 20px 20px;
+    font-family: 'Advent Pro', sans-serif;
+    color: var(--color-text);
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 🚨 FIX 3: Solo dos columnas: Navegación y Social */
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr); 
+    gap: 30px;
+}
+
+.footer-heading {
+    /* 🚨 FIX 3: Fuente y tamaño reducido */
+    font-family: 'Albertus Medium', sans-serif; 
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border-navbar);
+    padding-bottom: 5px;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.footer-column a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--color-accent);
+}
+
+/* Navegación */
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-list li {
+    margin-bottom: 8px;
+}
+
+/* Iconos Sociales */
+.social-icons-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    /* Contenedor del icono - se usará para el hover/target */
+    transition: transform 0.3s ease;
+    display: inline-block;
+    line-height: 1;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* 🚨 FIX 4: Estilo para la imagen SVG dentro del ancla */
+.social-icon-img {
+    width: 30px; /* Tamaño fijo para el icono */
+    height: 30px;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+}
+
+/* 🚨 FIX 4: Filtrado por tema para los logos del footer (monocromático) */
+[data-theme="dark"] .social-icon-img {
+    filter: brightness(0) invert(1); /* Fondo oscuro, logo blanco */
+}
+
+[data-theme="light"] .social-icon-img {
+    filter: brightness(0); /* Fondo claro, logo negro */
+}
+
+
+/* Copyright */
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border-navbar);
+    text-align: center;
+}
+
+.developed-by {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-heading {
+        border-bottom: none;
+    }
+    .footer-social {
+        align-items: center;
+    }
+    .social-icons-container {
+        justify-content: center;
+    }
+}

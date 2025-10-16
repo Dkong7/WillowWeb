@@ -135,6 +135,8 @@ interface ServiceCardContent {
   i18nDescTitleKey: string;
   i18nDescBodyKey: string;
   videoUrlKey: string;
+  // Propiedad para manejar el color base si no es el predeterminado (audio)
+  colorVar?: string;
 }
 
 // Datos de la Card 1: Producción Musical
@@ -181,9 +183,53 @@ const audioMasteringCard: ServiceCardContent = {
   videoUrlKey: "portfolio_audio_master_video_url",
 };
 
+// 🚀 NUEVA CARD 5: Jingles e Identidad Sonora
+const audioJinglesCard: ServiceCardContent = {
+  id: 'audio-jingles',
+  iconSrc: `${import.meta.env.BASE_URL}icono-jingles.svg`,
+  i18nTitleKey: "service_audio_jingles_title",
+  i18nCopyKey: "service_audio_jingles_copy",
+  i18nDescTitleKey: "portfolio_audio_jingles_desc_title",
+  i18nDescBodyKey: "portfolio_audio_jingles_desc_body",
+  videoUrlKey: "portfolio_audio_jingles_video_url",
+};
 
-// Componente de la Card de Servicio (sin cambios en la estructura)
-const ServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => {
+// 🚀 NUEVA CARD 6: Composición Original Cine/TV
+const audioCineTvCard: ServiceCardContent = {
+  id: 'audio-cinetv',
+  iconSrc: `${import.meta.env.BASE_URL}icono-film-tv.svg`,
+  i18nTitleKey: "service_audio_cinetv_title",
+  i18nCopyKey: "service_audio_cinetv_copy",
+  i18nDescTitleKey: "portfolio_audio_cinetv_desc_title",
+  i18nDescBodyKey: "portfolio_audio_cinetv_desc_body",
+  videoUrlKey: "portfolio_audio_cinetv_video_url",
+};
+
+// 🚀 NUEVA CARD 7: Producción de Voz y Locución
+const audioVoiceCard: ServiceCardContent = {
+  id: 'audio-voice',
+  iconSrc: `${import.meta.env.BASE_URL}icono-podcast.svg`,
+  i18nTitleKey: "service_audio_voice_title",
+  i18nCopyKey: "service_audio_voice_copy",
+  i18nDescTitleKey: "portfolio_audio_voice_desc_title",
+  i18nDescBodyKey: "portfolio_audio_voice_desc_body",
+  videoUrlKey: "portfolio_audio_voice_video_url",
+};
+
+// 🚀 NUEVA CARD 8: Música para Videojuegos
+const audioGamesCard: ServiceCardContent = {
+  id: 'audio-games',
+  iconSrc: `${import.meta.env.BASE_URL}icono-audiogames.svg`,
+  i18nTitleKey: "service_audio_games_title",
+  i18nCopyKey: "service_audio_games_copy",
+  i18nDescTitleKey: "portfolio_audio_games_desc_title",
+  i18nDescBodyKey: "portfolio_audio_games_desc_body",
+  videoUrlKey: "portfolio_audio_games_video_url",
+};
+
+
+// Componente de la Card de Servicio (modificado para aceptar colorVar)
+const ServiceCard: React.FC<{ content: ServiceCardContent; colorVar: string }> = ({ content, colorVar }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -195,19 +241,31 @@ const ServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => 
   const modalDescBody = t(content.i18nDescBodyKey);
   const cardTitle = t(content.i18nTitleKey);
   const cardCopy = t(content.i18nCopyKey);
+  
+  // Si se proporciona una variable de color, la usamos para sobrescribir el estilo.
+  const isAudio = colorVar === 'var(--color-audio-base)';
+  const cardStyle = { 
+    '--card-accent-color': colorVar,
+    '--card-accent-sub-tenue': isAudio
+        ? 'var(--color-audio-sub-tenue)' 
+        : 'var(--color-video-sub-tenue)'
+  } as React.CSSProperties;
 
   return (
     <>
-      <div className="service-card-container" id={content.id}> 
+      <div className="service-card-container" id={content.id} style={cardStyle}> 
+        {/* 🚨 FIX 1: El icono ahora va arriba y centrado */}
         <div className="card-icon-column">
           <img src={content.iconSrc} alt={cardTitle} className="service-icon" />
         </div>
         
+        {/* El contenido está centrado por el CSS de la clase padre */}
         <div className="card-content-column">
           <h3 className="card-title">{cardTitle}</h3>
           <p className="card-copy">{cardCopy}</p>
         </div>
 
+        {/* El botón está centrado por el CSS de la clase padre */}
         <div className="card-button-column">
           <button className="portfolio-button" onClick={openModal}>
             {t("portfolio_button")}
@@ -230,13 +288,23 @@ const ServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => 
 // Componente Principal de Servicios (MODIFICADO - Contenedor de lista)
 export default function AudioServices() {
   
-  // Array con todas las tarjetas de servicio
-  const services = [audioProdCard, audioRecordingCard, audioMixingCard, audioMasteringCard]; 
+  // Array con todas las tarjetas de servicio (8 Servicios en total)
+  const services: ServiceCardContent[] = [
+    audioProdCard, 
+    audioJinglesCard, 
+    audioCineTvCard, 
+    audioGamesCard, 
+    audioRecordingCard, 
+    audioVoiceCard, 
+    audioMixingCard, 
+    audioMasteringCard
+  ]; 
 
   return (
     <div className="audio-services-list"> 
       {services.map((service) => (
-        <ServiceCard key={service.id} content={service} />
+        // Se pasa la variable de color de Audio explícitamente para el uso del CSS dinámico
+        <ServiceCard key={service.id} content={service} colorVar="var(--color-audio-base)" />
       ))}
     </div>
   );

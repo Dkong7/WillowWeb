@@ -1,7 +1,7 @@
-/* src/components/AudioBanner/AudioBanner.css */
+/* src/components/VideoBanner/VideoBanner.css */
 
 /* ================== LAYOUT GENERAL ================== */
-.audio-banner-section {
+.video-banner-section {
   position: relative;
   width: 100%;
   min-height: 120px; 
@@ -9,14 +9,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden; 
-  /* FIX: Eliminar margin-top (para acercarse a About) y añadir margin-bottom (para separarse de AudioServices) */
   scroll-padding-top: 5rem;
-  margin-top: 0;
+  margin-top: 2rem; /* Separación del componente anterior */
   margin-bottom: 2rem;
 }
 
 /* ================== CAPA DE TEXTURA (FONDO) ================== */
-.audio-banner-texture-layer {
+.video-banner-texture-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -25,37 +24,35 @@
   z-index: 1;
 
   background-image: url("/textura.png");
-  /* Se reduce el tamaño al 60% del contenedor */
   background-size: 60%; 
-  /* Se permite la repetición para que cubra el banner con el patrón más pequeño */
   background-repeat: repeat;
   background-position: center; 
   
   background-attachment: fixed; 
 
   opacity: 0.8; 
-  /* FILTRO DINÁMICO: Aplica la inversión según el tema */
-  filter: var(--filter-texture-audio-banner);
+  /* FILTRO DINÁMICO: Aplica la inversión según el tema, usando la variable de video */
+  filter: var(--filter-texture-video-banner);
   transition: filter 0.3s ease;
 }
 
-/* 🚨 CAPA DE COLOR NARANJA con mix-blend-mode */
-.audio-banner-color-layer {
+/* 🚨 CAPA DE COLOR PURPURA con mix-blend-mode */
+.video-banner-color-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 2; /* Sobre la textura, debajo del contenido */
-  background-color: var(--color-audio-orange); 
-  mix-blend-mode: overlay; /* 'overlay' para armonía naranja sutil */
+  /* Usa la nueva variable de color purpura */
+  background-color: var(--color-video-purple); 
+  mix-blend-mode: overlay; 
   pointer-events: none; 
 }
 
 /* ================== CAPA DE CONTENIDO (Texto y Logo) ================== */
-.audio-banner-content {
+.video-banner-content {
   position: relative;
-  /* El z-index alto garantiza que el texto/icono estén siempre al frente y sin mezcla */
   z-index: 10; 
   width: 100%;
   min-height: 120px; 
@@ -67,53 +64,50 @@
 }
 
 /* Contenedor para alinear Icono y Título en horizontal y centrados */
-.audio-banner-header {
+.video-banner-header {
   display: flex;
   align-items: center; 
   justify-content: center; 
   gap: 25px; 
-  /* 🚀 ANIMACIÓN: Aplicar la animación al contenedor del icono y título */
+  /* 🚀 ANIMACIÓN: Aplicar la animación al contenedor del icono y título (Reutiliza slideUp) */
   animation: slideUp 0.8s ease-out forwards;
-  opacity: 0; /* Empieza invisible para el efecto de fade-in */
+  opacity: 0;
 }
 
 
 /* ================== ESTILOS DE CONTENIDO ================== */
-.audio-banner-icon img {
-  /* TAMAÑO MANTENIDO: 65px */
+.video-banner-icon img {
   width: 65px; 
   height: 65px;
   margin: 0; 
   
-  /* Filtro dinámico (blanco/negro) + Sombra dinámica */
-  filter: var(--filter-icon-audio-banner) var(--icon-drop-shadow); 
+  /* Filtro dinámico (blanco/negro) + Sombra dinámica, usando la variable de video */
+  filter: var(--filter-icon-video-banner) var(--icon-drop-shadow); 
   transition: filter 0.3s ease;
 }
 
-.audio-banner-title {
-  /* 🚨 CAMBIO DE FUENTE: 'Espiritu Regular' -> 'Albertus Medium' */
+.video-banner-title {
   font-family: 'Albertus Medium', sans-serif;
   font-size: 3.2rem; 
   line-height: 1.1; 
-  /* Color dinámico (blanco/negro) */
-  color: var(--color-text-audio-banner); 
+  /* Color dinámico (blanco/negro), usando la variable de video */
+  color: var(--color-text-video-banner); 
   text-align: center;
   margin: 0;
   text-transform: uppercase;
-  /* Sombra de texto dinámica que lo hace sobresalir */
   text-shadow: var(--text-shadow-strong); 
   /* 🚀 ANIMACIÓN/TRANSICIÓN: Agregar transición para el hover */
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
-  cursor: pointer; /* Indica que es interactivo */
+  cursor: pointer;
 }
 
 /* 🚀 INTERACCIÓN: Efecto de Hover en el título */
-.audio-banner-title:hover {
+.video-banner-title:hover {
     transform: scale(1.05);
 }
 
 
-/* 🚀 KEYFRAMES PARA LA ANIMACIÓN DE ENTRADA */
+/* 🚀 KEYFRAMES PARA LA ANIMACIÓN DE ENTRADA (Mismo que AudioBanner) */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -128,27 +122,27 @@
 
 /* ================== RESPONSIVE BÁSICO (Ajustado) ================== */
 @media (max-width: 768px) {
-  .audio-banner-header {
+  .video-banner-header {
     flex-direction: row; 
     gap: 15px;
   }
-  .audio-banner-title {
+  .video-banner-title {
     font-size: 2.2rem; 
   }
-  .audio-banner-icon img {
+  .video-banner-icon img {
     width: 40px; 
     height: 40px;
   }
 }
 @media (max-width: 600px) {
-  .audio-banner-section,
-  .audio-banner-content {
+  .video-banner-section,
+  .video-banner-content {
     min-height: 80px; 
   }
-  .audio-banner-title {
+  .video-banner-title {
     font-size: 1.8rem; 
   }
-  .audio-banner-icon img {
+  .video-banner-icon img {
     width: 35px;
     height: 35px;
   }

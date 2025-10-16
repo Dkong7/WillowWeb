@@ -47,7 +47,7 @@
       "title": "Audiovisual Production",
       "subtitle": "We integrate music, image and storytelling for every project.",
       "button_text": "View portfolio",
-      "link": "#video-post"
+      "link": "#video-prod"
     },
     {
       "id": 4,
@@ -68,9 +68,22 @@
   
   "section_services_title": "OUR SERVICES",
   "audio_service_banner_title": "AUDIO SERVICES",
+  "video_service_banner_title": "VIDEO SERVICES",
   "portfolio_button": "View Portfolio",
   "contact_button": "Contact Us",
   "portfolio_equipment_header": "DETAILED EQUIPMENT",
+  "modal_pricing_cta": "Ask for Pricing",
+  "contact_dossier_title": "Dossier & Contact",
+  "contact_dossier_body": "Download our complete dossier to learn more about our projects, methodologies, and rates. If you need a personalized quote or have a project in mind, contact us directly.",
+  "contact_dossier_cta": "Download Dossier",
+  
+  "clients_title": "OUR CLIENTS",
+  "clients_subtitle": "We have transformed the sonic and visual identity of these brands",
+  "clients_body": "The trust of our clients is the strongest testimony to our commitment to excellence. We have collaborated with a diverse range of brands, artists, and agencies, helping them tell their stories in an impactful way through audio, video, and transmedia experiences. Join our list of satisfied collaborators.",
+  
+  "footer_nav_title": "NAVIGATION",
+  "footer_social_title": "SOCIAL MEDIA",
+  "developed_by": "Developed by 4 of Willow Tree Media ®",
   
   "service_audio_prod_title": "🎼 MUSIC PRODUCTION",
   "service_audio_prod_copy": "Integral development of musical projects, from composition and arrangements to final delivery, preserving the sonic identity of each artist or brand.",
@@ -94,5 +107,65 @@
   "portfolio_audio_master_copy": "The final step: optimizing sound for distribution on digital platforms, CD, and vinyl, ensuring consistency and global loudness.",
   "portfolio_audio_master_desc_title": "Mastering Services",
   "portfolio_audio_master_desc_body": "The final polish that prepares your music for the world. We ensure the music sounds optimally on any playback system, meeting the volume and quality standards of modern platforms.",
-  "portfolio_audio_master_video_url": "https://www.youtube.com/embed/PLACEHOLDER_MASTER_EN?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+  "portfolio_audio_master_video_url": "https://www.youtube.com/embed/PLACEHOLDER_MASTER_EN?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  
+  "service_audio_jingles_title": "📢 JINGLES & SONIC IDENTITY",
+  "service_audio_jingles_copy": "We create the 'sonic branding' your brand needs, from memorable jingles to a complete sound strategy. We use real voices and cutting-edge AI.",
+  "portfolio_audio_jingles_desc_title": "Creation of Sonic Identity and 'Sonic Branding'",
+  "portfolio_audio_jingles_desc_body": "We create music and sound that defines and enhances your brand. Our Jingles and Sonic Identity service covers everything from composing memorable short pieces to designing a complete 'sonic branding' strategy. We use real voices from our roster of talent and support ourselves with **cutting-edge artificial intelligence** to optimize creative flows, ensuring a unique and high-impact sound that resonates with your audience. * Let's work together on your brand's voice!",
+  "portfolio_audio_jingles_video_url": "https://www.youtube.com/embed/qJ7fWAXEe_k?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_cinetv_title": "🎬 ORIGINAL SCORE FOR FILM/TV",
+  "service_audio_cinetv_copy": "Custom music for film, television, theatre, video games, and transmedia experiences, adapted to the emotion and style of each project.",
+  "portfolio_audio_cinetv_desc_title": "Original Scores for Film and Television",
+  "portfolio_audio_cinetv_desc_body": "Music is the soul of narrative. We specialize in creating original soundtracks that seamlessly integrate with the image, reinforcing the emotion and intent of each scene. We work closely with directors and producers to translate their vision into unforgettable cinematic scores, from large orchestrations to minimalist sound designs. * Call us to give your story the sound it deserves!",
+  "portfolio_audio_cinetv_video_url": "https://www.youtube.com/embed/AoiypSpuWxs?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_voice_title": "🎙️ VOICE PRODUCTION & VOICEOVER",
+  "service_audio_voice_copy": "Directing and recording professional voices for advertising, dubbing, narration, and audiovisual projects in an optimized studio.",
+  "portfolio_audio_voice_desc_title": "Professional Voiceover, Dubbing, and Narration",
+  "portfolio_audio_voice_desc_body": "From talent selection to post-production, we guarantee the perfect voice for your project. We offer voice talent direction, dialogue recording, narrations for audiobooks, podcasts, and full dubbing and voice-over services. Our studio is acoustically optimized for capturing voice with maximum purity. * Ask us about our catalog of professional voices!",
+  "portfolio_audio_voice_video_url": "https://www.youtube.com/embed/lDScHlp1Cvc?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_audio_games_title": "🎮 MUSIC FOR VIDEO GAMES",
+  "service_audio_games_copy": "Composition and production in ambisonic and spatial formats, designed to create immersive experiences that envelop the player and enhance interactive narrative.",
+  "portfolio_audio_games_desc_title": "Interactive Audio and Spatial Sound for Games",
+  "portfolio_audio_games_desc_body": "Video game sound is our playground. We create dynamic music (Wwise/FMOD ready) and sound design that reacts to gameplay. We specialize in implementing spatial audio, achieving 3D soundscapes that completely immerse the player in the experience. * Boost your game's immersion with our interactive audio!",
+  "portfolio_audio_games_video_url": "https://www.youtube.com/embed/cAlEIgsLNTQ?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_prod_title": "🎥 AUDIOVISUAL PRODUCTION",
+  "service_video_prod_copy": "Integral production of audiovisual projects, from script to final delivery for TV, cinema, and digital platforms.",
+  "portfolio_video_prod_desc_title": "Direction, Filming, and Audiovisual Production",
+  "portfolio_video_prod_desc_body": "We are a full team ready to bring your vision to life. We handle all phases of production: pre-production, direction, lighting, filming with cinematic equipment, and direct sound. Our experience ensures that every frame captures the emotion and story you want to convey.",
+  "portfolio_video_prod_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_post_prod_title": "🎞️ AUDIOVISUAL POST-PRODUCTION",
+  "service_video_post_prod_copy": "Professional video editing, color correction (grading), sound design, and mixing to ensure the highest technical and artistic quality.",
+  "portfolio_video_post_prod_desc_title": "Editing, Color Grading, and Sound Design",
+  "portfolio_video_post_prod_desc_body": "Post-production is the final touch. We offer agile editing services, advanced color correction (DaVinci Resolve) to achieve the desired 'look', and immersive sound design, perfectly synchronizing audio and video.",
+  "portfolio_video_post_prod_video_url": "https://www.youtube.com/embed/Db1P2ZMiVEs?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_anim_title": "✨ ANIMATION AND MOTION GRAPHICS",
+  "service_video_anim_copy": "Creation of 2D and 3D animation, Motion Graphics for advertising, explainer videos, and animated infographics with visual impact.",
+  "portfolio_video_anim_desc_title": "2D/3D Animation, Motion Graphics, and VFX",
+  "portfolio_video_anim_desc_body": "We turn complex ideas into dynamic visual narratives. Whether it's traditional animation, 3D rendering, or motion graphics for social media, our team creates pieces that capture attention and explain concepts with clarity and style.",
+  "portfolio_video_anim_video_url": "https://www.youtube.com/embed/4QrU03qKYRA?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_3d_title": "🗿 3D MODELING AND RENDERING",
+  "service_video_3d_copy": "3D modeling, texturing, lighting, and photorealistic rendering services for products, architecture, and video game environments.",
+  "portfolio_video_3d_desc_title": "3D Object and Environment Modeling",
+  "portfolio_video_3d_desc_body": "We build worlds and objects in three dimensions with a high level of detail. From architectural visualizations and product prototypes to assets ready for video game engines (Unity/Unreal). Precision is our foundation, creativity our engine.",
+  "portfolio_video_3d_video_url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_product_title": "🛍️ PRODUCT VIDEO AND E-COMMERCE",
+  "service_video_product_copy": "Short, striking videos designed specifically to boost sales and highlight features on e-commerce platforms and advertising.",
+  "portfolio_video_product_desc_title": "Product Cinematics for Digital Marketing",
+  "portfolio_video_product_desc_body": "Video is key to e-commerce. We produce product videos with high visual quality, focused on detail and functionality, optimized for conversions on Amazon, Shopify, or social media ads. We turn features into visual benefits.",
+  "portfolio_video_product_video_url": "https://www.youtube.com/embed/veQAn_VYnvc?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+
+  "service_video_social_title": "📱 CONTENIDO PARA REDES SOCIALES",
+  "service_video_social_copy": "Creación de contenido vertical y horizontal optimizado para engagement en TikTok, Instagram Reels, YouTube Shorts y otras plataformas.",
+  "portfolio_video_social_desc_title": "Estrategia y Contenido de Video para Plataformas Sociales",
+  "portfolio_video_social_desc_body": "Entendemos el lenguaje de las redes. Producimos contenido de video rápido, impactante y relevante, maximizando el engagement y la viralidad. Nuestra estrategia incluye la adaptación a formatos verticales, subtitulado dinámico y optimización para el algoritmo de cada plataforma.",
+  "portfolio_video_social_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
 }
