@@ -5,7 +5,7 @@
 /* Fuente Regular */
 @font-face {
   font-family: 'Espiritu Regular';
-  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-.otf') format('opentype'); 
+  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 /* Fuente Condensed */
 @font-face {
   font-family: 'Espiritu Condensed';
-  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-Condensed.otf') format('opentype'); 
+  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-Condensed.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -23,18 +23,16 @@
 /* 🚨 FIX FUENTE: Advent Pro (Corregido el nombre del archivo) */
 @font-face {
   font-family: 'Advent Pro';
-  /* Nombre del archivo ajustado a 'AdventPro-Regular.ttf' */
-  src: url('/WillowWeb/fonts/AdventPro-Regular.ttf') format('truetype'); 
+  src: url('/WillowWeb/fonts/AdventPro-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* 🚀 FIX FUENTE TÍTULOS (FIX 4): Albertus Medium (ajustada a .ttf) */
+/* 🚀 FIX FUENTE TÍTULOS: Albertus Medium (.ttf) */
 @font-face {
   font-family: 'Albertus Medium';
-  /* Ruta ajustada a la proporcionada por el usuario (.ttf) */
-  src: url('/WillowWeb/fonts/albertusmedium_regular.ttf') format('truetype'); 
+  src: url('/WillowWeb/fonts/albertusmedium_regular.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -45,93 +43,79 @@
 /* 🌗 Theme Variables (Fallbacks on :root) */
 :root {
   --transition: 0.3s ease;
-  /* 🚨 FIX FONT: Usando Advent Pro para texto secundario */
-  font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-  /* 🚨 FIX 3: Aumentar el tamaño base de la fuente */
-  font-size: 17px; 
+  font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
   line-height: 1.5;
-  
-  --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm"); 
+
+  --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm");
   --bg-url-dark: url("/WillowWeb/navbar-hero-dark.wbm");
-  --texture-blend-mode: overlay; 
-  --texture-url: none; 
-  
-  /* NUEVA VARIABLE: Color base para el banner de audio */
-  --color-audio-orange: #e86c10; 
-  /* NUEVA VARIABLE: Color base para el icono del banner (se define en dark/light) */
-  --filter-icon-audio-banner: none; 
-  
-  /* 🚀 NUEVA VARIABLE: Color base para el banner de video (Morado del navbar #7a4ed4) */
-  --color-video-purple: #7a4ed4; 
+  --texture-blend-mode: overlay;
+  --texture-url: none;
+
+  --color-audio-orange: #e86c10;
+  --filter-icon-audio-banner: none;
+  --color-video-purple: #7a4ed4;
 }
 
 /* Tema Oscuro (Defecto) */
 [data-theme="dark"] {
-  --color-bg: #0a0a0a; 
-  --color-text: #f5f5f5; 
-  --color-accent: #cdda3e; 
-  /* 🚨 FIX TRANSPARENCIA: Opacidad final a 0.75 */
-  --color-bg-navbar: rgba(10, 10, 10, 0.75); 
+  --color-bg: #0a0a0a;
+  --color-text: #f5f5f5;
+  --color-accent: #cdda3e;
+  --color-bg-navbar: rgba(10, 10, 10, 0.75);
   --color-border-navbar: rgba(255, 255, 255, 0.05);
-  --color-logo-filter: brightness(0) invert(1); 
-  --color-bg-mobile-menu: rgba(0, 0, 0, 0.96); 
-  
+  --color-logo-filter: brightness(0) invert(1);
+  --color-bg-mobile-menu: rgba(0, 0, 0, 0.96);
+
   --color-audio-base: #e86c10;
   --color-video-base: #7a4ed4;
-  --color-audio-sub-tenue: #f0a068; 
-  --color-video-sub-tenue: #b5a4ee; 
+  --color-audio-sub-tenue: #f0a068;
+  --color-video-sub-tenue: #b5a4ee;
   --current-bg-image: var(--bg-url-dark);
 
-  /* 🚀 NUEVAS VARIABLES PARA AUDIO BANNER Y CARD */
-  --color-card-bg: #d6d0be; /* Fondo Card: Dark mode (#d6d0be) */
-  --color-text-card: #121212; /* Texto Card: Negro */
-  --filter-texture-audio-banner: invert(1); /* Invertir textura en Dark mode */
-  --color-text-audio-banner: #fff; /* Texto del Banner: Blanco */
-  --filter-icon-audio-banner: brightness(0) invert(1); /* Icono del banner blanco */
+  --color-card-bg: #d6d0be;
+  --color-text-card: #121212;
+  --filter-texture-audio-banner: invert(1);
+  --color-text-audio-banner: #fff;
+  --filter-icon-audio-banner: brightness(0) invert(1);
   --icon-drop-shadow: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   --text-shadow-strong: 0 0 10px rgba(0, 0, 0, 0.5);
-  
-  /* 🚀 NUEVAS VARIABLES PARA VIDEO BANNER */
+
   --filter-texture-video-banner: invert(1);
   --color-text-video-banner: #fff;
-  --filter-icon-video-banner: brightness(0) invert(1); 
+  --filter-icon-video-banner: brightness(0) invert(1);
 
-  /* 🚨 FIX 2: Remover filtro forzado en iconos de Card (se usará 'none' para respetar colores originales) */
-  --filter-icon-card: none; 
+  --filter-icon-card: none;
 }
 
 /* Tema Claro */
-[data-theme="light"] { 
+[data-theme="light"] {
   --color-bg: #f4f4f4;
   --color-text: #121212;
-  --color-accent: #99b335; 
-  /* 🚨 FIX TRANSPARENCIA: Opacidad final a 0.75 */
-  --color-bg-navbar: rgba(255, 255, 255, 0.75); 
+  --color-accent: #99b335;
+  --color-bg-navbar: rgba(255, 255, 255, 0.75);
   --color-border-navbar: rgba(0, 0, 0, 0.05);
-  --color-logo-filter: none; 
-  --color-bg-mobile-menu: rgba(255, 255, 255, 0.96); 
-  
+  --color-logo-filter: none;
+  --color-bg-mobile-menu: rgba(255, 255, 255, 0.96);
+
   --color-audio-base: #e86c10;
   --color-video-base: #7a4ed4;
-  --color-audio-sub-tenue: #d4630e; 
-  --color-video-sub-tenue: #6d45c5; 
+  --color-audio-sub-tenue: #d4630e;
+  --color-video-sub-tenue: #6d45c5;
   --current-bg-image: var(--bg-url-light);
 
-  /* 🚀 NUEVAS VARIABLES PARA AUDIO BANNER Y CARD */
-  --color-card-bg: #180420; /* Fondo Card: Light mode (#180420) */
-  --color-text-card: #f5f5f5; /* Texto Card: Blanco */
-  --filter-texture-audio-banner: none; /* No invertir textura en Light mode */
-  --color-text-audio-banner: #121212; /* Texto del Banner: Negro */
-  --filter-icon-audio-banner: none; /* Icono del banner negro */
+  --color-card-bg: #180420;
+  --color-text-card: #f5f5f5;
+  --filter-texture-audio-banner: none;
+  --color-text-audio-banner: #121212;
+  --filter-icon-audio-banner: none;
   --icon-drop-shadow: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
   --text-shadow-strong: 0 0 10px rgba(255, 255, 255, 0.5);
 
-  /* 🚀 NUEVAS VARIABLES PARA VIDEO BANNER */
   --filter-texture-video-banner: none;
   --color-text-video-banner: #121212;
-  --filter-icon-video-banner: none; 
+  --filter-icon-video-banner: none;
 
-  /* 🚨 FIX 2: Remover filtro forzado en iconos de Card (se usará 'none' para respetar colores originales) */
   --filter-icon-card: none;
 }
 
@@ -143,19 +127,19 @@ body {
   color: var(--color-text);
   transition: var(--transition);
   min-height: 200vh;
-  
-  /* IMPLEMENTACIÓN DEL FONDO DE PANTALLA COMPLETA con BEND MODE */
-  background-image: var(--current-bg-image); 
-  background-color: var(--color-bg);       
+
+  background-image: var(--current-bg-image);
+  background-color: var(--color-bg);
   background-blend-mode: var(--texture-blend-mode);
-  background-size: cover;                   
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Aplicar la nueva fuente a los títulos */
 h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
-  /* 🚀 FIX 4: Se usa Albertus Medium como fuente principal para títulos */
-  font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif; 
+  font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif;
 }

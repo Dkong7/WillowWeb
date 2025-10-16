@@ -4,13 +4,13 @@
 .video-banner-section {
   position: relative;
   width: 100%;
-  min-height: 120px; 
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: hidden;
   scroll-padding-top: 5rem;
-  margin-top: 2rem; /* Separación del componente anterior */
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -22,15 +22,15 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-
   background-image: url("/textura.png");
-  background-size: 60%; 
+  background-size: 60%;
   background-repeat: repeat;
-  background-position: center; 
-  
-  background-attachment: fixed; 
-
-  opacity: 0.8; 
+  background-position: center;
+  background-attachment: fixed;
+  /* 🛠️ FIX RENDIMIENTO: Forzar aceleración GPU para scroll fluido con parallax */
+  will-change: transform;
+  transform: translateZ(0);
+  opacity: 0.8;
   /* FILTRO DINÁMICO: Aplica la inversión según el tema, usando la variable de video */
   filter: var(--filter-texture-video-banner);
   transition: filter 0.3s ease;
@@ -43,104 +43,98 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* Sobre la textura, debajo del contenido */
-  /* Usa la nueva variable de color purpura */
-  background-color: var(--color-video-purple); 
-  mix-blend-mode: overlay; 
-  pointer-events: none; 
+  z-index: 2;
+  background-color: var(--color-video-purple);
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
 /* ================== CAPA DE CONTENIDO (Texto y Logo) ================== */
 .video-banner-content {
   position: relative;
-  z-index: 10; 
+  z-index: 10;
   width: 100%;
-  min-height: 120px; 
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px; 
+  padding: 15px 20px;
 }
 
 /* Contenedor para alinear Icono y Título en horizontal y centrados */
 .video-banner-header {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  gap: 25px; 
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
   /* 🚀 ANIMACIÓN: Aplicar la animación al contenedor del icono y título (Reutiliza slideUp) */
   animation: slideUp 0.8s ease-out forwards;
   opacity: 0;
 }
 
-
 /* ================== ESTILOS DE CONTENIDO ================== */
 .video-banner-icon img {
-  width: 65px; 
+  width: 65px;
   height: 65px;
-  margin: 0; 
-  
+  margin: 0;
   /* Filtro dinámico (blanco/negro) + Sombra dinámica, usando la variable de video */
-  filter: var(--filter-icon-video-banner) var(--icon-drop-shadow); 
+  filter: var(--filter-icon-video-banner) var(--icon-drop-shadow);
   transition: filter 0.3s ease;
 }
 
 .video-banner-title {
   font-family: 'Albertus Medium', sans-serif;
-  font-size: 3.2rem; 
-  line-height: 1.1; 
-  /* Color dinámico (blanco/negro), usando la variable de video */
-  color: var(--color-text-video-banner); 
+  font-size: 3.2rem;
+  line-height: 1.1;
+  color: var(--color-text-video-banner);
   text-align: center;
   margin: 0;
   text-transform: uppercase;
-  text-shadow: var(--text-shadow-strong); 
-  /* 🚀 ANIMACIÓN/TRANSICIÓN: Agregar transición para el hover */
+  text-shadow: var(--text-shadow-strong);
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
   cursor: pointer;
 }
 
 /* 🚀 INTERACCIÓN: Efecto de Hover en el título */
 .video-banner-title:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
-
 
 /* 🚀 KEYFRAMES PARA LA ANIMACIÓN DE ENTRADA (Mismo que AudioBanner) */
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 
 /* ================== RESPONSIVE BÁSICO (Ajustado) ================== */
 @media (max-width: 768px) {
   .video-banner-header {
-    flex-direction: row; 
+    flex-direction: row;
     gap: 15px;
   }
   .video-banner-title {
-    font-size: 2.2rem; 
+    font-size: 2.2rem;
   }
   .video-banner-icon img {
-    width: 40px; 
+    width: 40px;
     height: 40px;
   }
 }
+
 @media (max-width: 600px) {
   .video-banner-section,
   .video-banner-content {
-    min-height: 80px; 
+    min-height: 80px;
   }
   .video-banner-title {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
   }
   .video-banner-icon img {
     width: 35px;
