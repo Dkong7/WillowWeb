@@ -5,7 +5,8 @@
 /* Fuente Regular */
 @font-face {
   font-family: 'Espiritu Regular';
-  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-.otf') format('opentype');
+  /* FIX PATH: Simplificado para mejor compatibilidad en desarrollo local (Vite) */
+  src: url('/fonts/fonnts.com-Espiritu-.otf') format('opentype'); 
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,25 +15,38 @@
 /* Fuente Condensed */
 @font-face {
   font-family: 'Espiritu Condensed';
-  src: url('/WillowWeb/fonts/fonnts.com-Espiritu-Condensed.otf') format('opentype');
+  /* FIX PATH */
+  src: url('/fonts/fonnts.com-Espiritu-Condensed.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* 🚨 FIX FUENTE: Advent Pro (Corregido el nombre del archivo) */
+/* FIX FUENTE: Advent Pro Regular */
 @font-face {
   font-family: 'Advent Pro';
-  src: url('/WillowWeb/fonts/AdventPro-Regular.ttf') format('truetype');
-  font-weight: 400;
+  /* FIX PATH */
+  src: url('/fonts/AdventPro-Regular.ttf') format('truetype');
+  font-weight: 400; 
   font-style: normal;
   font-display: swap;
 }
 
-/* 🚀 FIX FUENTE TÍTULOS: Albertus Medium (.ttf) */
+/* FIX FUENTE: Advent Pro Medium (Para el cuerpo de texto) */
+@font-face {
+  font-family: 'Advent Pro';
+  /* FIX PATH */
+  src: url('/fonts/AdventPro-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium, el peso para el cuerpo del texto */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FIX FUENTE TÍTULOS: Albertus Medium (.ttf) */
 @font-face {
   font-family: 'Albertus Medium';
-  src: url('/WillowWeb/fonts/albertusmedium_regular.ttf') format('truetype');
+  /* FIX PATH */
+  src: url('/fonts/albertusmedium_regular.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -44,8 +58,9 @@
 :root {
   --transition: 0.3s ease;
   font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
+  --font-size-base: 17px; /* FIX: Reducido de 19px a 17px */
+  font-size: var(--font-size-base);
+  line-height: 1.6;
 
   --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm");
   --bg-url-dark: url("/WillowWeb/navbar-hero-dark.wbm");
@@ -54,7 +69,7 @@
 
   --color-audio-orange: #e86c10;
   --filter-icon-audio-banner: none;
-  --color-video-purple: #7a4ed4;
+  --color-video-purple: #7a4ed4; 
 }
 
 /* Tema Oscuro (Defecto) */
@@ -63,6 +78,8 @@
   --color-text: #f5f5f5;
   --color-accent: #cdda3e;
   --color-bg-navbar: rgba(10, 10, 10, 0.75);
+  /* FIX OPACIDAD: Nueva variable para el fondo del modal con menor opacidad */
+  --color-bg-modal: rgba(10, 10, 10, 0.55); 
   --color-border-navbar: rgba(255, 255, 255, 0.05);
   --color-logo-filter: brightness(0) invert(1);
   --color-bg-mobile-menu: rgba(0, 0, 0, 0.96);
@@ -85,7 +102,7 @@
   --color-text-video-banner: #fff;
   --filter-icon-video-banner: brightness(0) invert(1);
 
-  --filter-icon-card: none;
+  --filter-icon-card: none; 
 }
 
 /* Tema Claro */
@@ -94,6 +111,8 @@
   --color-text: #121212;
   --color-accent: #99b335;
   --color-bg-navbar: rgba(255, 255, 255, 0.75);
+  /* FIX OPACIDAD: Nueva variable para el fondo del modal con menor opacidad */
+  --color-bg-modal: rgba(255, 255, 255, 0.55);
   --color-border-navbar: rgba(0, 0, 0, 0.05);
   --color-logo-filter: none;
   --color-bg-mobile-menu: rgba(255, 255, 255, 0.96);
@@ -116,12 +135,17 @@
   --color-text-video-banner: #121212;
   --filter-icon-video-banner: none;
 
-  --filter-icon-card: none;
+  --filter-icon-card: none; 
 }
 
 /* ------------------------------------------- */
 
 body {
+  /* FIX FUENTE CUERPO: Asignamos 'Advent Pro' y el peso 500 para usar AdventPro-Medium.ttf */
+  font-family: 'Advent Pro', sans-serif; 
+  font-weight: 500; 
+  font-size: var(--font-size-base);
+  line-height: 1.6;
   margin: 0;
   padding: 0;
   color: var(--color-text);
@@ -141,5 +165,28 @@ body {
 
 /* Aplicar la nueva fuente a los títulos */
 h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
+  /* FIX FUENTE TÍTULOS: Usa Albertus Medium */
   font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif;
+}
+
+/* Global Reset (Continuación) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

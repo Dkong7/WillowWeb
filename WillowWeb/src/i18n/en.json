@@ -16,7 +16,7 @@
   "subtitle": "Music · Design · Interactive Experiences",
   
   "hero_welcome_title": "Welcome",
-  "hero_welcome_copy": "audio, video and transmedia experiences",
+  "hero_welcome_copy": "AUDIO, VIDEO AND TRANSMEDIA EXPERIENCES",
   "explore": "Explore Willow Tree",
   "next": "Next",
   "prev": "Previous",
@@ -25,6 +25,8 @@
     {
       "id": 1,
       "type": "video",
+      "url_es": "https://www.youtube.com/embed/BUrzl2owVkg?autoplay=1&mute=1&loop=1&playlist=BUrzl2owVkg&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1",
+      "url_en": "https://www.youtube.com/embed/zNctbIsrNGM?autoplay=1&mute=1&loop=1&playlist=zNctbIsrNGM&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1",
       "url": "https://www.youtube.com/embed/Db1P2ZMiVEs?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=Db1P2ZMiVEs&playsinline=1",
       "title": "Willow Tree",
       "subtitle": "Audio, Video and Transmedia",
@@ -154,7 +156,7 @@
   "service_video_3d_title": "🗿 3D MODELING AND RENDERING",
   "service_video_3d_copy": "3D modeling, texturing, lighting, and photorealistic rendering services for products, architecture, and video game environments.",
   "portfolio_video_3d_desc_title": "3D Object and Environment Modeling",
-  "portfolio_video_3d_desc_body": "We build worlds and objects in three dimensions with a high level of detail. From architectural visualizations and product prototypes to assets ready for video game engines (Unity/Unreal). Precision is our foundation, creativity our engine.",
+  "portfolio_video_3d_desc_body": "We build worlds and objects in three dimensions with a high level of detail. From architectural visualizations and product prototypes to assets ready for video game engines (Unity/Unreal). Precision is our foundation, creatividad nuestro engine.",
   "portfolio_video_3d_video_url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
 
   "service_video_product_title": "🛍️ PRODUCT VIDEO AND E-COMMERCE",

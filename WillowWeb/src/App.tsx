@@ -1,42 +1,42 @@
-import { useState, useEffect } from "react";
-import "./index.css";
-// 🚀 IMPORTACIONES: Router y Page components
+import { useState, useEffect, lazy, Suspense } from "react";
+// 🚨 FIX: Eliminado HashRouter import, ya que el componente <Router> se usa en main.tsx
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 
 import Hero from "./components/Hero/Hero"; 
-// 🚨 FIX: Importamos las páginas finales (asumiendo que las creaste en src/pages/)
-import AboutPage from "./pages/AboutPage/AboutPage"; 
-import ContactPage from "./pages/ContactPage/ContactPage"; 
-
 import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices"; 
+import VideoBanner from "./components/VideoBanner/VideoBanner";
+import Clients from "./components/Clients/Clients"; 
+import Footer from "./components/Footer/Footer"; 
+import './i18n'; 
+// import './App.css'; // Asume que este archivo no existe o no tiene dependencias críticas de App.tsx
 
-// 🚀 NUEVAS IMPORTACIONES
-import VideoBanner from "./components/VideoBanner/VideoBanner"; // Nuevo (Casing correcto)
-import VideoServices from "./components/VideoServices/VideoServices"; // Nuevo
-import Clients from "./components/Clients/Clients"; // Nuevo
-import Footer from "./components/Footer/Footer"; // Nuevo
+// 🚨 OPTIMIZACIÓN: Lazy Loading para componentes de página/sección grandes o menos visitados
+const AboutPage = lazy(() => import("./pages/AboutPage/AboutPage")); 
+const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage")); 
+// Aplicamos lazy loading a VideoServices para mejorar la lentitud
+const LazyVideoServices = lazy(() => import("./components/VideoServices/VideoServices")); 
 
-// 🆕 COMPONENTE: Home Page (Se añade VideoBanner, VideoServices, y Clients)
+// 🆕 COMPONENTE: Home Page (Estructura de la Landing Page)
 const HomePage = () => (
-    <>
-        <Hero /> 
-        {/* Sección Audio */}
-        <AudioBanner />
-        <AudioServices />
-        
-        {/* Sección Video (Punto 4 y 5) */}
-        <VideoBanner />
-        <VideoServices />
-        
-        {/* Sección Clientes (Punto 6) */}
-        <Clients />
-        
-        {/* Secciones de Anclaje restantes (se mantiene solo para compatibilidad, Clients ya tiene el id) */}
-        {/* <section id="clients" style={{ minHeight: '10vh' }}></section> */} 
-        {/* ❌ ELIMINADO: Se quita la ancla de #team */}
-    </>
+    <>
+        <Hero /> 
+        
+        {/* Sección Audio */}
+        <AudioBanner />
+        <AudioServices />
+        
+        {/* Sección Video */}
+        <VideoBanner />
+        {/* Usamos Suspense para mostrar un fallback mientras VideoServices carga (Solución de Lentitud) */}
+        <Suspense fallback={<div className="loading-message">Loading Video Services...</div>}>
+            <LazyVideoServices /> 
+        </Suspense>
+        
+        {/* Sección Clientes */}
+        <Clients />
+    </>
 );
 
 
@@ -54,23 +54,24 @@ function App() {
   }, [theme]);
 
   return (
+    // 🚨 FIX: Eliminamos el componente <Router> duplicado.
     <div className="App">
-      {/* Pasamos el estado y la función de toggle al Navbar (Visible en todas las rutas) */}
       <Navbar currentTheme={theme} toggleTheme={toggleTheme} />
       
-      {/* 🚀 RUTAS: Ahora usan los componentes de página importados */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        {/* Opcional: Ruta 404 */}
-        <Route path="*" element={<h1>404: No Encontrado</h1>} />
-      </Routes>
+        {/* 🚀 RUTAS: Usamos Suspense para el enrutamiento */}
+        <Suspense fallback={<div className="loading-screen">Loading Page...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<h1>404: Not Found</h1>} />
+          </Routes>
+        </Suspense>
       
-      {/* 🚀 FOOTER (Punto 7) - Visible en todas las rutas */}
       <Footer /> 
 
     </div>
+    // 🚨 FIX: El componente App ya no devuelve <Router>
   );
 }
 

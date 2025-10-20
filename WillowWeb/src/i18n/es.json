@@ -16,7 +16,7 @@
   "subtitle": "Música · Diseño · Experiencias Interactivas",
   
   "hero_welcome_title": "Bienvenidos",
-  "hero_welcome_copy": "audio, video y experiencias transmedia",
+  "hero_welcome_copy": "AUDIO, VÍDEO Y EXPERIENCIAS TRANSMEDIA",
   "explore": "Explora Willow Tree",
   "next": "Siguiente",
   "prev": "Anterior",
@@ -25,10 +25,12 @@
     {
       "id": 1,
       "type": "video",
+      "url_es": "https://www.youtube.com/embed/BUrzl2owVkg?autoplay=1&mute=1&loop=1&playlist=BUrzl2owVkg&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1",
+      "url_en": "https://www.youtube.com/embed/zNctbIsrNGM?autoplay=1&mute=1&loop=1&playlist=zNctbIsrNGM&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1",
       "url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=x007n2bxCeI&playsinline=1",
-      "title": "Willow Tree",
-      "subtitle": "Audio, Video y Transmedia",
-      "button_text": "Continuar",
+      "title": "Un Árbol de Posibilidades",
+      "subtitle": "Creamos experiencias memorables a través de la animación y el sonido",
+      "button_text": "Descubre más",
       "link": "#about"
     },
     {

@@ -12,6 +12,8 @@ interface Slide {
   subtitle: string;
   button_text?: string;
   link: string;
+  url_es?: string; // Propiedad para URL en español
+  url_en?: string; // Propiedad para URL en inglés
 }
 
 export default function Hero() {
@@ -38,8 +40,7 @@ export default function Hero() {
   const renderWelcomeCard = () => {
     if (currentSlide !== 0 || !showWelcomeCard) return null;
 
-    // 🚨 FIX LOGO LANGUAGE: Usa 'es' si el idioma empieza con 'es', si no 'en'.
-    // Esto asegura que si el sistema está en español, use el logo en español.
+    // FIX LOGO LANGUAGE: Usa 'es' si el idioma empieza con 'es', si no 'en'.
     const logoLang = i18n.language.startsWith('es') ? 'es' : 'en';
     const logoSrc = `${basePath}logo-hero-${logoLang}.svg`;
 
@@ -56,8 +57,9 @@ export default function Hero() {
         >
           &#10005;
         </button>
-        <h1 className="welcome-title-text">{t('hero_welcome_title')}</h1>
+        {/* FIX MOBILE ORDER: Se coloca la imagen primero para el flujo responsive (imagen, luego texto) */}
         <img src={logoSrc} alt="Willow Tree Logo Hero" className="welcome-logo" />
+        <h1 className="welcome-title-text">{t('hero_welcome_title')}</h1>
         <p className="welcome-subtitle-copy">{capitalizedCopy}</p> 
         <a 
           href="#about" 
@@ -74,8 +76,13 @@ export default function Hero() {
   const renderSlide = (slide: Slide, index: number) => {
       const slideTypeClass = slide.type === 'video' ? 'video-slide' : 'info-slide';
       
-      const videoSrc = slide.url; // 🚨 FIX AUTOPLAY: Carga la URL directamente
+      let videoSrc = slide.url; 
 
+      // FIX VIDEO URL DYNAMIC: Si es el slide 0, usa la URL traducida
+      if (index === 0 && slide.type === 'video') {
+          videoSrc = i18n.language.startsWith('es') ? slide.url_es : slide.url_en;
+      }
+      
       const audioIconSrc = `${basePath}icono-audio.svg`;
       const videoIconSrc = `${basePath}icono-video.svg`;
       const mediaIconSrc = `${basePath}icono-media.svg`;
@@ -87,7 +94,8 @@ export default function Hero() {
             <div className="video-container">
               <iframe
                 src={videoSrc} 
-                allow="autoplay; muted; encrypted-media; gyroscope; picture-in-picture"
+                // FIX: El atributo allow solo necesita 'autoplay', 'encrypted-media', etc. 'muted' es un parámetro de la URL.
+                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 frameBorder="0"
                 title={slide.title}
@@ -113,7 +121,6 @@ export default function Hero() {
                 {index === 2 && <img src={videoIconSrc} alt="Video Icon" className="hero-title-icon" />}
                 {index === 3 && <img src={mediaIconSrc} alt="Media Icon" className="hero-title-icon" />}
                 
-                {/* 🚨 FIX DUPLICACIÓN: El Título se renderiza UNA SOLA VEZ, al final del grupo. */}
                 <h1 className="hero-title">{slide.title}</h1>
 
               </div>
