@@ -5,7 +5,7 @@
 /* Fuente Regular */
 @font-face {
   font-family: 'Espiritu Regular';
-  /* FIX PATH: Ruta simple /fonts/ para compatibilidad Vite/GitHub Pages */
+  /* FIX PATH: Ruta simple /fonts/ para compatibilidad con la base '/' */
   src: url('/fonts/fonnts.com-Espiritu-.otf') format('opentype'); 
   font-weight: 400;
   font-style: normal;
@@ -58,10 +58,11 @@
 :root {
   --transition: 0.3s ease;
   font-family: 'Advent Pro', 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-size-base: 17px; /* FIX: Reducido a 17px */
+  --font-size-base: 17px; 
   font-size: var(--font-size-base);
   line-height: 1.6;
 
+  /* Estas rutas DEBEN incluir el nombre del repositorio si se usan assets que no son bundleados */
   --bg-url-light: url("/WillowWeb/navbar-hero-light.wbm");
   --bg-url-dark: url("/WillowWeb/navbar-hero-dark.wbm");
   --texture-blend-mode: overlay;
@@ -78,7 +79,7 @@
   --color-text: #f5f5f5;
   --color-accent: #cdda3e;
   --color-bg-navbar: rgba(10, 10, 10, 0.75);
-  /* FIX OPACIDAD: Nueva variable para el fondo del modal con menor opacidad */
+  /* FIX OPACIDAD */
   --color-bg-modal: rgba(10, 10, 10, 0.55); 
   --color-border-navbar: rgba(255, 255, 255, 0.05);
   --color-logo-filter: brightness(0) invert(1);
@@ -111,7 +112,6 @@
   --color-text: #121212;
   --color-accent: #99b335;
   --color-bg-navbar: rgba(255, 255, 255, 0.75);
-  /* FIX OPACIDAD: Nueva variable para el fondo del modal con menor opacidad */
   --color-bg-modal: rgba(255, 255, 255, 0.55);
   --color-border-navbar: rgba(0, 0, 0, 0.05);
   --color-logo-filter: none;

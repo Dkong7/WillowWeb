@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // AJUSTADO: Se eliminó '/WillowWeb/' para funcionar con el dominio personalizado
+  base: '/', // ESTO ESTÁ CORRECTO para www.thisiswillowtree.com
 })
