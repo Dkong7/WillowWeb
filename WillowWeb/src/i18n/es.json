@@ -16,7 +16,7 @@
   "subtitle": "Música · Diseño · Experiencias Interactivas",
   
   "hero_welcome_title": "Bienvenidos",
-  "hero_welcome_copy": "AUDIO, VÍDEO Y EXPERIENCIAS TRANSMEDIA",
+  "hero_welcome_copy": "AUDIO, VÍDEO Y\nEXPERIENCIAS TRANSMEDIA",
   "explore": "Explora Willow Tree",
   "next": "Siguiente",
   "prev": "Anterior",
@@ -36,7 +36,7 @@
     {
       "id": 2,
       "type": "video",
-      "url": "https://www.youtube.com/embed/veQAn_VYnvc?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=veQAn_VYnvc&playsinline=1",
+      "url": "https://www.youtube.com/embed/wUugoSEayCc?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=wUugoSEayCc&playsinline=1",
       "title": "Producción Musical",
       "subtitle": "Producción musical original para artistas y marcas.",
       "button_text": "Ver proyectos",
@@ -45,20 +45,11 @@
     {
       "id": 3,
       "type": "video",
-      "url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=JJtyZ3a8Lz8&playsinline=1",
+      "url": "https://www.youtube.com/embed/T1zvK0cPIGc?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=T1zvK0cPIGc&playsinline=1",
       "title": "Producción Audiovisual",
       "subtitle": "Integramos música, imagen y narrativa para cada proyecto.",
       "button_text": "Ver portafolio",
       "link": "#video-prod"
-    },
-    {
-      "id": 4,
-      "type": "video",
-      "url": "https://www.youtube.com/embed/4QrU03qKYRA?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=4QrU03qKYRA&playsinline=1",
-      "title": "Innovación & Nuevos Medios",
-      "subtitle": "Exploramos nuevas formas de crear con tecnología y arte.",
-      "button_text": "Ver colaboraciones",
-      "link": "#collaborations"
     }
   ],
   

@@ -1,5 +1,3 @@
-/* src/components/AudioBanner/AudioBanner.css */
-
 /* ================== LAYOUT GENERAL ================== */
 .audio-banner-section {
   position: relative;
@@ -9,7 +7,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden; 
-  /* FIX: Eliminar margin-top (para acercarse a About) y añadir margin-bottom (para separarse de AudioServices) */
   scroll-padding-top: 5rem;
   margin-top: 0;
   margin-bottom: 2rem;
@@ -23,130 +20,120 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-
   background-image: url("/textura.png");
-  /* Se reduce el tamaño al 60% del contenedor */
-  background-size: 60%; 
-  /* Se permite la repetición para que cubra el banner con el patrón más pequeño */
+  background-size: 60%;
   background-repeat: repeat;
-  background-position: center; 
-  
-  background-attachment: fixed; 
-
-  opacity: 0.8; 
-  /* FILTRO DINÁMICO: Aplica la inversión según el tema */
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.8;
   filter: var(--filter-texture-audio-banner);
   transition: filter 0.3s ease;
 }
 
-/* 🚨 CAPA DE COLOR NARANJA con mix-blend-mode */
+/* 🚨 CAPA DE COLOR NARANJA */
 .audio-banner-color-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* Sobre la textura, debajo del contenido */
+  z-index: 2;
   background-color: var(--color-audio-orange); 
-  mix-blend-mode: overlay; /* 'overlay' para armonía naranja sutil */
-  pointer-events: none; 
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
-/* ================== CAPA DE CONTENIDO (Texto y Logo) ================== */
+/* ================== CAPA DE CONTENIDO ================== */
 .audio-banner-content {
   position: relative;
-  /* El z-index alto garantiza que el texto/icono estén siempre al frente y sin mezcla */
-  z-index: 10; 
+  z-index: 10;
   width: 100%;
-  min-height: 120px; 
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px; 
+  padding: 15px 20px;
 }
 
-/* Contenedor para alinear Icono y Título en horizontal y centrados */
+/* Contenedor del icono y texto */
 .audio-banner-header {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  gap: 25px; 
-  /* 🚀 ANIMACIÓN: Aplicar la animación al contenedor del icono y título */
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
   animation: slideUp 0.8s ease-out forwards;
-  opacity: 0; /* Empieza invisible para el efecto de fade-in */
+  opacity: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: scale(1);
 }
 
-
-/* ================== ESTILOS DE CONTENIDO ================== */
+/* ================== CONTENIDO ================== */
 .audio-banner-icon img {
-  /* TAMAÑO MANTENIDO: 65px */
-  width: 65px; 
+  width: 65px;
   height: 65px;
-  margin: 0; 
-  
-  /* Filtro dinámico (blanco/negro) + Sombra dinámica */
-  filter: var(--filter-icon-audio-banner) var(--icon-drop-shadow); 
-  transition: filter 0.3s ease;
+  margin: 0;
+  filter: var(--filter-icon-audio-banner) var(--icon-drop-shadow);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .audio-banner-title {
-  /* 🚨 CAMBIO DE FUENTE: 'Espiritu Regular' -> 'Albertus Medium' */
   font-family: 'Albertus Medium', sans-serif;
-  font-size: 3.2rem; 
-  line-height: 1.1; 
-  /* Color dinámico (blanco/negro) */
-  color: var(--color-text-audio-banner); 
+  font-size: 3.2rem;
+  line-height: 1.1;
+  color: var(--color-text-audio-banner);
   text-align: center;
   margin: 0;
   text-transform: uppercase;
-  /* Sombra de texto dinámica que lo hace sobresalir */
-  text-shadow: var(--text-shadow-strong); 
-  /* 🚀 ANIMACIÓN/TRANSICIÓN: Agregar transición para el hover */
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
-  cursor: pointer; /* Indica que es interactivo */
+  text-shadow: var(--text-shadow-strong);
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* 🚀 INTERACCIÓN: Efecto de Hover en el título */
-.audio-banner-title:hover {
-    transform: scale(1.05);
+/* 🚀 EFECTO HOVER UNIFICADO (texto + icono) */
+.audio-banner-header:hover {
+  transform: scale(1.1);
+}
+.audio-banner-header:hover .audio-banner-icon img {
+  transform: scale(1.15);
+}
+.audio-banner-header:hover .audio-banner-title {
+  transform: scale(1.05);
 }
 
-
-/* 🚀 KEYFRAMES PARA LA ANIMACIÓN DE ENTRADA */
+/* ANIMACIÓN DE ENTRADA */
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-/* ================== RESPONSIVE BÁSICO (Ajustado) ================== */
+/* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
   .audio-banner-header {
-    flex-direction: row; 
     gap: 15px;
   }
   .audio-banner-title {
-    font-size: 2.2rem; 
+    font-size: 2.2rem;
   }
   .audio-banner-icon img {
-    width: 40px; 
+    width: 40px;
     height: 40px;
   }
 }
+
 @media (max-width: 600px) {
   .audio-banner-section,
   .audio-banner-content {
-    min-height: 80px; 
+    min-height: 80px;
   }
   .audio-banner-title {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
   }
   .audio-banner-icon img {
     width: 35px;
