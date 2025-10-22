@@ -1,0 +1,353 @@
+/* src/components/VideoServices/VideoServices.css */
+
+.music-production-page-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 5rem auto; /* Espacio para el navbar y al final */
+  padding: 0 2rem;
+  color: var(--color-text);
+}
+
+.music-page-header {
+  font-family: 'Espiritu Condensed', sans-serif;
+  font-size: 3rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* --- Player Section Layout (Duplicated and Inverted) --- */
+
+.artist-section {
+  margin-bottom: 6rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--color-border-navbar);
+  /* Usa variables locales pasadas por JS */
+  --player-color-base: var(--default-player-color, #7a4ed4);
+  --player-color-rgb-shadow: var(--player-color-rgb, 122, 78, 212);
+  --player-sub-tone: var(--player-sub-tenue, rgba(122, 78, 212, 0.7));
+}
+
+/* Flex container for the two columns. Controls the inversion. */
+.artist-layout {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+/* Inversion for the second player (Leo Jaramillo) */
+.artist-section.inverted .artist-layout {
+  flex-direction: row-reverse; /* Cambia el orden de las columnas */
+}
+
+/* --- Player Column (Left/Right) --- */
+
+.player-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-card-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  max-width: 500px;
+  height: fit-content;
+}
+
+.album-art-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(var(--player-color-rgb-shadow), 0.7);
+  overflow: hidden;
+}
+
+.album-art {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Controles de Audio con jerarquia y espaciado ajustado */
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+
+.player-controls.compact {
+  gap: 6px;
+}
+
+/* botones base */
+.control-button {
+  background: var(--player-color-base);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.12s, transform 0.08s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.control-button.prev,
+.control-button.next {
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+}
+
+.control-button.play-pause {
+  width: 58px;
+  height: 58px;
+  font-size: 1.5rem;
+  margin: 0 2px;
+}
+
+.control-button.repeat {
+  font-size: 0.85rem;
+  width: 30px;
+  height: 30px;
+}
+
+.control-button.active {
+  background-color: var(--color-accent);
+}
+
+.control-button:hover {
+  transform: scale(1.05);
+  background-color: var(--player-sub-tone);
+}
+
+.volume-inline-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin-left: 6px;
+}
+
+.control-button.volume-toggle {
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+}
+
+.volume-slider-popup {
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  width: 110px;
+  accent-color: var(--player-color-base);
+  -webkit-appearance: none;
+  background: transparent;
+  height: 6px;
+  display: block;
+  z-index: 30;
+}
+
+.volume-slider-popup::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--player-color-base);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider-popup::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--player-color-base);
+}
+
+.progress-bar {
+  width: 85%;
+  margin: 0.5rem 0 1rem 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--color-border-navbar);
+  border-radius: 6px;
+  outline: none;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--player-color-base);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--player-color-base);
+}
+
+.track-list-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.track-list-header {
+  font-family: 'Espiritu Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: var(--player-color-base);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border-navbar);
+}
+
+.track-list {
+  list-style: none;
+  padding: 0;
+  font-family: 'Advent Pro', sans-serif;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.track-item {
+  padding: 0.5rem 10px;
+  cursor: pointer;
+}
+
+.track-item.active {
+  color: var(--player-color-base);
+  font-weight: 600;
+}
+
+.info-column {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding-right: 1rem;
+  overflow-y: visible;
+}
+
+.artist-name-title {
+  font-family: 'Espiritu Regular', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.video-title-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.leo-title-right {
+  font-family: 'Espiritu Regular', sans-serif;
+  font-size: 2.4rem;
+  margin: 0;
+  padding-right: 0.25rem;
+}
+
+.music-title-info {
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.description-container {
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.description-subtitle {
+  font-family: 'Espiritu Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--color-border-navbar);
+}
+
+@media (max-width: 900px) {
+  .music-production-page-container {
+    padding: 0 1rem;
+  }
+
+  .music-page-header {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .artist-section {
+    padding: 1rem 0;
+  }
+
+  .artist-layout,
+  .artist-section.inverted .artist-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .player-column {
+    width: 100%;
+    max-width: none;
+  }
+
+  .info-column {
+    padding-right: 0;
+  }
+
+  .artist-name-title {
+    font-size: 2.5rem;
+  }
+
+  .volume-slider-popup {
+    bottom: 56px;
+    transform: translateX(-50%) rotate(-90deg);
+    width: 90px;
+  }
+
+  .progress-bar {
+    width: 100%;
+  }
+}

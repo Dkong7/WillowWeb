@@ -1,0 +1,375 @@
+/* src/pages/MusicProductionPage/MusicProductionPage.css */
+
+/* ANIMACION DE DESTELLO TITILANTE */
+@keyframes glowing-border-anim {
+    0% {
+        box-shadow: 0 0 5px var(--player-color-base), 0 0 10px var(--player-color-base);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--player-color-base);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--player-color-base), 0 0 10px var(--player-color-base);
+    }
+}
+
+.music-production-page-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    color: var(--color-text);
+}
+
+.music-page-header {
+    font-family: 'Espiritu Condensed', sans-serif;
+    font-size: 3rem;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* --- ESTILOS DE NAVEGACIÓN Y MODAL --- */
+
+/* AMPLIACION DEL TAMAÑO DEL MODAL */
+.music-production-page-container.modal-view {
+    max-width: 95vw; 
+    width: 95vw;
+    margin: 5rem auto;
+    padding: 0; 
+}
+
+.artist-modal-controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto 3rem auto;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.modal-artist-nav-title {
+    font-family: 'Albertus Medium', sans-serif; 
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    line-height: 1.2;
+    flex-grow: 1; 
+}
+
+/* Botones de navegación (solo iconos) */
+.modal-nav-button {
+    background-color: var(--player-color-base); 
+    color: var(--color-bg);
+    border-radius: 50px;
+    padding: 0;
+    font-size: 1.2rem; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.3s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DESTELLO TITILANTE - Solo se aplica al botón de siguiente si no ha navegado */
+.modal-nav-button.glowing-border {
+    box-shadow: 0 0 5px var(--player-color-base), 0 0 10px var(--player-color-base);
+    animation: glowing-border-anim 1.5s infinite alternate;
+}
+.modal-nav-button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 15px var(--player-color-base); 
+}
+.modal-nav-button:not(.glowing-border) {
+    animation: none;
+}
+
+/* --- Player Section Layout --- */
+.artist-section {
+    position: relative;
+    margin-bottom: 0; 
+    padding: 4rem 3rem; 
+    border: 1px solid var(--color-border-navbar);
+    border-radius: 12px;
+    background: var(--modal-bg-gradient), var(--color-card-bg); 
+    background-size: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --player-color-base: var(--default-player-color, #7a4ed4);
+}
+
+/* Flex container */
+.artist-layout {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Inverted layout for second artist */
+.artist-section.inverted .artist-layout {
+    flex-direction: row-reverse;
+}
+
+/* --- Columna de Información (Video y Texto) --- */
+.info-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+    overflow-y: visible;
+}
+
+/* Contenedor del video */
+.video-player-container {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    padding-top: 56.25%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.video-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Video wrapper */
+.video-wrapper {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.video-wrapper .ytp-cued-thumbnail-overlay-image {
+    background-size: cover !important; 
+    object-fit: cover !important;
+}
+
+/* --- Player Column --- */
+.player-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    max-width: 500px;
+    height: fit-content;
+}
+
+/* Progress bar */
+.progress-bar {
+    width: 100%;
+    margin: 0.6rem 0 0.9rem 0;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: var(--player-color-base); 
+    filter: brightness(1.5);
+    border-radius: 4px;
+    outline: none;
+}
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--player-color-base);
+    filter: brightness(1.2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+.progress-bar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--player-color-base);
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+/* Player controls compact */
+.player-controls.compact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 1rem;
+    padding: 0 15px;
+}
+
+/* Volume inline wrapper */
+.volume-inline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 4px;
+}
+
+/* Volume popup */
+.volume-popup {
+    position: absolute;
+    bottom: -50px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border-navbar);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 50;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 40px;
+}
+
+/* Slider inside popup */
+.volume-slider-popup {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: var(--player-color-base);
+    filter: brightness(1.5);
+    border-radius: 4px;
+}
+.volume-slider-popup::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--player-color-base);
+    filter: brightness(1.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.volume-slider-popup::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--player-color-base);
+    filter: brightness(1.2);
+}
+
+/* Artist Title y Subtitulo */
+.artist-name-title {
+    font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif;
+    font-size: 2.4rem;
+    margin-bottom: 0; 
+    line-height: 1.05;
+    display: block;
+    width: 100%;
+    color: var(--color-accent) !important; 
+    text-shadow: var(--text-shadow-close-black);
+}
+.artist-subtitle-genres {
+    display: block;
+    font-size: 1.2rem;
+    font-family: 'Advent Pro', sans-serif;
+    color: var(--color-accent) !important; 
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    text-shadow: var(--text-shadow-close-black);
+}
+
+/* Social prompt */
+.social-follow-prompt {
+    color: var(--color-text-card) !important; 
+    font-weight: 700;
+}
+
+/* Description */
+.description-subtitle {
+    text-align: center;
+}
+.formatted-description {
+    line-height: 1.5;
+    font-size: 1rem;
+    text-align: center; 
+}
+.formatted-description p {
+    text-align: center;
+}
+.formatted-description li {
+    text-align: left;
+    margin: 0 auto 0.5rem 1.5rem; 
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .music-production-page-container.modal-view {
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+    .artist-section {
+        padding: 2rem 1rem;
+    }
+    .artist-modal-controls-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0 auto 2rem auto;
+    }
+    .modal-artist-nav-title {
+        font-size: 1.2rem;
+        white-space: normal;
+        order: -1;
+    }
+    .modal-nav-button {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+    }
+    .artist-layout,
+    .artist-section.inverted .artist-layout {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    .player-column {
+        flex: 1;
+        width: 100%;
+        max-width: none;
+    }
+    .info-column {
+        flex: 1;
+        padding-right: 0;
+    }
+    .video-player-container {
+        width: 100%;
+    }
+    .volume-popup {
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .progress-bar {
+        width: 100%;
+    }
+}
+
+/* Global variables */
+:root {
+    --color-bg: #ffffff;
+    --color-text: #111111;
+    --color-card-bg: #f8f8f8;
+    --color-border-navbar: #e6e6e6;
+    --color-accent: #7a4ed4;
+}

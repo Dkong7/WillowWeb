@@ -20,6 +20,9 @@
   "explore": "Explora Willow Tree",
   "next": "Siguiente",
   "prev": "Anterior",
+  "modal_artists_title": "Conoce a nuestros artistas",
+  "social_follow_prompt": "Síguenos en",
+  "description": "Descripción", 
 
   "hero_slides": [
     {
@@ -55,7 +58,7 @@
   
   "about_title": "¿QUIÉNES SOMOS?",
   "about_subtitle": "Laboratorio creativo de sonido e imagen",
-  "about_body": "Fundada en 2009 en Bogotá por Diego Díaz y Leonard Jaramillo, Willow Tree nació como un laboratorio creativo donde el sonido y la imagen se convierten en lenguajes para emocionar y trascender. Más que un estudio, somos un espacio donde la pasión artística y la precisión técnica florecen juntas, dando vida a experiencias únicas que combinan música, audiovisual y narrativa con un sello propio. En cada proyecto cultivamos la creatividad como si fuera un árbol: desde la semilla de una idea hasta un universo completo, fieles a nuestro lema “Ideas que se convierten en mundos”.",
+  "about_body": "Fundada en 2009 en Bogotá por Diego Díaz y Leonard Jaramillo, Willow Tree nació como un laboratorio creativo donde el sonido y la imagen se convierten en lenguajes para emocionar y trascender. Más que un estudio, somos un espacio donde la pasión artística y la precisión técnica florecen juntas, dando vida a experiencias únicas que combinan música, audiovisual y narrativa con un sello propio, fieles a nuestro lema “Ideas que se convierten en mundos”.",
   "about_cta": "Ver Manifiesto",
   
   
@@ -82,7 +85,7 @@
   "service_audio_prod_copy": "Desarrollo integral de proyectos musicales, desde la composición y los arreglos hasta la entrega final, cuidando la identidad sonora de cada artista o marca.",
   "portfolio_audio_prod_desc_title": "Música Original para Artistas y Marcas",
   "portfolio_audio_prod_desc_body": "En Willow Tree, concebimos la música como el corazón de cada proyecto. Nuestro portafolio en Producción Musical abarca desde la creación de bandas sonoras originales, jingles publicitarios y 'sonic branding', hasta la producción completa de álbumes para artistas. Integramos nuestra pasión por el sonido con la precisión técnica para asegurar que cada nota resuene con la identidad y el mensaje de su proyecto. Exploramos géneros y estilos, siempre buscando la máxima calidad artística y sonora.",
-  "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/4m1i0XMXAOc?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=0&mute=0&controls=1&rel=0&playsinline=1",
 
   "service_audio_rec_title": "🎤 GRABACIÓN PROFESIONAL",
   "service_audio_rec_copy": "Estudios equipados con tecnología de punta para capturar voces, instrumentos y ambientes con la mayor fidelidad y carácter.",
@@ -153,12 +156,33 @@
   "service_video_product_title": "🛍️ VIDEO DE PRODUCTO Y E-COMMERCE",
   "service_video_product_copy": "Videos cortos y llamativos diseñados específicamente para aumentar las ventas y destacar características en plataformas de comercio electrónico y publicidad.",
   "portfolio_video_product_desc_title": "Cinemática de Producto para Marketing Digital",
-  "portfolio_video_product_desc_body": "El video es clave para el e-commerce. Producimos videos de producto con alta calidad visual, enfocados en el detalle y la funcionalidad, optimizados para conversiones en Amazon, Shopify, o anuncios en redes sociales. Convertimos características en beneficios visuales.",
+  "portfolio_video_product_desc_body": "Video is key to e-commerce. We produce product videos with high visual quality, focused on el detalle y la funcionalidad, optimizados for conversiones en Amazon, Shopify, o anuncios en redes sociales. Convertimos características en beneficios visuales.",
   "portfolio_video_product_video_url": "https://www.youtube.com/embed/veQAn_VYnvc?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
 
   "service_video_social_title": "📱 CONTENIDO PARA REDES SOCIALES",
   "service_video_social_copy": "Creación de contenido vertical y horizontal optimizado para engagement en TikTok, Instagram Reels, YouTube Shorts y otras plataformas.",
   "portfolio_video_social_desc_title": "Estrategia y Contenido de Video para Plataformas Sociales",
   "portfolio_video_social_desc_body": "Entendemos el lenguaje de las redes. Producimos contenido de video rápido, impactante y relevante, maximizando el engagement y la viralidad. Nuestra estrategia incluye la adaptación a formatos verticales, subtitulado dinámico y optimización para el algoritmo de cada plataforma.",
-  "portfolio_video_social_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+  "portfolio_video_social_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  
+  "music_player_title": "NUESTROS ARTISTAS",
+  "track_list_header": "LISTA DE CANCIONES",
+  "music_artist_name": "LORD FITZCARRALDO",
+  "music_song_title": "LFC - JAZZ LOOP",
+  "repeat": "REPETIR",
+  "social_links": {
+    "tidal": "#",
+    "spotify": "#",
+    "applemusic": "#",
+    "youtube": "#",
+    "instagram": "#",
+    "tiktok": "#"
+  },
+  "music_player_dkong_title": "DKONG",
+  "music_player_leo_title": "LEO JARAMILLO",
+  "music_artist_name_dkong": "DKONG", 
+  "music_artist_name_leo": "LEO JARAMILLO",
+
+  "description_dkong": "Dkong es un artista multidisciplinario que fusiona hip hop con una amplia paleta de ritmos, texturas sonoras y visuales. Su propuesta combina letras con esoterismo, realismo mágico y visiones futuristas [Antenna].\n\nDesde Bogotá, narra su viaje interior y colectivo a través de música y visuales que conectan lo íntimo con lo universal.",
+  "description_leo": "Leo Jaramillo es un músico, productor e ingeniero de sonido originario de Bogotá, con más de una década de experiencia en grandes escenarios y estudios. Es un instrumentista reconocido, capaz de fusionar el reggae, el dub y el hip hop con un enfoque auténtico y original. Para compra de beats y temas, escribe a jaramilloleomusic@gmail.com. Toda la música es original de Leo Jaramillo."
 }

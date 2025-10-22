@@ -20,6 +20,8 @@
   "explore": "Explore Willow Tree",
   "next": "Next",
   "prev": "Previous",
+  "modal_artists_title": "Meet Our Artists",
+  "social_follow_prompt": "Follow us on",
 
   "hero_slides": [
     {
@@ -55,7 +57,7 @@
   
   "about_title": "WHO WE ARE?",
   "about_subtitle": "Creative Laboratory for Sound and Image",
-  "about_body": "Founded in 2009 in Bogotá by Diego Díaz and Leonard Jaramillo, Willow Tree was born as a creative laboratory where sound and image become languages to move, inspire, and transcend. More than a studio, we are a space where artistic passion and technical precision grow together, giving life to unique experiences that blend music, audiovisual production, and storytelling with our distinctive signature. In every project, we cultivate creativity like a tree: from the seed of an idea to a complete universe, true to our motto “Ideas that become worlds.”",
+  "about_body": "Founded in 2009 in Bogotá by Diego Díaz and Leonard Jaramillo, Willow Tree was born as a creative laboratory where sound and image become languages to move, inspire, and transcend. More than a studio, we are a space where artistic passion and technical precision grow together, giving life to unique experiences that blend music, audiovisual production, and storytelling with our distinctive signature, true to our motto “Ideas that become worlds.”",
   "about_cta": "View Manifesto",
 
   
@@ -82,7 +84,7 @@
   "service_audio_prod_copy": "Integral development of musical projects, from composition and arrangements to final delivery, preserving the sonic identity of each artist or brand.",
   "portfolio_audio_prod_desc_title": "Original Music for Artists and Brands",
   "portfolio_audio_prod_desc_body": "At Willow Tree, we conceive music as the heart of every project. Our Music Production portfolio covers everything from creating original soundtracks, commercial jingles, and 'sonic branding', to the complete production of albums for artists. We blend our passion for sound with technical precision to ensure every note resonates with your project's identity and message. We explore genres and styles, always striving for the highest artistic and sonic quality.",
-  "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/js5f0zeLx0I?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/Db1P2ZMiVEs?autoplay=0&mute=0&controls=1&rel=0&playsinline=1",
   
   "service_audio_rec_title": "🎤 PROFESSIONAL RECORDING",
   "service_audio_rec_copy": "Studios equipped with state-of-the-art technology to capture voices, instruments, and ambiances with the highest fidelity and character.",
@@ -160,5 +162,26 @@
   "service_video_social_copy": "Creación de contenido vertical y horizontal optimizado para engagement en TikTok, Instagram Reels, YouTube Shorts y otras plataformas.",
   "portfolio_video_social_desc_title": "Estrategia y Contenido de Video para Plataformas Sociales",
   "portfolio_video_social_desc_body": "Entendemos el lenguaje de las redes. Producimos contenido de video rápido, impactante y relevante, maximizando el engagement y la viralidad. Nuestra estrategia incluye la adaptación a formatos verticales, subtitulado dinámico y optimización para el algoritmo de cada plataforma.",
-  "portfolio_video_social_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+  "portfolio_video_social_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  
+  "music_player_title": "OUR ARTISTS",
+  "track_list_header": "TRACK LIST",
+  "music_artist_name": "LORD FITZCARRALDO",
+  "music_song_title": "LFC - JAZZ LOOP",
+  "repeat": "REPEAT",
+  "social_links": {
+    "tidal": "#",
+    "spotify": "#",
+    "applemusic": "#",
+    "youtube": "#",
+    "instagram": "#",
+    "tiktok": "#"
+  },
+  "music_player_dkong_title": "DKONG",
+  "music_player_leo_title": "LEO JARAMILLO",
+  "music_artist_name_dkong": "DKONG", 
+  "music_artist_name_leo": "LEO JARAMILLO",
+  
+  "description_dkong": "Dkong is a multidisciplinary artist who blends hip hop with a wide range of rhythms, sound textures, and striking visuals. His work merges lyrics with esotericism, magical realism, and futuristic visions [Antenna].\n\nBased in Bogotá, he tells both personal and collective stories through music and visuals that bridge the intimate and the universal.",
+  "description_leo": "Musician, producer, and sound engineer with original and authentic work. For purchasing beats and tracks, write to jaramilloleomusic@gmail.com. All music is original by Leo Jaramillo."
 }

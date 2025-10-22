@@ -30,26 +30,32 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
 
   const closeMenu = (): void => setMenuOpen(false);
 
-  // Función para manejar la navegación mixta (ruta + ancla)
-  const handleLinkClick = (hash: string): void => {
-    closeMenu();
-    // Comprobación mejorada para enlaces de ancla
-    if (hash.startsWith('#')) {
-        if (location.pathname !== '/') {
-            // Si NO estamos en el Home, navegamos al Home primero con el hash
-            // Se usa window.location.hash = hash para forzar el scroll después de la navegación
-            navigate(`/${hash}`); 
-        } else {
-            // Si estamos en el Home, forzamos el scroll
-            const element = document.getElementById(hash.substring(1));
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    } 
-    // Si no es un hash, NavLink lo maneja o no hacemos nada si es una ruta absoluta ya navegada.
-  };
-  
+  // Función para manejar la navegación mixta (ruta + ancla)
+  const handleLinkClick = (hash: string): void => {
+    closeMenu();
+    
+    // 🚀 LÓGICA CORREGIDA: Navega directamente a la página /music-production.
+    if (hash === '#audio-prod') {
+        navigate('/music-production');
+        return; 
+    }
+
+    // Comprobación mejorada para enlaces de ancla (Scroll Logic para el resto)
+    if (hash.startsWith('#')) {
+        if (location.pathname !== '/') {
+            // Si NO estamos en el Home, navegamos al Home primero con el hash
+            navigate(`/${hash}`); 
+        } else {
+            // Si estamos en el Home, forzamos el scroll
+            const element = document.getElementById(hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    } 
+    // Si no es un hash, NavLink lo maneja o no hacemos nada si es una ruta absoluta ya navegada.
+  };
+  
   const basePath = import.meta.env.BASE_URL;
   const logoSrc = isMobile ? `${basePath}logo-icon.svg` : `${basePath}logo-full.svg`;
 
@@ -87,29 +93,19 @@ export default function Navbar({ currentTheme, toggleTheme }: NavbarProps) {
             <ul className="submenu">
               {/* Audio */}
               <li className="submenu-item">
-                <a onClick={() => handleLinkClick('#services')} role="button" className="submenu-audio">{t("audio")}</a>
+                <a role="button" className="submenu-audio">{t("audio")}</a>
                 <ul className="sub-submenus">
-                  <li><a onClick={() => handleLinkClick('#audio-prod')} role="button">{t("service_audio_prod_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#audio-jingles')} role="button">{t("service_audio_jingles_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#audio-cinetv')} role="button">{t("service_audio_cinetv_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#audio-games')} role="button">{t("service_audio_games_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#audio-rec')} role="button">{t("service_audio_rec_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#audio-voice')} role="button">{t("service_audio_voice_title")}</a></li>
+                    {/* 🚀 MODIFICADO: Navega a la p\u00e1gina /music-production */}
+                  <li><a onClick={() => handleLinkClick('#audio-prod')} role="button">{t("audio_prod")}</a></li>
                   <li><a onClick={() => handleLinkClick('#audio-mix')} role="button">{t("audio_mix")}</a></li>
                 </ul>
               </li>
-              {/* Video (Punto 4) */}
+              {/* Video */}
               <li className="submenu-item">
-                {/* Enlace que lleva al banner de video services */}
-                <a onClick={() => handleLinkClick('#video-services')} role="button" className="submenu-video">{t("video")}</a>
+                <a role="button" className="submenu-video">{t("video")}</a>
                 <ul className="sub-submenus">
-                  {/* 🚨 FIX 5: Nuevos enlaces de Video */}
-                  <li><a onClick={() => handleLinkClick('#video-prod')} role="button">{t("service_video_prod_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-post-prod')} role="button">{t("service_video_post_prod_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-anim')} role="button">{t("service_video_anim_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-3d')} role="button">{t("service_video_3d_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-product')} role="button">{t("service_video_product_title")}</a></li>
-                  <li><a onClick={() => handleLinkClick('#video-social')} role="button">{t("service_video_social_title")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-post')} role="button">{t("video_post")}</a></li>
+                  <li><a onClick={() => handleLinkClick('#video-motion')} role="button">{t("video_motion")}</a></li>
                 </ul>
               </li>
             </ul>
