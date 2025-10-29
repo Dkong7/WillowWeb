@@ -1,94 +1,207 @@
 /* src/pages/ContactPage/ContactPage.css */
 
 .contact-page-container {
-    /* FIX: Margen para limpiar la Navbar fija */
-    margin-top: 6rem;
-    min-height: 85vh;
-    display: flex;
-    /* Alineamos al inicio para que el contenido fluya */
-    align-items: flex-start; 
-    justify-content: center;
-    padding: 2rem 1rem; 
-    background-color: var(--color-bg);
+  margin-top: 6rem;
+  min-height: 85vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-bg);
 }
 
 .contact-content-wrapper {
-    max-width: 700px;
-    width: 90%;
-    text-align: center;
-    padding: 3rem;
-    border-radius: 12px;
-    background-color: var(--color-card-bg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    color: var(--color-text);
+  max-width: 1200px;
+  width: 90%;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 12px;
+  background-color: var(--color-card-bg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
 }
 
-.contact-title {
-    font-family: 'Albertus Medium', sans-serif;
-    font-size: 3rem;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
+/* ✅ LOGO PRINCIPAL ARRIBA */
+.contact-logo-top {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.contact-body {
-    /* 🚀 FIX: Aplicamos Advent Pro al cuerpo de Contacto */
-    font-family: 'Advent Pro', sans-serif; 
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
+.contact-main-logo {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  transition: filter 0.3s;
 }
 
-.dossier-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    border: 2px solid var(--color-accent);
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-    text-transform: uppercase;
+/* Filtros dinámicos según tema */
+[data-theme="dark"] .contact-main-logo {
+  filter: brightness(0) invert(1); /* Blanco */
 }
 
-.dossier-button:hover {
-    background-color: transparent;
-    color: var(--color-accent);
-    transform: translateY(-2px);
+[data-theme="light"] .contact-main-logo {
+  filter: brightness(0); /* Negro */
 }
 
-.contact-info {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border-navbar);
+/* --- SECCIÓN SUPERIOR: MAPA + CONTACTO --- */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-border-navbar);
+  text-align: left;
+}
+
+.contact-map-column iframe {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 8px;
+}
+
+.map-caption {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-text-card);
+  margin-bottom: 0.5rem;
+}
+
+.details-header {
+  font-family: "Albertus Medium", sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-audio-base);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-navbar);
 }
 
 .info-item {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    /* 🚀 FIX: Aplicamos Advent Pro a la info de Contacto */
-    font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
-
 .info-item a {
-    color: var(--color-audio-base);
-    text-decoration: none;
-    transition: color 0.3s;
+  color: var(--color-audio-base);
+  text-decoration: none;
 }
 
-.info-item a:hover {
-    text-decoration: underline;
+/* --- FORMULARIO --- */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: rgb(68 64 64 / 75%);
+}
+[data-theme="light"] .contact-form-grid {
+  background-color: rgb(235 233 233 / 75%);
 }
 
-@media (max-width: 600px) {
-  /* Ajuste responsive del margen superior para móvil */
-  .contact-page-container {
-    margin-top: 5rem;
+.form-image-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-side-image {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(var(--image-filter-brightness));
+}
+
+.form-column {
+  padding: 1rem;
+}
+
+.form-title {
+  font-family: "Albertus Medium", sans-serif;
+  font-size: 2.5rem;
+  color: var(--color-video-base);
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-navbar);
+  border-radius: 6px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  font-family: "Advent Pro", sans-serif;
+  font-size: 1rem;
+}
+
+.submit-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--color-video-base);
+  color: var(--color-bg);
+  transition: background-color 0.3s, transform 0.3s;
+}
+.submit-button:hover {
+  background-color: var(--color-video-sub-tenue);
+  transform: translateY(-1px);
+}
+
+/* --- MODAL --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+}
+.modal-content.small-modal {
+  max-width: 500px;
+  padding: 2rem;
+  text-align: center;
+  margin: 20px;
+  border-color: var(--color-audio-base);
+}
+.modal-confirmation-title {
+  font-family: "Espiritu Regular", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.modal-confirmation-body {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .contact-info-grid {
+    grid-template-columns: 1fr;
   }
-    .contact-content-wrapper {
-        padding: 2rem 1rem;
-    }
-    .contact-title {
-        font-size: 2rem;
-    }
+  .form-image-column {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .contact-content-wrapper {
+    padding: 2rem 1rem;
+  }
+  .form-title {
+    font-size: 2rem;
+  }
 }

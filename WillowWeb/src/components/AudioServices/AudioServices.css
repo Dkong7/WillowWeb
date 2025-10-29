@@ -5,27 +5,25 @@
     width: 90%;
     max-width: 1200px;
     margin: 0 auto 5rem auto; /* Centrar y añadir margen inferior */
-    /* 🚀 PUNTO 4: Implementa GRID 4 COLUMNAS */
+    /* FIX CRÍTICO: 3 COLUMNAS para centrar los 3 servicios */
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 2rem;
 }
 
-/* --- Estilo de la Tarjeta de Servicio (Card Vertical para 4 columnas) --- */
+/* --- Estilo de la Tarjeta de Servicio (Card Vertical para 3 columnas) --- */
 .service-card-container {
-    /* 🚀 PUNTO 4: Cambia a layout de columna para apilar el contenido */
     display: flex;
     flex-direction: column; /* Apila Icono, Contenido y Botón */
     align-items: center; /* Centra horizontalmente el contenido */
     text-align: center; /* Centra el texto */
     padding: 2.5rem 1.5rem; /* Ajuste para el nuevo formato vertical */
     border-radius: 12px;
-    /* 🚨 FONDO DINÁMICO: Usa el nuevo CSS Variable para el fondo por tema */
     background-color: var(--color-card-bg); 
     border: 1px solid var(--color-border-navbar); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition), box-shadow var(--transition);
-    min-height: 350px; /* Asegura una altura mínima para la cuadrícula */
+    min-height: 380px; /* Asegura una altura mínima para la cuadrícula */
 }
 
 .service-card-container:hover {
@@ -35,59 +33,56 @@
 
 .card-icon-column {
     flex-shrink: 0;
-    margin-right: 0; /* Remueve margen derecho anterior */
-    margin-bottom: 1.5rem; /* Añade margen inferior para separar del texto */
+    margin-right: 0; 
+    margin-bottom: 1.5rem; 
 }
 
 .service-icon {
     width: 80px;
     height: 80px;
-    /* 🚀 Usar la variable de filtro de Audio */
-    filter: var(--icon-audio-filter); 
+    /* FIX CRÍTICO: Filtro de color eliminado para usar el color original del SVG */
+    filter: none; 
     transition: filter var(--transition);
 }
 
 .service-card-container:hover .service-icon {
-    filter: var(--icon-audio-filter-hover);
+    /* FIX: Asegurar que no se aplique ningún filtro al hacer hover tampoco */
+    filter: none;
 }
 
 .card-content-column {
     flex-grow: 1; /* Permite que tome la mayor parte del espacio */
     display: flex;
     flex-direction: column;
-    margin-right: 0; /* Remueve margen derecho anterior */
-    margin-bottom: 1.5rem; /* Espacio antes del botón */
-    /* Usa el color de texto para la card por tema */
+    margin-right: 0; 
+    margin-bottom: 1.5rem; 
     color: var(--color-text-card); 
 }
 
 .card-title {
     font-family: 'Espiritu Condensed', sans-serif;
-    font-size: 1.8rem; /* Reducido para encajar en 4 columnas */
+    font-size: 1.8rem; 
     margin-top: 0;
     margin-bottom: 0.5rem;
     color: var(--color-audio-base); 
 }
 
 .card-copy {
-    /* 🚀 FIX: Aplicamos Advent Pro a la descripción de la Card */
     font-family: 'Advent Pro', sans-serif; 
     margin-bottom: 0; 
     line-height: 1.6;
 }
 
-/* NUEVO: Columna dedicada para el botón, empujado al fondo */
 .card-button-column {
     flex-shrink: 0; 
     margin-top: auto; /* Empuja el botón hacia el fondo de la tarjeta */
-    margin-left: 0; /* Remueve margen automático horizontal anterior */
+    margin-left: 0; 
     display: flex;
     align-items: center;
 }
 
-/* Estilo para el único botón */
 .portfolio-button {
-    padding: 1rem 2rem; /* Botón más grande y prominente */
+    padding: 1rem 2rem; 
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -95,10 +90,9 @@
     text-transform: uppercase;
     transition: background-color var(--transition), color var(--transition);
     
-    /* Estilo Primario */
     background-color: var(--color-audio-base);
-    color: var(--color-bg); /* Usar el color de fondo general como color de texto en el botón */
-    white-space: nowrap; /* Evita que el texto del botón se rompa */
+    color: var(--color-bg); 
+    white-space: nowrap; 
 }
 
 .portfolio-button:hover {
@@ -106,7 +100,7 @@
 }
 
 
-/* --- Modal Flotante (ajuste de contenido para listas y nuevo botón) --- */
+/* --- Modal Flotante (Restauración de estilos de Audio Modal) --- */
 
 .modal-backdrop {
     position: fixed;
@@ -117,10 +111,11 @@
     background-color: rgba(0, 0, 0, 0.9); 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* FIX: Alinear al top para el scroll */
     z-index: 1000; 
     backdrop-filter: blur(8px); 
     -webkit-backdrop-filter: blur(8px);
+    overflow-y: auto; /* Permitir scroll */
 }
 
 .modal-content {
@@ -130,29 +125,14 @@
     padding: 3rem; 
     width: 90%;
     max-width: 1200px;
-    max-height: 95vh;
-    overflow-y: auto;
+    max-height: none; 
+    overflow-y: visible;
     position: relative;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease-in-out; 
+    margin-top: 3rem; 
+    margin-bottom: 3rem; 
 }
-
-/* 🚀 AJUSTE: Estilo para Modal de página completa (Producción Musical) */
-.modal-content.full-page-modal {
-    width: 100%;
-    max-width: 100%; 
-    height: 100%;
-    max-height: 100vh;
-    border-radius: 0; 
-    padding: 2rem; 
-    
-    /* 🚀 FIX: Ajustar el centrado vertical para que el contenido inicie desde arriba */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: flex-start;
-}
-
 
 .modal-close-button {
     position: absolute;
@@ -165,7 +145,7 @@
     cursor: pointer;
     line-height: 1;
     padding: 5px;
-    z-index: 1001; /* Asegurar que est\u00e9 por encima de todo */
+    z-index: 1001; 
     transition: color var(--transition), transform var(--transition);
 }
 
@@ -206,8 +186,8 @@
 .modal-icon {
     width: 70px;
     height: 70px;
-    /* 🚀 Usar la variable de filtro de Audio */
-    filter: var(--icon-audio-filter);
+    /* FIX CRÍTICO: Filtro de color eliminado para usar el color original del SVG */
+    filter: none;
     margin-bottom: 1.5rem;
 }
 
@@ -221,7 +201,15 @@
     padding-bottom: 0.5rem;
 }
 
-/* 🚀 Estilo para el botón de CTA en el Modal */
+/* FIX: Título de Servicio para Modal (nuevo) */
+.modal-description-container .modal-service-title {
+    font-family: 'Espiritu Regular', sans-serif;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
 .modal-cta-button {
     display: block;
     width: 100%;
@@ -274,340 +262,43 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 2. ESTILOS PARA EL CONTENIDO DE FORMATTED BODY DENTRO DEL MODAL */
+/* 2. ESTILOS PARA EL CONTENIDO DE FORMATTED BODY DENTRO DEL MODAL (LISTAS) */
 
 .formatted-description {
-    /* 🚀 FIX: Aplicamos Advent Pro al cuerpo de texto de los Modals */
     font-family: 'Advent Pro', sans-serif; 
     line-height: 1.6;
     font-size: 1rem;
 }
 
-/* Ajustes para el texto de la lista de equipamiento */
 .equipment-column .formatted-description {
     font-size: 0.95rem;
 }
 
-/* Título de sección (Microfonería, Instrumentos) */
 .formatted-description .section-title-body {
-    margin: 1.5rem 0 0.5rem 0; /* Espacio entre secciones */
+    margin: 1.5rem 0 0.5rem 0; 
     font-weight: 600; 
-    color: var(--color-audio-base);
     line-height: 1.3;
 }
 
-/* Estilo para las listas detalladas (*) */
-.formatted-description ul.detail-list {
-    list-style-type: none; 
-    padding-left: 0;
-    margin: 0.5rem 0 1.5rem 0;
-}
-
-.formatted-description ul.detail-list li {
+/* ESTILOS DE LISTA RECUPERADOS */
+.formatted-description li {
     position: relative;
     padding-left: 1rem;
+    list-style-type: none;
+    margin: 0.2rem 0;
 }
 
-.formatted-description ul.detail-list li::before {
+.formatted-description li::before {
     content: "—"; 
     position: absolute;
     left: 0;
-    color: var(--color-audio-base);
+    /* Color se inyecta desde TSX a través de la variable CSS --list-color */
+    color: var(--list-color, var(--color-audio-base)); 
     font-weight: bold;
 }
 
 
-/* ------------------------------------------- */
-/* --- NUEVOS ESTILOS: MUSIC PLAYER LAYOUT --- */
-/* ------------------------------------------- */
-
-.music-player-full-wrapper {
-    /* Contenedor central de la m\u00fasica, limita el ancho m\u00e1ximo del contenido */
-    width: 100%; 
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 1rem;
-    
-    /* 🚀 FIX: Hacer que el contenido se desplace */
-    height: 100%;
-    max-height: calc(100vh - 4rem); /* Ajustar a la altura de la ventana menos el padding */
-    overflow-y: auto; 
-}
-
-.music-player-header {
-    font-family: 'Espiritu Condensed', sans-serif;
-    font-size: 2.5rem;
-    color: var(--color-audio-base);
-    text-align: center;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    padding-top: 1rem; 
-}
-
-.music-player-layout {
-    display: flex;
-    gap: 4rem; 
-    align-items: flex-start;
-}
-
-/* 🚀 NUEVA SECCIÓN: VIDEO (ARRIBA DE LA DESCRIPCIÓN) */
-.music-prod-video-wrapper {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    margin-bottom: 2rem;
-    order: 3; 
-}
-
-.music-prod-video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-
-.player-column-left {
-    flex: 2; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--color-card-bg); 
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    min-width: 300px;
-    max-width: 500px;
-    position: sticky; 
-    top: 0;
-    z-index: 10; 
-    height: fit-content; /* FIX: para limitar la altura y permitir el scroll en la columna derecha */
-}
-
-.album-art-wrapper {
-    position: relative;
-    width: 90%; 
-    max-width: 400px; 
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(var(--color-audio-base-rgb), 0.7); 
-    overflow: hidden;
-}
-
-.album-art {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.player-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem; 
-    margin-bottom: 1.5rem;
-}
-
-.control-button {
-    background: var(--color-audio-base);
-    color: var(--color-bg);
-    border: none;
-    border-radius: 50%;
-    width: 40px; 
-    height: 40px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0; 
-    flex-shrink: 0;
-}
-.control-button.repeat {
-    font-size: 1rem;
-    width: 35px;
-    height: 35px;
-    margin-left: 0.5rem; 
-}
-.control-button.play-pause {
-    width: 60px; 
-    height: 60px;
-    font-size: 1.5rem;
-}
-
-.control-button.active { /* Estilo para el bot\u00f3n activo (ej. repeat) */
-    background-color: var(--color-accent);
-}
-
-.control-button:hover {
-    background-color: var(--color-audio-sub-tenue);
-    transform: scale(1.05);
-}
-
-.volume-control-wrapper {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    max-width: 300px;
-    gap: 10px;
-    color: var(--color-text);
-    margin-bottom: 2rem;
-}
-
-.volume-icon {
-    font-size: 1.2rem;
-}
-
-.volume-slider {
-    flex-grow: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 6px;
-    background: var(--color-border-navbar);
-    outline: none;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-    border-radius: 3px;
-}
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--color-audio-base);
-    cursor: pointer;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.volume-slider:hover {
-    opacity: 1;
-}
-
-/* 🚀 ENLACES SOCIALES */
-.social-links {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border-navbar);
-    width: 100%;
-    display: flex;
-    justify-content: space-around; 
-    gap: 0.5rem;
-}
-
-.social-links a {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.social-icon {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.2s, filter 0.2s;
-    /* La variable --icon-color-invert-prod ya está definida en index.css */
-    filter: invert(var(--icon-color-invert-prod)) drop-shadow(0 0 1px rgba(var(--color-audio-base-rgb), 0.5));
-}
-
-.social-icon:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 5px var(--color-audio-base));
-}
-
-/* Columna Derecha: Informaci\u00f3n y Lista de Canciones + Video + Descripci\u00f3n */
-.player-column-right {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    padding-right: 1rem; 
-    max-height: 100%; 
-    overflow-y: visible; 
-}
-
-.music-title {
-    font-family: 'Espiritu Regular', sans-serif;
-    font-size: 2.5rem;
-    color: var(--color-audio-base);
-    margin-bottom: 0.5rem;
-    order: 1;
-}
-
-.music-artist {
-    font-family: 'Advent Pro', sans-serif; 
-    font-size: 1.2rem;
-    color: var(--color-accent);
-    margin-top: 0;
-    margin-bottom: 2rem;
-    order: 2;
-}
-
-/* 🚀 LISTA DE CANCIONES DENTRO DEL LEFT COLUMN - SOLO ESTILOS VISUALES AQUI */
-.track-list-container {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    width: 100%;
-}
-
-.track-list-header {
-    font-family: 'Espiritu Condensed', sans-serif;
-    font-size: 1.5rem;
-    color: var(--color-audio-base);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border-navbar);
-}
-
-.track-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-    font-family: 'Advent Pro', sans-serif;
-    max-height: 200px; 
-    overflow-y: auto;
-}
-
-.track-item {
-    padding: 0.5rem 10px;
-    cursor: pointer;
-    transition: color 0.2s, background-color 0.2s;
-    border-radius: 4px;
-}
-
-.track-item:hover {
-    background-color: var(--color-bg-navbar);
-    color: var(--color-audio-base);
-}
-
-.track-item.active {
-    color: var(--color-audio-base);
-    font-weight: 600;
-}
-
-/* Contenedor de la descripci\u00f3n en la columna derecha */
-.player-description {
-    order: 4; /* Despu\u00e9s del video (order 3) */
-    padding-left: 0;
-    margin-top: 2rem;
-}
-.modal-desc-subtitle {
-    font-family: 'Espiritu Condensed', sans-serif;
-    font-size: 1.2rem;
-    color: var(--color-accent);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border-navbar);
-    padding-bottom: 0.3rem;
-}
-.modal-cta-button {
-    order: 5;
-}
-
 /* --- Media Queries (Responsive) --- */
-/* Se mantienen las media queries para adaptabilidad */
 @media (max-width: 1200px) {
     /* 🚀 Ajuste de Grid: 2 columnas en tablets */
     .audio-services-list {
@@ -616,7 +307,15 @@
 }
 
 @media (max-width: 900px) {
-
+    .modal-content {
+        padding: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .modal-backdrop {
+        align-items: flex-start;
+    }
+    
     .modal-two-columns {
         flex-direction: column;
     }
@@ -636,51 +335,5 @@
     /* 🚀 Ajuste de Grid: 1 columna en móvil */
     .audio-services-list {
         grid-template-columns: 1fr; 
-    }
-    
-    /* 🚀 Móvil: Player Modal */
-    .modal-content.full-page-modal {
-        padding: 1rem;
-        max-height: 100vh;
-    }
-    
-    .music-player-full-wrapper {
-        max-height: 100%;
-        overflow-y: auto;
-    }
-
-    .music-player-layout {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .player-column-left {
-        width: 100%;
-        max-width: none;
-        padding: 1rem 0.5rem;
-        order: 1; 
-        position: static; /* No sticky en m\u00f3vil */
-    }
-    
-    .player-column-right {
-        padding-right: 0;
-        width: 100%;
-        order: 2; 
-        overflow-y: visible; 
-    }
-
-    .album-art-wrapper {
-        width: 80%;
-        max-width: 250px;
-        margin: 0 auto 1.5rem auto; 
-    }
-    
-    .social-links {
-        justify-content: space-between;
-        gap: 0.5rem;
-    }
-
-    .music-prod-video-wrapper {
-        margin-bottom: 1rem;
     }
 }

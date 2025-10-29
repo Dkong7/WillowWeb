@@ -1,6 +1,6 @@
 /* 🎨 Estilos globales base para WillowWeb */
 
-/* --- 🌐 FUENTE ESPIRITU (Archivos en /public/fonts/) --- */
+/* --- 🌐 FUENTES (Mantenidas) --- */
 
 /* Fuente Regular */
 @font-face {
@@ -20,7 +20,7 @@
   font-display: swap;
 }
 
-/* FUENTE: Advent Pro Regular */
+/* FUENTE: Advent Pro */
 @font-face {
   font-family: 'Advent Pro';
   src: url('/fonts/AdventPro-Regular.ttf') format('truetype');
@@ -28,8 +28,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* FUENTE: Advent Pro Medium */
 @font-face {
   font-family: 'Advent Pro';
   src: url('/fonts/AdventPro-Medium.ttf') format('truetype');
@@ -38,7 +36,7 @@
   font-display: swap;
 }
 
-/* FUENTE TÍTULOS: Albertus Medium (.ttf) */
+/* FUENTE TÍTULOS: Albertus Medium */
 @font-face {
   font-family: 'Albertus Medium';
   src: url('/fonts/albertusmedium_regular.ttf') format('truetype');
@@ -62,31 +60,44 @@
   --texture-blend-mode: overlay;
   --texture-url: none;
 
+  /* 🚨 COLORES DOMINANTES CORREGIDOS (Audio/Naranja, Video/Púrpura) */
+  --color-audio-base: #e86c10; /* Naranja (Audio) */
+  --color-video-base: #7a4ed4; /* Púrpura (Video) */
+  
   --color-audio-orange: #e86c10;
   --filter-icon-audio-banner: none;
   --color-video-purple: #7a4ed4; 
   --text-shadow-close-black: 1px 1px 2px rgba(0, 0, 0, 0.7);
+
+  /* Colores para Cards y Texto */
+  --color-card-bg: #f8f8f8;
+  --color-text-card: #121212;
+  
+  /* Valores RGB para la sombra del modal */
+  --color-audio-base-rgb: 232, 108, 16; /* RGB de #e86c10 */
+  --color-video-base-rgb: 122, 78, 212; /* RGB de #7a4ed4 */
 }
 
 /* Tema Oscuro */
 [data-theme="dark"] {
   --color-bg: #0a0a0a;
   --color-text: #f5f5f5;
-  --color-accent: #adb700;
+  --color-accent: #adb700; 
   --color-bg-navbar: rgba(10, 10, 10, 0.75);
   --color-bg-modal: rgba(10, 10, 10, 0.55);
   --color-border-navbar: rgba(255, 255, 255, 0.05);
   --color-logo-filter: brightness(0) invert(1);
   --color-bg-mobile-menu: rgba(0, 0, 0, 0.96);
 
-  --color-audio-base: #e86c10;
-  --color-video-base: #7a4ed4;
-  --color-audio-sub-tenue: #f0a068;
-  --color-video-sub-tenue: #b5a4ee;
+  /* 🚨 COLORES BASE CORREGIDOS */
+  --color-audio-base: #e86c10; 
+  --color-video-base: #7a4ed4; 
+  --color-audio-sub-tenue: #f0a068; 
+  --color-video-sub-tenue: #b5a4ee; 
   --current-bg-image: var(--bg-url-dark);
 
-  --color-card-bg: #d6d0be;
-  --color-text-card: #121212;
+  --color-card-bg: #181818; 
+  --color-text-card: #f5f5f5;
   --filter-texture-audio-banner: invert(1);
   --color-text-audio-banner: #fff;
   --filter-icon-audio-banner: brightness(0) invert(1);
@@ -97,28 +108,33 @@
   --color-text-video-banner: #fff;
   --filter-icon-video-banner: brightness(0) invert(1);
 
-  --filter-icon-card: none; 
+  /* 🚨 FILTROS DE ICONO CORREGIDOS */
+  --icon-audio-filter: invert(40%) sepia(61%) saturate(237%) hue-rotate(359deg) brightness(98%) contrast(98%); 
+  --icon-video-filter: invert(34%) sepia(64%) saturate(3025%) hue-rotate(244deg) brightness(88%) contrast(92%); 
+  --icon-audio-filter-hover: invert(72%) sepia(50%) saturate(147%) hue-rotate(25deg) brightness(85%) contrast(85%); 
+  --icon-video-filter-hover: invert(49%) sepia(74%) saturate(2250%) hue-rotate(200deg) brightness(101%) contrast(101%);
 }
 
 /* Tema Claro */
 [data-theme="light"] {
   --color-bg: #f4f4f4;
   --color-text: #121212;
-  --color-accent: #adb700;
+  --color-accent: #adb700; 
   --color-bg-navbar: rgba(255, 255, 255, 0.75);
   --color-bg-modal: rgba(255, 255, 255, 0.55);
   --color-border-navbar: rgba(0, 0, 0, 0.05);
   --color-logo-filter: none;
   --color-bg-mobile-menu: rgba(255, 255, 255, 0.96);
 
-  --color-audio-base: #e86c10;
-  --color-video-base: #7a4ed4;
+  /* 🚨 COLORES BASE CORREGIDOS */
+  --color-audio-base: #e86c10; 
+  --color-video-base: #7a4ed4; 
   --color-audio-sub-tenue: #d4630e;
   --color-video-sub-tenue: #6d45c5;
   --current-bg-image: var(--bg-url-light);
 
-  --color-card-bg: #180420;
-  --color-text-card: #f5f5f5;
+  --color-card-bg: #ffffff; 
+  --color-text-card: #121212;
   --filter-texture-audio-banner: none;
   --color-text-audio-banner: #121212;
   --filter-icon-audio-banner: none;
@@ -129,7 +145,11 @@
   --color-text-video-banner: #121212;
   --filter-icon-video-banner: none;
 
-  --filter-icon-card: none; 
+  /* 🚨 FILTROS DE ICONO CORREGIDOS */
+  --icon-audio-filter: invert(40%) sepia(61%) saturate(237%) hue-rotate(359deg) brightness(98%) contrast(98%); 
+  --icon-video-filter: invert(34%) sepia(64%) saturate(3025%) hue-rotate(244deg) brightness(88%) contrast(92%); 
+  --icon-audio-filter-hover: invert(34%) sepia(61%) saturate(1000%) hue-rotate(359deg) brightness(98%) contrast(98%);
+  --icon-video-filter-hover: invert(24%) sepia(40%) saturate(2000%) hue-rotate(244deg) brightness(60%) contrast(92%);
 }
 
 /* ------------------------------------------- */
@@ -160,6 +180,16 @@ body {
 h1, h2, h3, h4, h5, h6, .logo-text-part, .welcome-title-text, .hero-title {
   font-family: 'Albertus Medium', 'Espiritu Regular', sans-serif;
   color: var(--color-accent);
+}
+
+/* Estilo para el título de la Hero Section (FIX: color blanco) */
+.welcome-title-text {
+    color: #ffffff !important; 
+    white-space: pre-line;
+}
+/* Estilo para el subtítulo de la Hero Section (Asegurar blanco) */
+.hero-subtitle {
+    color: #ffffff !important;
 }
 
 /* Global Reset */

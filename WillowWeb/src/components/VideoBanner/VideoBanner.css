@@ -1,7 +1,7 @@
 .video-banner-section {
   position: relative;
   width: 100%;
-  min-height: 120px;
+  min-height: 60px; /* REDUCIDO 50% */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,24 +13,21 @@
 .video-banner-texture-layer {
   position: absolute;
   inset: 0;
-  background-image: url("/textura.png");
-  background-size: 60%;
-  background-repeat: repeat;
+  /* NUEVA IMAGEN DE FONDO */
+  background-image: url("/videobannerback.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
-  opacity: 0.8;
-  filter: var(--filter-texture-video-banner);
+  background-attachment: scroll;
+  opacity: 1;
+  filter: none;
   transition: filter 0.3s ease;
   z-index: 1;
 }
 
 .video-banner-color-layer {
-  position: absolute;
-  inset: 0;
-  background-color: var(--color-video-purple);
-  mix-blend-mode: overlay;
-  z-index: 2;
-  pointer-events: none;
+  /* QUITAR CAPA DE COLOR PURPURA */
+  display: none;
 }
 
 .video-banner-content {
@@ -40,6 +37,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 60px; /* REDUCIDO 50% */
   padding: 15px 20px;
 }
 
@@ -47,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
   animation: slideUp 0.8s ease-out forwards;
   opacity: 0;
   cursor: pointer;
@@ -60,15 +58,15 @@
 }
 
 .video-banner-icon img {
-  width: 65px;
-  height: 65px;
+  width: 40px; /* REDUCIDO */
+  height: 40px; /* REDUCIDO */
   filter: var(--filter-icon-video-banner) var(--icon-drop-shadow);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .video-banner-title {
   font-family: 'Albertus Medium', sans-serif;
-  font-size: 3.2rem;
+  font-size: 2.2rem; /* REDUCIDO */
   line-height: 1.1;
   color: var(--color-text-video-banner);
   text-transform: uppercase;
@@ -90,14 +88,14 @@
 
 /* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
-  .video-banner-header { gap: 15px; }
-  .video-banner-title { font-size: 2.2rem; }
-  .video-banner-icon img { width: 40px; height: 40px; }
+  .video-banner-header { gap: 10px; }
+  .video-banner-title { font-size: 1.8rem; }
+  .video-banner-icon img { width: 30px; height: 30px; }
 }
 
 @media (max-width: 600px) {
   .video-banner-section,
-  .video-banner-content { min-height: 80px; }
-  .video-banner-title { font-size: 1.8rem; }
-  .video-banner-icon img { width: 35px; height: 35px; }
+  .video-banner-content { min-height: 50px; }
+  .video-banner-title { font-size: 1.5rem; }
+  .video-banner-icon img { width: 25px; height: 25px; }
 }

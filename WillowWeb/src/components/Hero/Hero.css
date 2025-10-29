@@ -1,23 +1,19 @@
 /* 🚨 NOTA: Las variables de color se toman de src/index.css */
 
-
 .hero-slider-section {
   position: relative;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   overflow: hidden;
-  /* FIX: Empuja el Hero hacia abajo (5rem para despejar el Navbar) */
   padding-top: 5rem;
 }
 
-
 /* 🚨 NEW: Container para aislar la navegación (Fix) */
 .slider-main-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
-
 
 .slider-wrapper {
   display: flex;
@@ -25,18 +21,15 @@
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-
 .slide-item {
   min-width: 100%;
   height: 100%;
   position: relative;
-  box-sizing: border-box; 
-  background-color: var(--color-bg); 
+  box-sizing: border-box;
+  background-color: var(--color-bg);
 }
 
-
 /* ================== SLIDE DE VIDEO & INFO ================== */
-
 
 .hero-slide-content {
   width: 100%;
@@ -48,7 +41,6 @@
   position: relative;
 }
 
-
 /* Video Background */
 .video-container {
   position: absolute;
@@ -58,7 +50,6 @@
   height: 100%;
   z-index: 1;
 }
-
 
 .responsive-iframe {
   position: absolute;
@@ -72,170 +63,169 @@
   pointer-events: none;
 }
 
-
 /* Texto de overlay (usado para Video Slides 2, 3, 4) */
 .hero-overlay-text {
   position: relative;
   z-index: 10;
-  color: var(--color-text);
+  color: #ffffff;
   text-align: center;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.4); 
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   max-width: 80%;
   transition: all 0.3s ease;
 }
 
-
-/* 🚨 FIX ICONOS: Estilos para agrupar título e ícono (STACKING) */
+/* 🚨 FIX ICONOS: Estilos para agrupar título e ícono */
 .hero-title-group {
-    display: flex;
-    flex-direction: column; /* Apila el icono encima del título */
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
-
-/* 🚨 FIX ICONOS: Estilos para el ícono (200px) */
 .hero-title-icon {
-    height: 200px; /* TAMAÑO FINAL: 200px */
-    width: auto;
-    margin-bottom: 10px; /* Espacio entre icono y título */
-    filter: var(--color-logo-filter);
-    transition: filter 0.3s;
-    flex-shrink: 0;
+  height: 200px;
+  width: auto;
+  margin-bottom: 10px;
+  filter: var(--color-logo-filter);
+  transition: filter 0.3s;
+  flex-shrink: 0;
 }
 
-
-/* Anula los márgenes de lado a lado que ya no son necesarios */
-.icon-audio-left, .icon-video-right {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
+.icon-audio-left,
+.icon-video-right {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
-
 
 .hero-title {
   font-size: 3.5rem;
-  margin-bottom: 0; 
-  /* 🚨 CAMBIO DE FUENTE: Títulos usan Albertus Medium */
-  font-family: 'Albertus Medium', sans-serif;
+  margin-bottom: 0;
+  font-family: "Albertus Medium", sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important;
 }
-
 
 .hero-subtitle {
   font-size: 1.4rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
-  /* 🚨 CAMBIO DE FUENTE: Subtítulos usan Advent Pro */
-  font-family: 'Advent Pro', sans-serif; 
+  font-family: "Advent Pro", sans-serif;
+  color: #ffffff !important;
 }
-
 
 /* ================== WELCOME CARD (Slide 1 Overlay) ================== */
 
-
 .welcome-card {
-    /* FIX POSICIONAMIENTO: Centrado flotante */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado perfecto */
-    
-    max-width: 450px; 
-    padding: 2rem 3rem; 
-
-    z-index: 50; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-    /* 🚨 FIX OPACIDAD: Usamos la nueva variable de menor opacidad */
-    background: var(--color-bg-modal, rgba(10, 10, 10, 0.55)); 
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--color-border-navbar);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    
-    color: var(--color-text);
-    box-sizing: border-box;
-    width: auto;
-    height: auto;
-    max-height: 80vh;
-    pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 450px;
+  padding: 2rem 3rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--color-bg-modal, rgba(10, 10, 10, 0.55));
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border-navbar);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: var(--color-text);
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  max-height: 80vh;
+  pointer-events: auto;
 }
 
-
+/* 🔥 CAMBIO SOLICITADO: Título de bienvenida más pequeño */
 .welcome-title-text {
-  font-size: 4rem; 
-  /* 🚨 CAMBIO DE FUENTE: Albertus Medium */
-  font-family: 'Albertus Medium', sans-serif;
+  font-size: 2.8rem !important;
+  font-family: "Albertus Medium", sans-serif;
   margin-bottom: 0.5rem;
+  color: #ffffff !important;
+  white-space: pre-line;
 }
 
+/* 🔥 Ajuste responsive en móviles */
+@media (max-width: 768px) {
+  .welcome-title-text {
+    font-size: 2rem !important;
+  }
+}
 
 .welcome-subtitle-copy {
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 2rem;
-  /* 🚨 CAMBIO DE FUENTE: Advent Pro */
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
 }
-
 
 .welcome-logo {
-    max-width: 350px; 
-    height: auto;
-    margin: 1.5rem 0;
-    filter: var(--color-logo-filter);
+  max-width: 350px;
+  height: auto;
+  margin: 1.5rem 0;
+  filter: var(--color-logo-filter);
 }
-
 
 .close-button {
-    position: absolute;
-    top: 1rem; 
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--color-text);
-    font-size: 1.5rem;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-    padding: 0.5rem;
-    z-index: 1; 
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  padding: 0.5rem;
+  z-index: 1;
 }
-
 
 .close-button:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
-
-/* ================== NAVEGACIÓN ELEGANTES (CORRECCIÓN) ================== */
-
-
+/* ================== BOTONES ================== */
 .hero-button {
   display: inline-block;
   padding: 12px 30px;
-  background-color: var(--color-accent);
+  background-color: var(--color-audio-base);
   color: var(--color-bg);
   text-decoration: none;
   font-weight: 600;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, filter 0.3s;
 }
-
 
 .hero-button:hover {
   filter: brightness(1.2);
 }
 
+/* 🔥 COLORES CORRECTOS POR SLIDE */
+.hero-btn-slide1 {
+  background-color: #adb700 !important; /* Verde principal */
+  color: #fff !important;
+}
 
-/* FIX NAVEGATION: Los botones se posicionan respecto al nuevo container */
+.hero-btn-slide2 {
+  background-color: #e86c10 !important; /* Naranja */
+  color: #fff !important;
+}
+
+.hero-btn-slide3 {
+  background-color: #7a4ed4 !important; /* Púrpura */
+  color: #fff !important;
+}
+
+/* ================== NAVEGACIÓN ================== */
 .slider-navigation {
   position: absolute;
   top: 50%;
@@ -243,17 +233,15 @@
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
-  /* 🚨 FIX BUTTON PADDING: Aumentamos el padding para separarlos del borde */
-  padding: 0 4%; 
-  z-index: 100; 
+  padding: 0 4%;
+  z-index: 100;
 }
 
-
 .nav-button {
-  background: rgba(0, 0, 0, 0.8); 
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
-  padding: 15px 22px; 
+  padding: 15px 22px;
   font-size: 1.8rem;
   line-height: 1;
   border-radius: 50%;
@@ -261,15 +249,12 @@
   transition: background 0.3s, color 0.3s;
   backdrop-filter: blur(5px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  margin: 0;
 }
-
 
 .nav-button:hover {
   background: var(--color-accent);
   color: var(--color-bg);
 }
-
 
 /* Indicadores */
 .slider-indicators {
@@ -282,7 +267,6 @@
   z-index: 100;
 }
 
-
 .indicator {
   width: 10px;
   height: 10px;
@@ -293,74 +277,68 @@
   transition: background 0.3s;
 }
 
-
 .indicator.active {
   background: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-
 /* ================== RESPONSIVE ================== */
-
-
 @media (max-width: 768px) {
   .hero-title {
     font-size: 1.8rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .hero-overlay-text {
     padding: 1rem;
     max-width: 90%;
   }
-  
+
   .welcome-logo {
     max-width: 200px;
   }
-  
-  /* 🚨 FIX RESPONSIVE CARD: Aseguramos el orden (logo/imagen arriba, texto/CTA abajo) */
+
   .welcome-card {
-    width: 90%; 
+    width: 90%;
     height: auto;
     max-width: unset;
     max-height: unset;
-    padding: 2rem 1.5rem; 
+    padding: 2rem 1.5rem;
     border-radius: 10px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
   }
 
-  /* 🚨 FIX MOBILE WELCOME CARD: Ajustar tamaño de título y margen */
   .welcome-title-text {
-    font-size: 2.5rem; 
-    margin-bottom: 0.5rem; 
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
-  
+
   .welcome-logo {
-    max-width: 180px; 
-    margin: 1rem 0 1rem; 
+    max-width: 180px;
+    margin: 1rem 0 1rem;
   }
 
   .welcome-subtitle-copy {
-      font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
 
   .close-button {
-      top: 15px; 
-      right: 15px;
-      font-size: 1.2rem;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2rem;
   }
 
   .nav-button {
-    padding: 10px 16px; 
+    padding: 10px 16px;
     font-size: 1.2rem;
   }
-  
+
   .info-slide {
     padding-top: 120px;
     flex-direction: column;
@@ -374,7 +352,7 @@
     text-align: center;
     margin-top: 1.5rem;
   }
-  
+
   .info-image-placeholder {
     width: 80%;
     height: 150px;

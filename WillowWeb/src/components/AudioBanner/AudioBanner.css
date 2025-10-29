@@ -2,7 +2,7 @@
 .audio-banner-section {
   position: relative;
   width: 100%;
-  min-height: 120px; 
+  min-height: 60px; /* REDUCIDO 50% */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,27 +20,19 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-image: url("/textura.png");
-  background-size: 60%;
-  background-repeat: repeat;
+  background-image: url("/audiobannerback.png");
+  background-size: cover; 
+  background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
-  opacity: 0.8;
-  filter: var(--filter-texture-audio-banner);
+  background-attachment: scroll;
+  opacity: 1;
+  filter: none; /* Mantener la eliminación del filtro naranja */
   transition: filter 0.3s ease;
 }
 
 /* 🚨 CAPA DE COLOR NARANJA */
 .audio-banner-color-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background-color: var(--color-audio-orange); 
-  mix-blend-mode: overlay;
-  pointer-events: none;
+  display: none; /* Eliminar la capa de color */
 }
 
 /* ================== CAPA DE CONTENIDO ================== */
@@ -48,7 +40,7 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  min-height: 120px;
+  min-height: 60px; /* REDUCIDO 50% */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 20px; /* Ajuste para el nuevo tamaño */
   animation: slideUp 0.8s ease-out forwards;
   opacity: 0;
   cursor: pointer;
@@ -71,8 +63,8 @@
 
 /* ================== CONTENIDO ================== */
 .audio-banner-icon img {
-  width: 65px;
-  height: 65px;
+  width: 40px; /* REDUCIDO */
+  height: 40px; /* REDUCIDO */
   margin: 0;
   filter: var(--filter-icon-audio-banner) var(--icon-drop-shadow);
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -80,7 +72,7 @@
 
 .audio-banner-title {
   font-family: 'Albertus Medium', sans-serif;
-  font-size: 3.2rem;
+  font-size: 2.2rem; /* REDUCIDO */
   line-height: 1.1;
   color: var(--color-text-audio-banner);
   text-align: center;
@@ -116,27 +108,27 @@
 /* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
   .audio-banner-header {
-    gap: 15px;
+    gap: 10px;
   }
   .audio-banner-title {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   .audio-banner-icon img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media (max-width: 600px) {
   .audio-banner-section,
   .audio-banner-content {
-    min-height: 80px;
+    min-height: 50px;
   }
   .audio-banner-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   .audio-banner-icon img {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
   }
 }

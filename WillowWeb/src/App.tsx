@@ -7,65 +7,65 @@ import Hero from "./components/Hero/Hero";
 import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices";
 import VideoBanner from "./components/VideoBanner/VideoBanner";
+import { VideoServices } from "./components/VideoServices/VideoServices"; 
 import Clients from "./components/Clients/Clients";
 import Footer from "./components/Footer/Footer";
 import "./i18n";
 
+// ✅ Lazy imports de páginas
 const AboutPage = lazy(() => import("./pages/AboutPage/AboutPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage"));
-// const LazyVideoServices = lazy(() => import("./components/VideoServices/VideoServices")); // ELIMINADO
-// 🚀 NUEVA IMPORTACIÓN LAZY: Página de Producción Musical
-const MusicProductionPage = lazy(() => import("./pages/MusicProductionPage/MusicProductionPage")); 
+// ✅ CORREGIDO: Importa la verdadera MusicProductionPage
+const MusicProductionPage = lazy(() => import("./pages/MusicProductionPage/MusicProductionPage"));
 
 const HomePage = () => (
-  <>
-    <Hero />
+  <>
+    <Hero />
 
-    {/* Seccion Audio */}
-    <AudioBanner />
-    <AudioServices />
+    {/* Sección Audio */}
+    <AudioBanner />
+    <AudioServices />
 
-    {/* Seccion Video */}
-    <VideoBanner />
-    {/* <Suspense fallback={<div className="loading-message">Loading Video Services...</div>}>
-      <LazyVideoServices />
-    </Suspense> */}
+    {/* Sección Video */}
+    <VideoBanner />
+    <VideoServices /> 
 
-    {/* Seccion Clientes */}
-    <Clients />
-  </>
+    {/* Sección Clientes */}
+    <Clients />
+  </>
 );
 
 function App() {
-  // ✅ Fix: Se define correctamente el tipo literal del estado
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
-  };
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  };
 
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
-  return (
-    <div className="App">
-      <Navbar currentTheme={theme} toggleTheme={toggleTheme} />
+  return (
+    <div className="App">
+      <Navbar currentTheme={theme} toggleTheme={toggleTheme} />
 
-      <Suspense fallback={<div className="loading-screen">Loading Page...</div>}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* 🚀 FIX DE RENDERIZADO: Se añade la nueva ruta de Producción Musical */}
-          <Route path="/music-production" element={<MusicProductionPage />} /> 
-          <Route path="*" element={<h1>404: Not Found</h1>} />
-        </Routes>
-      </Suspense>
+      <Suspense fallback={<div className="loading-screen">Loading Page...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          
+          {/* ✅ Ruta correcta de Producción Musical */}
+          <Route path="/music-production" element={<MusicProductionPage />} /> 
+          
+          <Route path="*" element={<h1>404: Not Found</h1>} />
+        </Routes>
+      </Suspense>
 
-      <Footer />
-    </div>
-  );
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
