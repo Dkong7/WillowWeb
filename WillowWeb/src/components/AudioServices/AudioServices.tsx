@@ -1,116 +1,99 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"; 
 import "./AudioServices.css"; 
 import React from 'react';
+import { Link } from "react-router-dom"; // AÑADIDO: Importación para el enlace a la página
 
 // --- Componente de Formato de Cuerpo de Texto (FormattedBody) ---
-const FormattedBody: React.FC<{ content: string; isVideo?: boolean }> = ({ content, isVideo = false }) => {
+const FormattedBody: React.FC<{ content: string }> = ({ content }) => {
+  // 1. Dividir por salto de línea
   const lines = content.split('\n');
-  // Se determina el color base para títulos y el guión de la lista
-  const colorBase = isVideo ? 'var(--color-video-base)' : 'var(--color-audio-base)';
   
   return (
     <div className="formatted-description">
       {lines.map((line, lIndex) => {
         const trimmedLine = line.trim();
         
-        // 2. Título de sección (**Título**)
+        // 2. Título de sección (Doble asterisco: **Título**)
         if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
           const title = trimmedLine.substring(2, trimmedLine.length - 2);
-          return <p key={lIndex} className="section-title-body"><strong style={{ fontFamily: 'Albertus Medium', color: colorBase }}>{title}</strong></p>;
+          return <p key={lIndex} className="section-title-body"><strong>{title}</strong></p>;
         }
         
-        // 3. Ítem de lista (* Item)
+        // 3. Ítem de lista (Asterisco: * Item)
         if (trimmedLine.startsWith('*')) {
           const text = trimmedLine.substring(1).trim();
-          // Se pasa el color base como variable CSS inline para que el CSS pueda aplicarlo al guion (li::before)
-          return <li key={lIndex} style={{ '--list-color': colorBase } as React.CSSProperties}>{text}</li>;
+          return <li key={lIndex}>{text}</li>;
         }
 
         // 4. Párrafo o línea normal
         if (trimmedLine) {
+            // Manejar un salto de línea simple para crear un <p> si no es un ítem de lista
             return <p key={lIndex}>{trimmedLine}</p>;
         }
-        return null;
+        return null; // Ignorar líneas vacías
       })}
     </div>
   );
 };
 // -----------------------------------------------------------------
 
-// Interfaz para la Modal (solo para Grabación, Mezcla/Master)
+// Interfaz para la Modal (lo que se muestra)
 interface PortfolioModalProps {
   isOpen: boolean;
   onClose: () => void;
   descTitle: string;
   descBody: string;
-  id: string; // Para identificar el tipo de tarjeta
+  videoUrl: string;
   iconSrc: string;
+  modalGradient: string; // AÑADIDO
 }
 
-// Componente Modal Flotante (Portfolio) - S\u00f3lo para Grabaci\u00f3n, Mezcla y Master
-const PortfolioModal: React.FC<PortfolioModalProps> = ({ isOpen, onClose, descTitle, descBody, id, iconSrc }) => {
-  const { t, i18n } = useTranslation();
-  const modalContentRef = useRef<HTMLDivElement>(null);
-  
-  // FIX: Scroll al top al abrir el modal
-  useEffect(() => {
-    if (isOpen && modalContentRef.current) {
-        requestAnimationFrame(() => {
-            if (modalContentRef.current) {
-                modalContentRef.current.scrollTop = 0;
-            }
-        });
-    }
-  }, [isOpen]);
-  
+// Componente Modal Flotante (Portfolio)
+const PortfolioModal: React.FC<PortfolioModalProps> = ({ isOpen, onClose, descTitle, descBody, videoUrl, iconSrc, modalGradient }) => {
+  const { t } = useTranslation();
   if (!isOpen) return null;
 
-  // L\u00f3gica para identificar la tarjeta de Grabaci\u00f3n Profesional o Mezcla/Master
-  const isRecordingCard = id === 'audio-rec';
-  const isMixMasterCard = id === 'audio-mix-master';
+  // Lógica para identificar la tarjeta de Grabación Profesional
+  const isRecordingCard = descTitle.includes(t('portfolio_audio_rec_desc_title'));
 
   let mainDescriptionContent = descBody;
   let equipmentBlocks: string[] = []; 
   
-  // L\u00f3gica para separar la descripci\u00f3n principal del equipamiento (solo en la tarjeta de Grabaci\u00f3n)
+  // Lógica para separar la descripción principal del equipamiento (solo en la tarjeta de Grabación)
   if (isRecordingCard) {
     const parts = descBody.split('\n\n');
-    mainDescriptionContent = parts[0] || ''; 
+    mainDescriptionContent = parts[0] || ''; // Primer párrafo es la descripción principal
     
     if (parts.length > 1) {
         const rawBlocks = parts.slice(1);
         
+        // Asumiendo que los 3 bloques restantes son Micrófonos, Instrumentos y Equipos de Audio
         if (rawBlocks.length >= 3) {
             equipmentBlocks = [rawBlocks[0], rawBlocks[1], rawBlocks[2]];
         }
     }
   }
 
-  // Lógica de URL dinámica para Grabación y Mezcla/Master
-  let videoSource = `https://www.youtube.com/embed/placeholder?autoplay=1&mute=1&controls=1&rel=0&playsinline=1`;
-  if (isRecordingCard) {
-      // Uso de URL dinámica ES/EN para Grabación
-      videoSource = i18n.language.startsWith('es') ? t('portfolio_audio_rec_video_url_es') : t('portfolio_audio_rec_video_url_en');
-  } else if (isMixMasterCard) {
-      // Uso de URL dinámica ES/EN para Mezcla/Masterización
-      videoSource = i18n.language.startsWith('es') ? t('portfolio_audio_mix_master_video_url_es') : t('portfolio_audio_mix_master_video_url_en');
-  }
+  // APLICACIÓN DEL GRADIENTE
+  const modalStyle = {
+    background: modalGradient, 
+  } as React.CSSProperties;
 
 
   return (
     <div className="modal-backdrop">
-      <div className="modal-content" ref={modalContentRef}> 
+      {/* APLICADO EL ESTILO DE GRADIENTE AQUÍ */}
+      <div className="modal-content" style={modalStyle}> 
         <button className="modal-close-button" onClick={onClose} aria-label={t("close") || "Close"}>
           ×
         </button>
         
-        {/* 1. SECCI\u00d3N DE VIDEO Y DESCRIPCI\u00d3N PRINCIPAL (2 COLUMNAS) */}
+        {/* 1. SECCIÓN DE VIDEO Y DESCRIPCIÓN PRINCIPAL (2 COLUMNAS) */}
         <div className="modal-two-columns">
           <div className="modal-video-container">
             <iframe
-              src={videoSource} // Usar URL dinámica
+              src={videoUrl}
               title={descTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -118,32 +101,27 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ isOpen, onClose, descTi
           </div>
           
           <div className="modal-description-container">
-            <img 
-                src={iconSrc} 
-                alt="Icono de Servicio" 
-                className="modal-icon" 
-                style={{ filter: `var(--icon-audio-filter)` }} // Mantiene el filtro de audio
-            />
-            {/* TÍTULO DEL MODAL: PORTAFOLIO */}
-            <h3 className="modal-desc-title">{t('modal_portfolio_title')}</h3>
-            {/* TÍTULO DE SERVICIO */}
-            <h4 className="modal-service-title">{descTitle}</h4> 
+            <img src={iconSrc} alt="Icono de Servicio" className="modal-icon" />
+            <h3 className="modal-desc-title">{descTitle}</h3>
+            {/* Renderiza solo la descripción principal (o el cuerpo completo si no es la tarjeta de grabación) */}
             <FormattedBody content={mainDescriptionContent} />
 
+            {/* 🚀 PUNTO 5: Botón de Call to Action para preguntar por precios */}
             <button className="modal-cta-button" onClick={() => window.open('/contact', '_self')}>
                 {t("modal_pricing_cta")}
             </button>
           </div>
         </div>
         
-        {/* 2. SECCI\u00d3N DE EQUIPAMIENTO (3 COLUMNAS) - SOLO PARA GRABACI\u00d3N PROFESIONAL */}
+        {/* 2. SECCIÓN DE EQUIPAMIENTO (3 COLUMNAS) - SOLO PARA GRABACIÓN PROFESIONAL */}
         {isRecordingCard && equipmentBlocks.length >= 3 && (
             <div className="modal-equipment-section">
                 <h3 className="equipment-header">{t('portfolio_equipment_header')}</h3>
                 <div className="modal-equipment-grid">
+                    {/* Los bloques ya contienen el título y la lista internamente */}
                     {equipmentBlocks.map((block, index) => (
                         <div key={index} className="equipment-column">
-                            <FormattedBody key={index} content={block} />
+                            <FormattedBody content={block} />
                         </div>
                     ))}
                 </div>
@@ -163,9 +141,16 @@ interface ServiceCardContent {
   i18nCopyKey: string;
   i18nDescTitleKey: string;
   i18nDescBodyKey: string;
+  videoUrlKey: string;
+  modalGradient: string; // AÑADIDO
 }
 
-// Datos de las Cards (ACTUALIZADOS A 3)
+// COLORES PARA EL GRADIENTE
+const RECORDING_COLOR = "#e86c10"; // Naranja
+const MIXMASTER_COLOR = "#7a4ed4"; // Púrpura
+const GRADIENT_END = "rgba(0, 0, 0, 0.7)"; // Negro semi-transparente
+
+// Datos de la Card 1: Producción Musical
 const audioProdCard: ServiceCardContent = {
   id: 'audio-prod', 
   iconSrc: `${import.meta.env.BASE_URL}icono-prod-musical.svg`, 
@@ -173,8 +158,11 @@ const audioProdCard: ServiceCardContent = {
   i18nCopyKey: "service_audio_prod_copy",
   i18nDescTitleKey: "portfolio_audio_prod_desc_title",
   i18nDescBodyKey: "portfolio_audio_prod_desc_body",
+  videoUrlKey: "portfolio_audio_prod_video_url",
+  modalGradient: 'none', // No aplica gradiente ya que es un enlace
 };
 
+// Datos de la Card 2: Grabación Profesional
 const audioRecordingCard: ServiceCardContent = {
   id: 'audio-rec', 
   iconSrc: `${import.meta.env.BASE_URL}icono-grabacion.svg`, 
@@ -182,54 +170,68 @@ const audioRecordingCard: ServiceCardContent = {
   i18nCopyKey: "service_audio_rec_copy",
   i18nDescTitleKey: "portfolio_audio_rec_desc_title",
   i18nDescBodyKey: "portfolio_audio_rec_desc_body",
+  videoUrlKey: "portfolio_audio_rec_video_url",
+  modalGradient: `linear-gradient(180deg, ${RECORDING_COLOR} 0%, ${GRADIENT_END} 100%)`, // Gradiente de Naranja a Negro
 };
 
-// Nueva tarjeta de Mezcla y Masterización fusionada
+// Datos de la Card 3: Mezcla & Mastering (CONSOLIDADO)
 const audioMixMasterCard: ServiceCardContent = {
   id: 'audio-mix-master', 
-  iconSrc: `${import.meta.env.BASE_URL}icono-mezcla.svg`, // Usa el icono de mezcla
-  i18nTitleKey: "service_audio_mix_master_title", 
-  i18nCopyKey: "service_audio_mix_master_copy", 
-  i18nDescTitleKey: "portfolio_audio_mix_master_desc_title", 
+  iconSrc: `${import.meta.env.BASE_URL}icono-master.svg`, 
+  i18nTitleKey: "service_audio_mix_master_title",
+  i18nCopyKey: "service_audio_mix_master_copy",
+  i18nDescTitleKey: "portfolio_audio_mix_master_desc_title",
   i18nDescBodyKey: "portfolio_audio_mix_master_desc_body", 
+  videoUrlKey: "portfolio_audio_mix_master_video_url", 
+  modalGradient: `linear-gradient(180deg, ${MIXMASTER_COLOR} 0%, ${GRADIENT_END} 100%)`, // Gradiente de Púrpura a Negro
 };
 
 
-// Componente de la Card de Servicio
+// Componente de la Card de Servicio (MODIFICADO)
 const ServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate(); 
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Función que decide si abre modal o navega
-  const handleOpenAction = () => {
-      if (content.id === 'audio-prod') {
-          // 🚀 ACCIÓN PRINCIPAL: Navegar a la p\u00e1gina dedicada
-          navigate('/music-production');
-      } else {
-          setIsModalOpen(true);
-      }
-  }
-
+  const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Nuevo: Determinar si es la tarjeta de Producción Musical
+  const isProductionCard = content.id === 'audio-prod';
+
+  // Lógica para seleccionar la URL correcta del video
+  let modalVideoUrl = t(content.videoUrlKey);
+
+  if (content.id === 'audio-rec') {
+      modalVideoUrl = t('portfolio_audio_rec_video_url', { 
+        defaultValue: modalVideoUrl
+      });
+  } else if (content.id === 'audio-mix-master') {
+      modalVideoUrl = t('portfolio_audio_mix_master_video_url', {
+        defaultValue: modalVideoUrl
+      });
+  }
+  
   const modalDescTitle = t(content.i18nDescTitleKey);
   const modalDescBody = t(content.i18nDescBodyKey);
   const cardTitle = t(content.i18nTitleKey);
   const cardCopy = t(content.i18nCopyKey);
 
+  // Lógica para el botón: Link para Producción Musical, Button para Modal
+  const ActionButton = isProductionCard ? (
+    <Link to="/music-production" className="portfolio-button">
+        {t("portfolio_button")}
+    </Link>
+  ) : (
+    <button className="portfolio-button" onClick={openModal}>
+      {t("portfolio_button")}
+    </button>
+  );
 
   return (
     <>
       <div className="service-card-container" id={content.id}> 
         <div className="card-icon-column">
-          <img 
-            src={content.iconSrc} 
-            alt={cardTitle} 
-            className="service-icon"
-            style={{ filter: `var(--icon-audio-filter)` }} // Mantiene el filtro de audio
-          />
+          <img src={content.iconSrc} alt={cardTitle} className="service-icon" />
         </div>
         
         <div className="card-content-column">
@@ -238,35 +240,33 @@ const ServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => 
         </div>
 
         <div className="card-button-column">
-          {/* Botón llama a la acción que redirige o abre modal */}
-          <button className="portfolio-button" onClick={handleOpenAction}>
-            {content.id === 'audio-prod' ? t("explore") : t("portfolio_button")}
-          </button>
+          {ActionButton}
         </div>
       </div>
 
-      {/* Solo renderiza el modal si no es la tarjeta de Producci\u00f3n Musical */}
-      {content.id !== 'audio-prod' && (
-        <PortfolioModal
+      {/* Solo renderizar el Modal si NO es la tarjeta de Producción */}
+      {!isProductionCard && (
+          <PortfolioModal
             isOpen={isModalOpen}
             onClose={closeModal}
             descTitle={modalDescTitle}
             descBody={modalDescBody}
-            id={content.id}
+            videoUrl={modalVideoUrl}
             iconSrc={content.iconSrc}
-        />
+            modalGradient={content.modalGradient} // PASANDO EL GRADIENTE
+          />
       )}
     </>
   );
 };
 
-// Componente Principal de Servicios (LIMPIO)
+// Componente Principal de Servicios
 export default function AudioServices() {
   
+  // Array con solo las 3 tarjetas de servicio: Producción, Grabación, Mezcla&Mastering
   const services = [audioProdCard, audioRecordingCard, audioMixMasterCard]; 
 
   return (
-    // 🚀 Renderiza las 3 tarjetas
     <div className="audio-services-list"> 
       {services.map((service) => (
         <ServiceCard key={service.id} content={service} />

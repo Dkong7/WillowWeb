@@ -7,6 +7,8 @@ import React from "react";
 // Helper component for text formatting
 const FormattedBody: React.FC<{ content: string }> = ({ content }) => {
   const lines = content.split("\n");
+  const colorBase = 'var(--color-video-base)'; // FIX #2: Use video color base for titles/lists
+
   return (
     <div className="formatted-description">
       {lines.map((line, i) => {
@@ -15,14 +17,16 @@ const FormattedBody: React.FC<{ content: string }> = ({ content }) => {
         if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
           return (
             <p key={i} className="section-title-body">
-              <strong style={{ fontFamily: 'Albertus Medium', color: 'var(--color-audio-base)' }}>{trimmed.slice(2, -2)}</strong>
+              {/* FIX #2: Use colorBase for internal titles */}
+              <strong style={{ fontFamily: 'Albertus Medium', color: colorBase }}>{trimmed.slice(2, -2)}</strong>
             </p>
           );
         }
         // Check for * Item (List Item)
         if (trimmed.startsWith("*")) {
           return (
-            <li key={i} className="detail-list-item">
+            // FIX #2: Pass inline style to enable list marker color
+            <li key={i} className="detail-list-item" style={{ '--list-color': colorBase } as React.CSSProperties}>
               {trimmed.slice(1).trim()}
             </li>
           );
@@ -37,7 +41,7 @@ const FormattedBody: React.FC<{ content: string }> = ({ content }) => {
 // -----------------------------------------------------------
 // Music Player Logic (Used on Music Production Page)
 // -----------------------------------------------------------
-
+// Este componente se mantuvo del código anterior para que no haya conflicto al ser importado/usado por MusicProductionPage
 interface PlayerProps {
   artistTitleKey: string;
   playerColorVar: string;
@@ -321,6 +325,7 @@ interface ServiceCardContent {
 interface PortfolioVideoModalProps {
   isOpen: boolean;
   onClose: () => void;
+  cardTitle: string; 
   descTitle: string;
   descBody: string;
   videoUrl: string;
@@ -328,20 +333,28 @@ interface PortfolioVideoModalProps {
 }
 
 // Video Modal - Simplified for Video Services
-const PortfolioVideoModal: React.FC<PortfolioVideoModalProps> = ({ isOpen, onClose, descTitle, descBody, videoUrl, iconSrc }) => {
+const PortfolioVideoModal: React.FC<PortfolioVideoModalProps> = ({ isOpen, onClose, cardTitle, descTitle, descBody, videoUrl, iconSrc }) => {
     const { t } = useTranslation();
     const modalContentRef = useRef<HTMLDivElement>(null);
 
+    // FIX CRÍTICO: Scroll al top de la ventana al abrir el modal y asegurar que el contenido interno también esté arriba
     useEffect(() => {
-        if (isOpen && modalContentRef.current) {
-            modalContentRef.current.scrollTop = 0;
+        if (isOpen) {
+            // Usa setTimeout para asegurar que el scroll ocurra DESPUÉS de que el modal es visible
+            setTimeout(() => {
+                window.scrollTo(0, 0); // Scroll la página principal al top
+                if (modalContentRef.current) {
+                    modalContentRef.current.scrollTop = 0; // Scroll el contenido del modal al top
+                }
+            }, 0); 
         }
     }, [isOpen]);
 
     if (!isOpen) return null;
 
     return (
-        <div className="modal-backdrop">
+        // El CSS de modal-backdrop y modal-content controla la posición TOP
+        <div className="modal-backdrop"> 
           <div className="modal-content video-modal-content" ref={modalContentRef}>
             <button className="modal-close-button" onClick={onClose} aria-label={t("close") || "Close"}>
               ×
@@ -364,7 +377,9 @@ const PortfolioVideoModal: React.FC<PortfolioVideoModalProps> = ({ isOpen, onClo
                     className="modal-icon" 
                     // No filter needed here, CSS handles filter: none
                 />
-                <h3 className="modal-desc-title">{t('modal_reel_title')}</h3>
+                {/* FIX #2: Use main card title (with video color) as H3/main title of the modal */}
+                <h3 className="modal-desc-title">{cardTitle}</h3> 
+                {/* FIX #2: Use secondary/reel title as H4/subtitle */}
                 <h4 className="modal-service-title">{descTitle}</h4>
                 <FormattedBody content={descBody} />
 
@@ -382,18 +397,18 @@ const PortfolioVideoModal: React.FC<PortfolioVideoModalProps> = ({ isOpen, onClo
 const videoProdCard: ServiceCardContent = {
   id: 'video-prod', 
   iconSrc: `${import.meta.env.BASE_URL}icono-audiovisual.svg`, 
-  i18nTitleKey: "video_service_prod_title",
-  i18nCopyKey: "video_service_prod_copy",
-  i18nDescTitleKey: "portfolio_video_prod_desc_title",
-  i18nDescBodyKey: "portfolio_video_prod_desc_body",
+  i18nTitleKey: "video_prod_title", // FIX: Restored to use the descriptive title from JSON
+  i18nCopyKey: "video_prod_copy", // FIX: Restored to use the descriptive copy from JSON
+  i18nDescTitleKey: "portfolio_video_prod_desc_title", // Modal Title
+  i18nDescBodyKey: "portfolio_video_prod_desc_body", // Modal Body
   videoUrlKey: "portfolio_video_prod_video_url",
 };
 
 const videoPostProdCard: ServiceCardContent = {
   id: 'video-post', 
   iconSrc: `${import.meta.env.BASE_URL}icono-postvideo.svg`, 
-  i18nTitleKey: "video_service_post_prod_title",
-  i18nCopyKey: "video_service_post_prod_copy",
+  i18nTitleKey: "video_post_title",
+  i18nCopyKey: "video_post_copy",
   i18nDescTitleKey: "portfolio_video_post_prod_desc_title",
   i18nDescBodyKey: "portfolio_video_post_prod_desc_body",
   videoUrlKey: "portfolio_video_post_prod_video_url",
@@ -402,8 +417,8 @@ const videoPostProdCard: ServiceCardContent = {
 const videoAnimCard: ServiceCardContent = {
   id: 'video-anim', 
   iconSrc: `${import.meta.env.BASE_URL}icono-animacion.svg`, 
-  i18nTitleKey: "video_service_anim_title",
-  i18nCopyKey: "video_service_anim_copy",
+  i18nTitleKey: "video_motion_title",
+  i18nCopyKey: "video_motion_copy",
   i18nDescTitleKey: "portfolio_video_anim_desc_title",
   i18nDescBodyKey: "portfolio_video_anim_desc_body",
   videoUrlKey: "portfolio_video_anim_video_url",
@@ -411,7 +426,7 @@ const videoAnimCard: ServiceCardContent = {
 
 // Component for a single Video Card
 const VideoServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenAction = () => {
@@ -420,7 +435,21 @@ const VideoServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }
 
   const closeModal = () => setIsModalOpen(false);
 
-  const modalVideoUrl = t(content.videoUrlKey);
+  // Lógica para seleccionar la URL correcta del video
+  const isSpanish = i18n.language.startsWith('es');
+  
+  let modalVideoUrl = t(content.videoUrlKey); 
+  
+  // URL Específica por ID y por idioma
+  if (content.id === 'video-prod') {
+      modalVideoUrl = isSpanish ? t('portfolio_video_prod_video_url_es') : t('portfolio_video_prod_video_url_en');
+  } else if (content.id === 'video-post') {
+      modalVideoUrl = isSpanish ? t('portfolio_video_post_prod_video_url_es') : t('portfolio_video_post_prod_video_url_en');
+  } else if (content.id === 'video-anim') {
+      modalVideoUrl = isSpanish ? t('portfolio_video_anim_video_url_es') : t('portfolio_video_anim_video_url_en');
+  }
+
+
   const modalDescTitle = t(content.i18nDescTitleKey);
   const modalDescBody = t(content.i18nDescBodyKey);
   const cardTitle = t(content.i18nTitleKey);
@@ -454,6 +483,7 @@ const VideoServiceCard: React.FC<{ content: ServiceCardContent }> = ({ content }
       <PortfolioVideoModal
           isOpen={isModalOpen}
           onClose={closeModal}
+          cardTitle={cardTitle} // FIX #2: Pass cardTitle
           descTitle={modalDescTitle}
           descBody={modalDescBody}
           videoUrl={modalVideoUrl}
@@ -473,170 +503,6 @@ export function VideoServices() {
       {services.map((service) => (
         <VideoServiceCard key={service.id} content={service} />
       ))}
-    </div>
-  );
-}
-
-
-// -----------------------------------------------------------
-// ORIGINAL EXPORT: MusicProductionPage (UPDATED)
-// -----------------------------------------------------------
-
-interface MusicProductionPageProps {
-  // Prop para distinguirlo de la exportación nombrada
-  isMusicPage?: boolean; 
-}
-
-export default function MusicProductionPage({ isMusicPage = false }: MusicProductionPageProps) {
-  const { t, i18n } = useTranslation();
-  
-  // Si se está importando como VideoServices (nombrado), no renderizar la página de música
-  if (!isMusicPage) {
-      return null;
-  }
-  
-  // LEO JARAMILLO (First player, not inverted) - Empieza con Leo
-  const leoPlayer = {
-    artistTitleKey: "music_player_leo_title",
-    playerColorVar: "#7a4ed4",
-    videoUrl: "https://www.youtube.com/embed/boPHlpclehY", 
-    songSource: "/leo-alto.mp3",
-    albumArt: "/leo-art.png",
-    inverted: false,
-  }
-
-  // DKONG (Second player, inverted for visual order)
-  const dkongPlayer = {
-    artistTitleKey: "music_player_dkong_title",
-    playerColorVar: "#ff6a00",
-    videoUrl: "https://www.youtube.com/embed/zELzLR0-Qj4", 
-    songSource: "/lfc-Jazz.mp3",
-    albumArt: "/lfc-art.png",
-    inverted: true,
-  }
-  
-  // Array of players starting with LEO
-  const players = [leoPlayer, dkongPlayer];
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
-  // Section for the general "Producción Musical" content (El Intro)
-  const musicProductionIntroCard = { 
-    id: 'audio-prod-intro', 
-    iconSrc: `${import.meta.env.BASE_URL}icono-prod-musical.svg`, 
-    i18nTitleKey: "service_audio_prod_title",
-    i18nCopyKey: "music_prod_title_artists_main_copy", 
-    i18nDescTitleKey: "portfolio_audio_prod_desc_title",
-    i18nDescBodyKey: "music_prod_desc_body", 
-    videoUrlKey: "portfolio_audio_prod_video_url",
-  };
-  
-  const musicProductionVideoUrl = t(musicProductionIntroCard.videoUrlKey);
-  const musicProductionTitle = t(musicProductionIntroCard.i18nTitleKey);
-  const musicProductionSubtitle = t(musicProductionIntroCard.i18nCopyKey);
-  const musicProductionDescription = t(musicProductionIntroCard.i18nDescBodyKey);
-  
-
-  return (
-    <div className="music-production-page-container">
-      <h1 className="music-page-header">{t("music_player_title")}</h1>
-
-      {/* 1. SECCIÓN DE PRODUCCIÓN MUSICAL (EL INTRO) */}
-      <div className="music-production-intro-section">
-        {/* TITULO: PRODUCCIÓN MUSICAL */}
-        <h2 className="artist-name-title" style={{ color: 'var(--color-audio-base)', textAlign: 'center' }}>{musicProductionTitle}</h2>
-        {/* SUBTITULO: MÚSICA ORIGINAL... */}
-        <h3 className="artist-subtitle-genres" style={{ color: 'var(--color-accent)', textAlign: 'center', fontFamily: 'Advent Pro' }}>{musicProductionSubtitle}</h3> 
-        
-        <div className="music-prod-video-wrapper">
-            <iframe
-              src={musicProductionVideoUrl}
-              title={musicProductionTitle}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-        </div>
-        
-        <div className="music-prod-description-container">
-            <h4 className="description-subtitle">
-              {t("description") || "Descripción"}
-            </h4>
-            <FormattedBody content={musicProductionDescription} />
-        </div>
-        
-        <Link
-            to="/contact"
-            className="modal-cta-button intro-cta"
-            style={{
-              backgroundColor: 'var(--color-audio-base)',
-              color: "var(--color-bg)",
-              border: `2px solid var(--color-audio-base)`,
-              width: "300px", 
-              margin: '2rem auto 4rem auto',
-              textAlign: "center",
-              display: 'block'
-            }}
-          >
-            {t("modal_pricing_cta")}
-          </Link>
-
-      </div>
-      
-      {/* 2. SECCIÓN DE ARTISTAS */}
-      <h2 className="artist-name-title" style={{ color: 'var(--color-accent)', textAlign: 'center', fontFamily: 'Albertus Medium', fontSize: '2rem', marginBottom: '2rem' }}>{t('modal_artists_title')}</h2>
-      {players.map((player, index) => (
-          <MusicPlayerSection
-            key={index}
-            artistTitleKey={player.artistTitleKey}
-            playerColorVar={player.playerColorVar}
-            videoUrl={player.videoUrl}
-            songSource={player.songSource}
-            albumArt={player.albumArt}
-            inverted={player.inverted}
-          />
-      ))}
-
-      {/* 3. MÚSICA PARA CINE Y TV - NEW MODAL/SECTION */}
-      <div className="music-production-intro-section">
-        {/* TÍTULO: MÚSICA PARA RADIO, CINE Y TV */}
-        <h2 className="artist-name-title" style={{ color: 'var(--color-video-base)', textAlign: 'center' }}>MÚSICA PARA RADIO, CINE Y TV</h2>
-        
-        <div className="music-prod-video-wrapper">
-             <iframe
-              // Usar URL dinámica para es/en
-              src={i18n.language.startsWith('es') ? "https://www.youtube.com/embed/3UoM0YL2Obk" : "https://www.youtube.com/embed/c-SlQZxOIA8"}
-              title="MÚSICA PARA RADIO, CINE Y TV"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-        </div>
-        
-        <div className="music-prod-description-container">
-            {/* TÍTULO DEL MODAL: REEL */}
-            <h4 className="description-subtitle" style={{ color: 'var(--color-video-base)' }}>{t("modal_reel_title")}</h4> 
-            
-            {/* DESCRIPCIÓN */}
-            <FormattedBody content="En Willow Tree transformamos ideas en experiencias sonoras completas. Nuestro equipo de compositores, productores y diseñadores de sonido desarrolla música original, jingles, bandas sonoras y paisajes auditivos que conectan con la esencia de cada marca o artista." />
-        </div>
-        
-        <Link
-            to="/contact"
-            className="modal-cta-button intro-cta"
-            style={{
-              backgroundColor: 'var(--color-video-base)',
-              color: "var(--color-bg)",
-              border: `2px solid var(--color-video-base)`,
-              width: "300px", 
-              margin: '2rem auto 4rem auto',
-              display: 'block'
-            }}
-          >
-            {t("modal_pricing_cta")}
-          </Link>
-      </div>
-      
     </div>
   );
 }

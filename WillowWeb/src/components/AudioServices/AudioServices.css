@@ -111,11 +111,11 @@
     background-color: rgba(0, 0, 0, 0.9); 
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* FIX: Alinear al top para el scroll */
+    align-items: flex-start; /* FIX CRÍTICO: Alinea el modal al top del viewport */
     z-index: 1000; 
     backdrop-filter: blur(8px); 
     -webkit-backdrop-filter: blur(8px);
-    overflow-y: auto; /* Permitir scroll */
+    overflow-y: auto; /* Permite scroll del modal si es muy alto */
 }
 
 .modal-content {
@@ -130,8 +130,8 @@
     position: relative;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease-in-out; 
-    margin-top: 3rem; 
-    margin-bottom: 3rem; 
+    margin-top: 5vh; /* AJUSTADO: Anclado más cerca del tope */
+    margin-bottom: 3vh; /* Ajuste de espaciado inferior */
 }
 
 .modal-close-button {

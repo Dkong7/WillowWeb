@@ -104,7 +104,10 @@
   padding: 4rem 3rem;
   border: 1px solid var(--color-border-navbar);
   border-radius: 12px;
-  background: var(--modal-bg-gradient), var(--color-card-bg);
+  /* FIX: Se usa solo el degradado principal (var(--modal-bg-gradient)) */
+  background: var(--modal-bg-gradient); 
+  /* FIX CRÍTICO: Asegura el color de texto blanco sobre el nuevo fondo oscuro */
+  color: #ffffff; 
   background-size: cover;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --player-color-base: var(--default-player-color, #7a4ed4);
@@ -150,7 +153,7 @@
   border: none;
 }
 
-/* === PLAYER COLUMN === */
+/* === PLAYER COLUMN (ELIMINADA DE SERVICES) === */
 .player-column {
   flex: 1;
   display: flex;
@@ -177,6 +180,12 @@
 }
 
 /* === CONTROLES DEL PLAYER === */
+.player-controls.compact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
 .control-button {
   border: none;
   border-radius: 50%;
@@ -200,6 +209,43 @@
 .repeat.active {
   filter: brightness(1.6);
 }
+
+/* Volumen en línea */
+.volume-inline {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.volume-popup {
+  position: absolute;
+  left: 55px; /* Ajusta la posición a la derecha del botón */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-bg-navbar);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+}
+.volume-slider-popup {
+  width: 80px;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+.volume-slider-popup::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--player-color-base);
+  cursor: pointer;
+}
+
 
 /* === PROGRESS BAR === */
 .progress-bar {
@@ -245,6 +291,13 @@
 }
 
 /* === REDES === */
+.social-follow-prompt {
+    font-family: "Advent Pro", sans-serif;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff; /* Asegurado en blanco */
+}
 .social-links {
   display: flex;
   justify-content: center;
@@ -266,22 +319,34 @@
   font-family: "Albertus Medium Local", "Espiritu Regular", sans-serif;
   font-size: 2.4rem;
   margin-bottom: 0.3rem;
-  color: var(--color-accent);
-  text-shadow: var(--text-shadow-close-black);
+  /* FIX: Blanco con Sombra */
+  color: #ffffff; 
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px var(--player-color-base); /* Sombra paralela en el título */
   text-align: center;
 }
 .artist-subtitle-genres {
   display: block;
   font-size: 1.2rem;
   font-family: "Advent Pro", sans-serif;
-  color: var(--color-accent);
+  /* FIX: Blanco sin sombra */
+  color: #ffffff; 
   font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* === DESCRIPCIÓN === */
+.description-container {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border-navbar);
+    margin-top: 2rem;
+}
 .description-subtitle {
   text-align: center;
+  font-family: "Albertus Medium Local", sans-serif;
+  font-size: 1.3rem;
+  color: var(--player-color-base); /* Color de acento */
+  margin-bottom: 1rem;
 }
 .formatted-description {
   line-height: 1.5;
@@ -289,11 +354,38 @@
 }
 .formatted-description p {
   text-align: center;
+  margin-bottom: 1rem;
+}
+.formatted-description .section-title-body strong {
+    font-size: 1.2rem;
 }
 .formatted-description li {
   text-align: left;
   margin: 0.3rem 0 0.3rem 1.5rem;
+  list-style: none; /* Asegura que no haya bullets por defecto */
+  position: relative;
 }
+.formatted-description li::before {
+  content: "—";
+  position: absolute;
+  left: -1rem;
+  color: var(--list-color, var(--player-color-base));
+  font-weight: bold;
+}
+
+/* === CTA Button === */
+.modal-cta-button {
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.modal-cta-button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 15px rgba(122, 78, 212, 0.5); /* Usar un color base o variable */
+}
+
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
@@ -308,6 +400,9 @@
   }
   .info-column {
     padding-right: 0;
+  }
+  .artist-section {
+      padding: 2rem 1.5rem;
   }
 }
 

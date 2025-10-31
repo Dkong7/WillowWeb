@@ -127,7 +127,8 @@ const MusicPlayerSection: React.FC<PlayerProps> = ({
   const [showVolume, setShowVolume] = useState(false);
 
   const artistTitle = t(artistTitleKey);
-  const finalSubtitle = isService ? t(artistSubtitleKey) : subtitle;
+  // Nuevo: Si es un servicio, usa la clave del subtítulo de la página, si no, usa el subtítulo local
+  const finalSubtitle = isService ? t(artistSubtitleKey) : subtitle; 
   const songTitle = t("music_song_title");
   const isSpanish = i18n.language.startsWith("es");
   const finalVideoUrl = isSpanish ? videoUrl : videoUrlEn || videoUrl;
@@ -208,11 +209,16 @@ const MusicPlayerSection: React.FC<PlayerProps> = ({
     >
       <h2
         className={`artist-name-title ${inverted ? "right-title" : ""}`}
-        style={{ color: playerColorVar }}
+        // FIX: Eliminado inline style para que el CSS (blanco con sombra) se aplique
+        // style={{ color: playerColorVar }} 
       >
         {artistTitle}
       </h2>
-      <span className="artist-subtitle-genres" style={{ color: playerColorVar }}>
+      <span 
+        className="artist-subtitle-genres"
+        // FIX: Eliminado inline style para que el CSS (blanco) se aplique
+        // style={{ color: playerColorVar }}
+      >
         {finalSubtitle}
       </span>
 
@@ -223,7 +229,7 @@ const MusicPlayerSection: React.FC<PlayerProps> = ({
               <iframe
                 src={finalVideoUrl}
                 title={artistTitle}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
             </div>
@@ -383,12 +389,13 @@ const MusicPlayerSection: React.FC<PlayerProps> = ({
   );
 };
 
+// MODIFICADO: Solo se dejan los servicios y se ajustan colores/degradados
 const ARTISTS_DATA: ArtistData[] = [
   {
     id: "prod-musical",
-    artistTitleKey: "modal_portfolio_title",
-    artistSubtitleKey: "music_prod_title_artists_main_copy",
-    playerColorVar: "#7a4ed4",
+    artistTitleKey: "modal_portfolio_title", // MÚSICA ORIGINAL
+    artistSubtitleKey: "music_prod_title_artists_main_copy", // PRODUCCIÓN MUSICAL PARA MARCAS Y ARTISTAS
+    playerColorVar: "#e86c10", // COLOR PRINCIPAL: NARANJA
     inverted: false,
     videoUrl:
       "https://www.youtube.com/embed/KKARwQRbIAs?autoplay=0&controls=1&rel=0&playsinline=1",
@@ -398,16 +405,17 @@ const ARTISTS_DATA: ArtistData[] = [
     albumArt: "/icono-prod-musical.svg",
     subtitle: "",
     descriptionKey: "portfolio_audio_prod_desc_body",
+    // Degradado: NARANJA (#e86c10) a NEGRO (#000000)
     gradientBg:
-      "linear-gradient(180deg, rgba(122, 78, 212, 0.4) 0%, var(--color-bg) 80%)",
+      "linear-gradient(180deg, #e86c10 0%, #000000 100%)", 
     socialLinksOverride: {},
     isService: true
   },
   {
     id: "cine-tv",
-    artistTitleKey: "video_prod_title",
-    artistSubtitleKey: "video_prod_copy",
-    playerColorVar: "#10e8b2",
+    artistTitleKey: "modal_reel_title", // REEL
+    artistSubtitleKey: "clients_subtitle", // Algunas de las marcas...
+    playerColorVar: "#7a4ed4", // COLOR PRINCIPAL: PÚRPURA
     inverted: true,
     videoUrl:
       "https://www.youtube.com/embed/3UoM0YL2Obk?autoplay=0&controls=1&rel=0&playsinline=1",
@@ -416,64 +424,18 @@ const ARTISTS_DATA: ArtistData[] = [
     songSource: "",
     albumArt: "/icono-film-tv.svg",
     subtitle: "",
-    descriptionKey: "portfolio_video_prod_desc_body",
+    descriptionKey: "clients_body", // Descripción de clientes
+    // Degradado: PÚRPURA (#7a4ed4) a NEGRO (#000000)
     gradientBg:
-      "linear-gradient(180deg, rgba(16, 232, 178, 0.4) 0%, var(--color-bg) 80%)",
+      "linear-gradient(180deg, #7a4ed4 0%, #000000 100%)", 
     socialLinksOverride: {},
     isService: true
-  },
-  {
-    id: "leo",
-    artistTitleKey: "music_player_leo_title",
-    artistSubtitleKey: "",
-    playerColorVar: "#7a4ed4",
-    inverted: false,
-    videoUrl: "https://www.youtube.com/embed/boPHlpclehY?autoplay=0&controls=1",
-    songSource: "/leo-alto.mp3",
-    albumArt: "/leo-art.png",
-    subtitle: "reggae, dub, hip hop",
-    descriptionKey: "description_leo",
-    gradientBg:
-      "linear-gradient(180deg, rgba(122, 78, 212, 0.4) 0%, var(--color-bg) 80%)",
-    socialLinksOverride: {
-      tidal: "https://tidal.com/artist/6966103",
-      spotify:
-        "https://open.spotify.com/intl-es/artist/3QbyDy8HrkztZfpKowLY6I",
-      apple: "https://music.apple.com/us/artist/leo-jaramillo/1506044768",
-      youtube: "https://www.youtube.com/@leojaramillomusic",
-      instagram: "https://www.instagram.com/leojaramillomusic",
-      tiktok: "#"
-    },
-    isService: false
-  },
-  {
-    id: "dkong",
-    artistTitleKey: "music_player_dkong_title",
-    artistSubtitleKey: "",
-    playerColorVar: "#e86c10",
-    inverted: true,
-    videoUrl: "https://www.youtube.com/embed/zELzLR0-Qj4?autoplay=0&controls=1",
-    songSource: "/lfc-Jazz.mp3",
-    albumArt: "/lfc-art.png",
-    subtitle: "hip-hop, afro beat, experimental",
-    descriptionKey: "description_dkong",
-    gradientBg:
-      "linear-gradient(180deg, rgba(232, 108, 16, 0.4) 0%, var(--color-bg) 80%)",
-    socialLinksOverride: {
-      tidal: "https://tidal.com/artist/63112634",
-      spotify: "https://open.spotify.com/artist/63112634",
-      apple: "https://music.apple.com/artist/dkong/63112634",
-      youtube: "https://music.youtube.com/channel/UCtqFZ4xZxuhmvlTgE6y9Zog",
-      instagram: "https://instagram.com/_imdkong_",
-      tiktok: "https://tiktok.com/@_imdkong_"
-    },
-    isService: false
   }
 ];
 
 export default function MusicProductionPage() {
   const { t } = useTranslation();
-  const [currentArtistIndex, setCurrentArtistIndex] = useState(2);
+  const [currentArtistIndex, setCurrentArtistIndex] = useState(0); 
   const [hasNavigated, setHasNavigated] = useState(false);
 
   useEffect(() => {
@@ -484,7 +446,8 @@ export default function MusicProductionPage() {
     () => ARTISTS_DATA[currentArtistIndex],
     [currentArtistIndex]
   );
-
+  
+  // Lógica de navegación adaptada al nuevo array de 2 elementos
   const handlePrev = useCallback(() => {
     setHasNavigated(true);
     setCurrentArtistIndex((prev) =>
@@ -499,10 +462,11 @@ export default function MusicProductionPage() {
     );
   }, []);
 
+  // Modificado: El título de navegación se basa en las nuevas claves que apuntan a "Música Original" y "REEL"
   const navTitle = useMemo(() => {
     if (currentArtist.id === "prod-musical") return t("modal_portfolio_title");
-    if (currentArtist.id === "cine-tv") return t("modal_reel_title");
-    return t("modal_artists_title");
+    if (currentArtist.id === "cine-tv") return t("modal_reel_title"); 
+    return t("audio_service_banner_title"); // Fallback
   }, [currentArtist, t]);
 
   return (

@@ -10,7 +10,7 @@
   "audio_prod": "Music Production",
   "audio_mix_master": "Mixing & Mastering",
   "video": "Video",
-  "video_prod_title": "Video Production",
+  "video_prod_title": "🎥 VIDEO PRODUCTION",
   "video_post_title": "Post-Production",
   "video_motion_title": "Animation & Motion Graphics",
   "title": "Willow Tree",
@@ -22,7 +22,7 @@
   "next": "Next",
   "prev": "Previous",
   "modal_artists_title": "MUSIC FOR ARTISTS",
-  "modal_portfolio_title": "PORTFOLIO",
+  "modal_portfolio_title": "ORIGINAL MUSIC",
   "modal_reel_title": "REEL",
   "social_follow_prompt": "Follow Us On",
   "description": "Description",
@@ -101,11 +101,11 @@
   "service_audio_prod_title": "🎼 MUSIC PRODUCTION",
   "service_audio_prod_copy": "Integral development of musical projects, from composition and arrangements to final delivery, preserving the sonic identity of each artist or brand.",
   "portfolio_audio_prod_desc_title": "ORIGINAL MUSIC FOR ARTISTS AND BRANDS",
-  "portfolio_audio_prod_desc_body": "At Willow Tree, we conceive music as the heart of every project. Our portfolio in Music Production ranges from creating original soundtracks, advertising jingles, and 'sonic branding', to the complete production of albums for artists. We integrate our passion for sound with technical precision to ensure every note resonates with the identity and message of your project. We explore genres and styles, always aiming for the highest artistic and sonic quality.",
+  "portfolio_audio_prod_desc_body": "At Willow Tree, we conceive music as the heart of every project. Our Music Production portfolio covers everything from creating original soundtracks, advertising jingles, and 'sonic branding', to the complete production of albums for artists. We blend our passion for sound with technical precision to ensure every note resonates with the identity and message of your project. We explore genres and styles, always aiming for the highest artistic and sonic quality.",
   "portfolio_audio_prod_video_url": "https://www.youtube.com/embed/KKARwQRbIAs?autoplay=0&mute=0&controls=1&rel=0&playsinline=1",
   
-  "music_prod_title_artists_main_copy": "ORIGINAL MUSIC. MUSIC PRODUCTION FOR BRANDS AND ARTISTS",
-  "music_prod_desc_body": "At Willow Tree, we conceive music as the heart of every project. Our portfolio in Music Production ranges from creating original soundtracks, advertising jingles, and 'sonic branding', to the complete production of albums for artists. We integrate our passion for sound with technical precision to ensure every note resonates with the identity and message of your project. We explore genres and styles, always aiming for the highest artistic and sonic quality.",
+  "music_prod_title_artists_main_copy": "MUSIC PRODUCTION FOR BRANDS AND ARTISTS",
+  "music_prod_desc_body": "At Willow Tree, we conceive music as the heart of every project. Our Music Production portfolio covers everything from creating original soundtracks, advertising jingles, and 'sonic branding', to the complete production of albums for artists. We integrate our passion for sound with technical precision to ensure every note resonates with the identity and message of your project. We explore genres and styles, always aiming for the highest artistic and sonic quality.",
   
   "service_audio_rec_title": "🎤 PROFESSIONAL RECORDING",
   "service_audio_rec_copy": "Studios equipped with state-of-the-art technology to capture voices, instruments, and ambiances with the highest fidelity and character.",
@@ -125,19 +125,22 @@
   "video_prod_copy": "Integral production of audiovisual projects, from script to final delivery for TV, cinema, and digital platforms.",
   "portfolio_video_prod_desc_title": "DIRECTION, FILMING, AND AUDIOVISUAL PRODUCTION",
   "portfolio_video_prod_desc_body": "We are a full team ready to bring your vision to life. We handle all phases of production: pre-production, direction, lighting, filming with cinematic equipment, and direct sound. Our experience ensures that every frame captures the emotion and story you want to convey.",
-  "portfolio_video_prod_video_url": "https://www.youtube.com/embed/JJtyZ3a8Lz8?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  "portfolio_video_prod_video_url_es": "https://www.youtube.com/embed/S6d1S3SHLlU",
+  "portfolio_video_prod_video_url_en": "https://www.youtube.com/embed/qq-XvPylmww",
 
   "video_post_title": "🎞️ POST-PRODUCTION",
   "video_post_copy": "Professional video editing, color correction (grading), sound design, and mixing to ensure the highest technical and artistic quality.",
   "portfolio_video_post_prod_desc_title": "EDITING, COLOR GRADING, AND SOUND DESIGN",
   "portfolio_video_post_prod_desc_body": "Post-production is the final touch. We offer agile editing services, advanced color correction (DaVinci Resolve) to achieve the desired 'look', and immersive sound design, perfectly synchronizing audio and video.",
-  "portfolio_video_post_prod_video_url": "https://www.youtube.com/embed/x007n2bxCeI?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  "portfolio_video_post_prod_video_url_es": "https://www.youtube.com/embed/Roy0l7Uh4P8",
+  "portfolio_video_post_prod_video_url_en": "https://www.youtube.com/embed/BXD76DxrXwo",
 
   "video_motion_title": "✨ ANIMATION & MOTION GRAPHICS",
   "video_motion_copy": "Creation of 2D and 3D animation, Motion Graphics for advertising, explainer videos, and animated infographics with visual impact.",
   "portfolio_video_anim_desc_title": "2D/3D ANIMATION, MOTION GRAPHICS, AND VFX",
   "portfolio_video_anim_desc_body": "We turn complex ideas into dynamic visual narratives. Whether it's traditional animation, 3D rendering, or motion graphics for social media, our team creates pieces that capture attention and explain concepts with clarity and style.",
-  "portfolio_video_anim_video_url": "https://www.youtube.com/embed/4QrU03qKYRA?autoplay=1&mute=1&controls=1&rel=0&playsinline=1",
+  "portfolio_video_anim_video_url_es": "https://www.youtube.com/embed/97T76RzoO9c",
+  "portfolio_video_anim_video_url_en": "https://www.youtube.com/embed/pjb2HUqMqW8",
 
   "music_player_title": "MUSIC PRODUCTION",
   "track_list_header": "TRACK LIST",
@@ -161,6 +164,6 @@
   "music_player_dkong_title": "DKONG",
   "music_player_leo_title": "LEO JARAMILLO",
 
-  "description_dkong": "Dkong is a multidisciplinary artist who blends hip hop with a wide range of rhythms, sound textures, and striking visuals. His work merges lyrics with esotericism, magical realism, and futuristic visions [Antenna].\n\nBased in Bogotá, he tells both personal and collective stories through music and visuals that bridge the intimate and the universal.",
+  "description_dkong": "Dkong is a multidisciplinary artist who blends hip hop with a wide range of rhythms, sound textures, and striking visuals. His work merges lyrics with esoterism, magical realism, and futuristic visions [Antenna].\n\nBased in Bogotá, he tells both personal and collective stories through music and visuals that bridge the intimate and the universal.",
   "description_leo": "Musician, producer, and sound engineer with over a decade of experience in studios and on stage. His authentic work fuses reggae, dub, and hip hop. For purchasing beats and tracks, write to jaramilloleomusic@gmail.com. All music is original by Leo Jaramillo."
 }
