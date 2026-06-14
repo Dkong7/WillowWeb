@@ -8,6 +8,8 @@ import AudioBanner from "./components/AudioBanner/AudioBanner";
 import AudioServices from "./components/AudioServices/AudioServices";
 import VideoBanner from "./components/VideoBanner/VideoBanner";
 import { VideoServices } from "./components/VideoServices/VideoServices"; 
+import WebBanner from "./components/WebProjects/WebBanner";
+import { WebProjects } from "./components/WebProjects/WebProjects";
 import Clients from "./components/Clients/Clients";
 import Footer from "./components/Footer/Footer";
 import "./i18n";
@@ -29,6 +31,10 @@ const HomePage = () => (
     {/* Sección Video */}
     <VideoBanner />
     <VideoServices /> 
+
+    {/* Sección Web & Transmedia */}
+    <WebBanner />
+    <WebProjects />
 
     {/* Sección Clientes */}
     <Clients />

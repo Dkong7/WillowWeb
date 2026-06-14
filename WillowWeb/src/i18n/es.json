@@ -165,5 +165,20 @@
   "music_player_leo_title": "LEO JARAMILLO",
 
   "description_dkong": "Dkong es un artista multidisciplinario que fusiona hip hop con una amplia paleta de ritmos, texturas sonoras y visuales. Su propuesta combina letras con esoterismo, realismo mágico y visiones futuristas [Antenna].\n\nDesde Bogotá, narra su viaje interior y colectivo a través de música y visuales que conectan lo íntimo con lo universal.",
-  "description_leo": "Leo Jaramillo es un músico, productor e ingeniero de sonido originario de Bogotá, con más de una década de experiencia en grandes escenarios y estudios. Es un instrumentista reconocido, capaz de fusionar el reggae, el dub y el hip hop con un enfoque auténtico y original. Para compra de beats y temas, escribe a jaramilloleomusic@gmail.com. Toda la música es original de Leo Jaramillo."
+  "description_leo": "Leo Jaramillo es un músico, productor e ingeniero de sonido originario de Bogotá, con más de una década de experiencia en grandes escenarios y estudios. Es un instrumentista reconocido, capaz de fusionar el reggae, el dub y el hip hop con un enfoque auténtico y original. Para compra de beats y temas, escribe a jaramilloleomusic@gmail.com. Toda la música es original de Leo Jaramillo.",
+
+  "web_service_banner_title": "PÁGINAS WEB & TRANSMEDIA",
+  "view_project": "VER PROYECTO",
+  "project_traif_title": "TRAIF",
+  "project_traif_desc": "Plataforma inmersiva de arte, música y tecnología. Diseño interactivo con experiencias 3D y narrativa visual.",
+  "project_ayc_title": "A&Y Finca Raíz",
+  "project_ayc_desc": "Portal inmobiliario moderno y dinámico para la gestión y visualización de propiedades.",
+  "project_biosalud_title": "Bioatom / Biosalud",
+  "project_biosalud_desc": "Plataforma dedicada a la salud, bienestar y bioenergética con un diseño limpio y accesible.",
+  "project_nardo_title": "Nardo App",
+  "project_nardo_desc": "Aplicación web innovadora centrada en la experiencia de usuario y rendimiento.",
+  "project_martinika_title": "Martinika",
+  "project_martinika_desc": "Diseño web elegante y optimizado para resaltar la identidad de marca.",
+  "project_kongfit_title": "Kongflix",
+  "project_kongfit_desc": "Plataforma de streaming y contenido multimedia con una interfaz atractiva y orientada al usuario."
 }
